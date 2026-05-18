@@ -24,6 +24,12 @@ npm run build
 npm run preview
 ```
 
+## Live Demo (Client Testing)
+
+**https://hanzlabinshakeel.github.io/new/**
+
+Deployed automatically via GitHub Pages on every push to `main`.
+
 ## Sections
 
 - Hero carousel with parallax backgrounds
