@@ -28,7 +28,14 @@ npm run preview
 
 **https://hanzlabinshakeel.github.io/new/**
 
-Deployed automatically via GitHub Pages on every push to `main`.
+Deployed automatically on every push to `main`.
+
+### One-time GitHub setup (if the site is blank)
+
+1. Open **https://github.com/HanzlaBinShakeel/new/settings/pages**
+2. Under **Build and deployment** → **Source**, choose **Deploy from a branch**
+3. Branch: **gh-pages** · Folder: **/ (root)** → **Save**
+4. Wait 1–2 minutes, then open the live URL above.
 
 ## Sections
 
