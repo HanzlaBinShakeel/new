@@ -3,12 +3,21 @@ import { heroPortrait } from '../assets';
 import { hero } from '../data/content';
 import styles from './Hero.module.css';
 
-const PORTRAIT_WIDTH = 520;
-const PORTRAIT_HEIGHT = 480;
+/** Native asset dimensions — hero height is tuned to these pixels */
+export const PORTRAIT_WIDTH = 520;
+export const PORTRAIT_HEIGHT = 480;
 
 export default function Hero() {
   return (
-    <section id="home" className={styles.hero} aria-label="Hero">
+    <section
+      id="home"
+      className={styles.hero}
+      aria-label="Hero"
+      style={{
+        '--portrait-w': `${PORTRAIT_WIDTH}px`,
+        '--portrait-h': `${PORTRAIT_HEIGHT}px`,
+      }}
+    >
       <motion.div
         className={styles.bg}
         initial={{ opacity: 0 }}
@@ -29,33 +38,35 @@ export default function Hero() {
         <div className={styles.bokeh} />
       </motion.div>
 
-      <motion.div
-        className={styles.copy}
-        initial={{ opacity: 0, x: -40 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.9, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-      >
-        <h1 className={styles.title}>{hero.title}</h1>
-        <p className={styles.subtitle}>{hero.subtitle}</p>
-      </motion.div>
+      <div className={styles.inner}>
+        <motion.div
+          className={styles.copy}
+          initial={{ opacity: 0, x: -40 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.9, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+        >
+          <h1 className={styles.title}>{hero.title}</h1>
+          <p className={styles.subtitle}>{hero.subtitle}</p>
+        </motion.div>
 
-      <motion.div
-        className={styles.portraitCol}
-        initial={{ opacity: 0, scale: 0.96 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 1, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-      >
-        <img
-          src={heroPortrait}
-          alt="Sir Rateb Y. Rabie, KCHS speaking at a podium"
-          className={styles.portrait}
-          width={PORTRAIT_WIDTH}
-          height={PORTRAIT_HEIGHT}
-          decoding="sync"
-          fetchPriority="high"
-          draggable={false}
-        />
-      </motion.div>
+        <motion.div
+          className={styles.portraitCol}
+          initial={{ opacity: 0, x: 30 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 1, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+        >
+          <img
+            src={heroPortrait}
+            alt="Sir Rateb Y. Rabie, KCHS speaking at a podium"
+            className={styles.portrait}
+            width={PORTRAIT_WIDTH}
+            height={PORTRAIT_HEIGHT}
+            decoding="sync"
+            fetchPriority="high"
+            draggable={false}
+          />
+        </motion.div>
+      </div>
     </section>
   );
 }
