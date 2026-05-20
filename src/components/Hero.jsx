@@ -3,21 +3,12 @@ import { heroPortrait } from '../assets';
 import { hero } from '../data/content';
 import styles from './Hero.module.css';
 
-/** Native asset dimensions — hero height is tuned to these pixels */
-export const PORTRAIT_WIDTH = 520;
-export const PORTRAIT_HEIGHT = 480;
+const PORTRAIT_WIDTH = 520;
+const PORTRAIT_HEIGHT = 480;
 
 export default function Hero() {
   return (
-    <section
-      id="home"
-      className={styles.hero}
-      aria-label="Hero"
-      style={{
-        '--portrait-w': `${PORTRAIT_WIDTH}px`,
-        '--portrait-h': `${PORTRAIT_HEIGHT}px`,
-      }}
-    >
+    <section id="home" className={styles.hero} aria-label="Hero">
       <motion.div
         className={styles.bg}
         initial={{ opacity: 0 }}
@@ -38,7 +29,7 @@ export default function Hero() {
         <div className={styles.bokeh} />
       </motion.div>
 
-      <div className={styles.inner}>
+      <motion.div className={styles.inner}>
         <motion.div
           className={styles.copy}
           initial={{ opacity: 0, x: -40 }}
@@ -66,7 +57,7 @@ export default function Hero() {
             draggable={false}
           />
         </motion.div>
-      </div>
+      </motion.div>
     </section>
   );
 }
