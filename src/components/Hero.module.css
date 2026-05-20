@@ -1,5 +1,6 @@
 .hero {
   position: relative;
+  width: 100%;
   min-height: 100vh;
   min-height: 100dvh;
   overflow: hidden;
@@ -10,7 +11,7 @@
   inset: 0;
   background:
     radial-gradient(ellipse 80% 60% at 15% 40%, rgba(120, 170, 255, 0.35) 0%, transparent 55%),
-    radial-gradient(ellipse 50% 70% at 85% 30%, rgba(80, 130, 220, 0.25) 0%, transparent 50%),
+    radial-gradient(ellipse 50% 70% at 88% 35%, rgba(80, 130, 220, 0.28) 0%, transparent 50%),
     linear-gradient(125deg, #0b1f4a 0%, #143a7a 38%, #1a4d96 62%, #0d2860 100%);
   z-index: 0;
 }
@@ -35,10 +36,10 @@
 .lightStreak2 {
   position: absolute;
   bottom: 0;
-  right: 20%;
-  width: 40%;
-  height: 60%;
-  background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.12) 0%, transparent 65%);
+  right: 15%;
+  width: 45%;
+  height: 70%;
+  background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.14) 0%, transparent 65%);
   pointer-events: none;
 }
 
@@ -47,39 +48,27 @@
   inset: 0;
   background-image:
     radial-gradient(circle at 20% 70%, rgba(255, 255, 255, 0.08) 0 2px, transparent 3px),
-    radial-gradient(circle at 75% 25%, rgba(255, 255, 255, 0.06) 0 3px, transparent 4px),
-    radial-gradient(circle at 60% 80%, rgba(255, 255, 255, 0.05) 0 2px, transparent 3px);
+    radial-gradient(circle at 75% 25%, rgba(255, 255, 255, 0.06) 0 3px, transparent 4px);
   pointer-events: none;
 }
 
-/* Full-viewport split: text left, portrait fills right half */
-.layout {
-  position: relative;
-  z-index: 1;
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
-  min-height: 100vh;
-  min-height: 100dvh;
-  width: 100%;
-  max-width: 1440px;
-  margin-inline: auto;
-  padding: 0 clamp(1.25rem, 3vw, 2.5rem);
-  padding-top: 100px;
-}
-
+/* Left: headline */
 .copy {
+  position: relative;
+  z-index: 2;
+  width: min(52%, 640px);
+  padding: clamp(120px, 14vh, 160px) clamp(1.5rem, 4vw, 4rem) 2rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-self: center;
-  padding: 2rem 0 3rem;
-  max-width: 580px;
-  z-index: 2;
+  min-height: 100vh;
+  min-height: 100dvh;
+  box-sizing: border-box;
 }
 
 .title {
   font-family: var(--font-display);
-  font-size: clamp(2.5rem, 4.8vw, 4.5rem);
+  font-size: clamp(2.4rem, 4.5vw, 4.75rem);
   font-weight: 700;
   line-height: 1.08;
   color: #ffffff;
@@ -89,90 +78,83 @@
 
 .subtitle {
   margin-top: 1.25rem;
-  font-size: clamp(1.15rem, 2vw, 1.65rem);
+  font-size: clamp(1.1rem, 2vw, 1.65rem);
   font-weight: 400;
   color: rgba(255, 255, 255, 0.92);
   line-height: 1.45;
 }
 
-/* Portrait column — vertically centered, fills right hero half */
+/* Right: portrait fills full hero height — anchored like client mockup */
 .portraitCol {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  align-self: stretch;
-  min-height: calc(100vh - 100px);
-  min-height: calc(100dvh - 100px);
-  padding: 0;
-}
-
-.portraitFrame {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 1;
+  width: min(58%, 780px);
   height: 100%;
-  max-height: calc(100vh - 110px);
-  max-height: calc(100dvh - 110px);
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-top: 72px;
+  padding-right: clamp(0.5rem, 2vw, 2rem);
+  padding-bottom: 0;
+  box-sizing: border-box;
+  pointer-events: none;
 }
 
 .portrait {
   display: block;
   width: auto;
-  height: auto;
+  height: calc(100vh - 60px);
+  height: calc(100dvh - 60px);
   max-width: 100%;
-  max-height: calc(100vh - 110px);
-  max-height: calc(100dvh - 110px);
   object-fit: contain;
-  object-position: center center;
+  object-position: center bottom;
   user-select: none;
   -webkit-user-drag: none;
-  filter: drop-shadow(0 20px 50px rgba(0, 0, 0, 0.4));
+  filter: drop-shadow(0 16px 40px rgba(0, 0, 0, 0.45));
 }
 
-@media (min-width: 1025px) {
+@media (min-width: 1200px) {
   .portrait {
-    /* Scale up to hero height using HD source (1169×1080) */
-    height: min(calc(100vh - 120px), 920px);
-    width: auto;
-    max-height: none;
+    height: calc(100vh - 40px);
+    height: calc(100dvh - 40px);
+    max-width: 720px;
   }
 }
 
 @media (max-width: 1024px) {
-  .layout {
-    grid-template-columns: 1fr;
-    padding-top: 110px;
-    min-height: auto;
-  }
-
   .copy {
+    width: 100%;
+    min-height: auto;
+    padding-top: 120px;
+    padding-bottom: 0;
     text-align: center;
-    max-width: none;
-    padding: 1rem 0 0.5rem;
+    align-items: center;
   }
 
   .portraitCol {
+    position: relative;
+    width: 100%;
     min-height: auto;
-    padding: 0 0 2.5rem;
-  }
-
-  .portraitFrame {
-    max-height: 70vh;
+    height: auto;
+    padding: 0 1rem 2rem;
+    align-items: center;
   }
 
   .portrait {
-    max-height: 70vh;
-    width: auto;
     height: auto;
-    max-width: min(100%, 560px);
+    width: min(100%, 520px);
+    max-height: 65vh;
+    object-position: center bottom;
   }
 }
 
 @media (max-width: 560px) {
   .portrait {
-    max-height: 55vh;
-    max-width: 100%;
+    width: 100%;
+    max-height: 50vh;
   }
 }
