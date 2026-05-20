@@ -1,0 +1,245 @@
+.section {
+  padding: 5rem 0 6rem;
+  background: linear-gradient(180deg, var(--bg-deep) 0%, var(--bg-card) 40%, var(--bg-deep) 100%);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  overflow: hidden;
+}
+
+.header {
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto 3rem;
+}
+
+.desc {
+  color: var(--cream-muted);
+  font-size: 1.05rem;
+  line-height: 1.7;
+  margin-top: 1rem;
+}
+
+.stage {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 1rem;
+}
+
+.viewport {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  box-shadow:
+    0 32px 80px rgba(0, 0, 0, 0.45),
+    0 0 0 1px rgba(201, 168, 76, 0.08) inset;
+  aspect-ratio: 16 / 10;
+  max-height: min(72vh, 640px);
+}
+
+.slide {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #0a0e12;
+}
+
+.mainImage {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.shine {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    transparent 40%,
+    rgba(255, 255, 255, 0.06) 50%,
+    transparent 60%
+  );
+  pointer-events: none;
+}
+
+.counter {
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+  display: flex;
+  align-items: baseline;
+  gap: 0.15rem;
+  padding: 0.45rem 0.85rem;
+  background: rgba(10, 14, 18, 0.75);
+  backdrop-filter: blur(8px);
+  border-radius: 100px;
+  border: 1px solid var(--border);
+  font-variant-numeric: tabular-nums;
+}
+
+.counterCurrent {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  color: var(--gold);
+  font-weight: 600;
+}
+
+.counterSep,
+.counterTotal {
+  font-size: 0.85rem;
+  color: var(--cream-muted);
+}
+
+.arrow {
+  flex-shrink: 0;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--cream);
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  transition: background 0.25s, border-color 0.25s, transform 0.25s, color 0.25s;
+}
+
+.arrow:hover {
+  background: var(--gold-dim);
+  border-color: var(--gold);
+  color: var(--gold);
+  transform: scale(1.06);
+}
+
+.arrow:active {
+  transform: scale(0.98);
+}
+
+.thumbs {
+  display: flex;
+  gap: 0.65rem;
+  margin-top: 1.5rem;
+  padding: 0.25rem 0.25rem 0.5rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: thin;
+  scrollbar-color: var(--gold) var(--bg-elevated);
+}
+
+.thumbs::-webkit-scrollbar {
+  height: 6px;
+}
+
+.thumbs::-webkit-scrollbar-thumb {
+  background: var(--gold);
+  border-radius: 100px;
+}
+
+.thumb {
+  position: relative;
+  flex-shrink: 0;
+  width: 88px;
+  height: 66px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 2px solid transparent;
+  opacity: 0.55;
+  transition: opacity 0.3s, transform 0.3s;
+  scroll-snap-align: center;
+}
+
+.thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.thumb:hover {
+  opacity: 0.85;
+  transform: translateY(-2px);
+}
+
+.thumbActive {
+  opacity: 1;
+  border-color: var(--gold);
+}
+
+.thumbRing {
+  position: absolute;
+  inset: -2px;
+  border: 2px solid var(--gold);
+  border-radius: 8px;
+  pointer-events: none;
+}
+
+.progress {
+  margin-top: 1.25rem;
+  height: 3px;
+  background: var(--bg-elevated);
+  border-radius: 100px;
+  overflow: hidden;
+}
+
+.progressBar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--gold), #e8d5a3);
+  transform-origin: left;
+  border-radius: 100px;
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 3.5rem 0 4rem;
+  }
+
+  .stage {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  .arrow {
+    position: absolute;
+    z-index: 3;
+    width: 44px;
+    height: 44px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(10, 14, 18, 0.8);
+    backdrop-filter: blur(6px);
+  }
+
+  .arrow:hover {
+    transform: translateY(-50%) scale(1.05);
+  }
+
+  .stage {
+    position: relative;
+  }
+
+  .arrowPrev {
+    left: 0.5rem;
+  }
+
+  .arrowNext {
+    right: 0.5rem;
+    left: auto;
+  }
+
+  .viewport {
+    grid-column: 1;
+    aspect-ratio: 4 / 3;
+    max-height: 50vh;
+  }
+
+  .thumb {
+    width: 72px;
+    height: 54px;
+  }
+}

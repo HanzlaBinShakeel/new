@@ -1,5 +1,6 @@
 import Header from './components/Header';
 import Hero from './components/Hero';
+import ImageGallery from './components/ImageGallery';
 import About from './components/About';
 import Pillars from './components/Pillars';
 import Organizations from './components/Organizations';
@@ -17,6 +18,7 @@ export default function App() {
       <Header />
       <main>
         <Hero />
+        <ImageGallery />
         <About />
         <Pillars />
         <Organizations />
