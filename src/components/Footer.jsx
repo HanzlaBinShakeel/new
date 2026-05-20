@@ -1,3 +1,4 @@
+import { logo } from '../assets';
 import { site, nav, socials } from '../data/content';
 import styles from './Footer.module.css';
 
@@ -7,7 +8,7 @@ export default function Footer() {
       <div className="container">
         <div className={styles.grid}>
           <div className={styles.brand}>
-            <img src={site.logo} alt={site.name} />
+            <img src={logo} alt={site.name} width={160} height={120} />
             <h3>Experts in crafting solutions that resonate</h3>
             <p>{site.tagline}</p>
           </div>

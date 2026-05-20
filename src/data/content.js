@@ -6,45 +6,22 @@ export const site = {
   hcefEmail: 'rabie@hcef.org',
   hcefPhone: '301-951-9400',
   cell: '301-922-2779',
-  logo: 'https://rateb.rabie.us/wp-content/uploads/2024/09/logo3.png',
   donateUrl: 'https://hcef.org/donate/',
   languages: ['English', 'Español', 'العربية'],
 };
 
 export const nav = [
   { label: 'Home', href: '#home' },
-  {
-    label: 'About',
-    href: '#about',
-    children: [
-      { label: 'Curriculum Vitae', href: '#cv' },
-      { label: 'Biography', href: '#about' },
-      { label: 'Message', href: '#message' },
-    ],
-  },
-  { label: 'Reflections', href: '#articles' },
-  { label: 'Organizations', href: '#organizations' },
-  { label: 'Career', href: '#career' },
-  { label: 'Awards', href: '#awards' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'About', href: '#about' },
+  { label: 'Leadership & Initiatives', href: '#organizations' },
+  { label: 'Publications', href: '#articles' },
+  { label: 'Connect With Me', href: '#contact' },
 ];
 
-export const heroSlides = [
-  {
-    eyebrow: 'Fundraising for a Better Tomorrow',
-    title: "Let's make our country great again!",
-    subtitle: 'Make an Impact, Join Our Cause',
-    cta: 'Learn More',
-    image: 'https://rateb.rabie.us/wp-content/uploads/2024/12/home4-image3-copyright.jpg',
-  },
-  {
-    eyebrow: 'Support the Cause',
-    title: 'Drive the Change',
-    subtitle: 'Be the Difference, Support Our Campaign',
-    cta: 'Learn More',
-    image: 'https://rateb.rabie.us/wp-content/uploads/2024/12/home2-image3-copyright.jpg',
-  },
-];
+export const hero = {
+  title: 'Transformational Leadership For',
+  subtitle: 'Peace, Justice, and Global Impact',
+};
 
 export const biography = {
   title: 'Sir Rateb Y. Rabie, KCHS',
