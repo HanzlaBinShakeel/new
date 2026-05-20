@@ -8,7 +8,7 @@ export default function Footer() {
       <div className="container">
         <div className={styles.grid}>
           <div className={styles.brand}>
-            <img src={logo} alt={site.name} width={160} height={120} />
+            <img src={logo} alt={site.name} width={577} height={433} />
             <h3>Experts in crafting solutions that resonate</h3>
             <p>{site.tagline}</p>
           </div>

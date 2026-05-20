@@ -3,8 +3,8 @@ import { heroPortrait } from '../assets';
 import { hero } from '../data/content';
 import styles from './Hero.module.css';
 
-const PORTRAIT_WIDTH = 520;
-const PORTRAIT_HEIGHT = 480;
+const PORTRAIT_WIDTH = 1169;
+const PORTRAIT_HEIGHT = 1080;
 
 export default function Hero() {
   return (
@@ -26,12 +26,12 @@ export default function Hero() {
           animate={{ opacity: [0.3, 0.55, 0.3] }}
           transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
         />
-        <div className={styles.bokeh} />
+        <motion.div className={styles.bokeh} />
       </motion.div>
 
-      <div className={`container ${styles.grid}`}>
+      <div className={styles.layout}>
         <motion.div
-          className={styles.copy}
+          className={`container ${styles.copy}`}
           initial={{ opacity: 0, x: -40 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.9, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
@@ -42,7 +42,7 @@ export default function Hero() {
 
         <motion.div
           className={styles.portraitCol}
-          initial={{ opacity: 0, x: 60 }}
+          initial={{ opacity: 0, x: 40 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 1, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
         >

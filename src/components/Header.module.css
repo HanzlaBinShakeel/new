@@ -4,7 +4,7 @@
   left: 0;
   right: 0;
   z-index: 1000;
-  padding: 1rem 0;
+  padding: 1.1rem 0;
   transition: background 0.4s, padding 0.4s, backdrop-filter 0.4s, border-color 0.4s;
 }
 
@@ -35,14 +35,17 @@
 }
 
 .logo img {
-  height: 52px;
+  height: clamp(72px, 8vw, 96px);
   width: auto;
+  min-width: 140px;
   object-fit: contain;
   object-position: left center;
 }
 
 .onHero .logo img {
   filter: brightness(0) invert(1);
+  height: clamp(80px, 9vw, 110px);
+  min-width: 160px;
 }
 
 .nav {
@@ -217,7 +220,13 @@
 
 @media (max-width: 640px) {
   .logo img {
-    height: 42px;
+    height: 64px;
+    min-width: 120px;
+  }
+
+  .onHero .logo img {
+    height: 68px;
+    min-width: 130px;
   }
 
   .actions .contactBtn {

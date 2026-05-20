@@ -30,7 +30,7 @@ export default function Header() {
     >
       <motion.div className={`container ${styles.inner}`}>
         <a href="#home" className={styles.logo}>
-          <img src={logo} alt="Rateb Y. Rabie, KCHS" width={160} height={120} />
+          <img src={logo} alt="Rateb Y. Rabie, KCHS" width={577} height={433} />
         </a>
 
         <nav className={styles.nav} aria-label="Main navigation">
