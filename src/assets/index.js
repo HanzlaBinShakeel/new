@@ -1,2 +1,2 @@
 export { default as logo } from './logo.png';
-export { default as heroPortrait } from './hero-portrait-hd.jpg';
+export { default as heroPortrait } from './hero-portrait.png';

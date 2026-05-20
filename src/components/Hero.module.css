@@ -57,7 +57,7 @@
   position: relative;
   z-index: 2;
   width: min(52%, 640px);
-  padding: clamp(120px, 14vh, 160px) clamp(1.5rem, 4vw, 4rem) 2rem;
+  padding: clamp(100px, 12vh, 130px) clamp(1.5rem, 4vw, 4rem) 2rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -97,7 +97,7 @@
   display: flex;
   align-items: flex-end;
   justify-content: center;
-  padding-top: 72px;
+  padding-top: 64px;
   padding-right: clamp(0.5rem, 2vw, 2rem);
   padding-bottom: 0;
   box-sizing: border-box;
@@ -106,22 +106,25 @@
 
 .portrait {
   display: block;
-  width: auto;
-  height: calc(100vh - 60px);
-  height: calc(100dvh - 60px);
-  max-width: 100%;
+  width: 520px;
+  height: 480px;
+  max-width: min(520px, 100%);
+  max-height: min(480px, calc(100dvh - 70px));
   object-fit: contain;
   object-position: center bottom;
   user-select: none;
   -webkit-user-drag: none;
   filter: drop-shadow(0 16px 40px rgba(0, 0, 0, 0.45));
+  /* Native 520×480 — no upscale blur */
+  image-rendering: auto;
 }
 
 @media (min-width: 1200px) {
   .portrait {
-    height: calc(100vh - 40px);
-    height: calc(100dvh - 40px);
-    max-width: 720px;
+    width: min(520px, 48vw);
+    height: auto;
+    aspect-ratio: 520 / 480;
+    max-height: min(480px, calc(100dvh - 64px));
   }
 }
 
@@ -145,9 +148,10 @@
   }
 
   .portrait {
-    height: auto;
     width: min(100%, 520px);
-    max-height: 65vh;
+    height: auto;
+    max-height: min(480px, 60vh);
+    aspect-ratio: 520 / 480;
     object-position: center bottom;
   }
 }

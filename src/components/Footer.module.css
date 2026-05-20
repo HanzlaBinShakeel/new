@@ -13,9 +13,9 @@
 }
 
 .brand img {
-  height: 100px;
+  height: 72px;
   width: auto;
-  max-width: 260px;
+  max-width: 200px;
   object-fit: contain;
   margin-bottom: 1rem;
 }

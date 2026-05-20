@@ -3,8 +3,8 @@ import { heroPortrait } from '../assets';
 import { hero } from '../data/content';
 import styles from './Hero.module.css';
 
-const PORTRAIT_WIDTH = 1169;
-const PORTRAIT_HEIGHT = 1080;
+const PORTRAIT_WIDTH = 520;
+const PORTRAIT_HEIGHT = 480;
 
 export default function Hero() {
   return (
