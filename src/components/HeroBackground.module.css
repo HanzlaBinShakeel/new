@@ -3,7 +3,7 @@
   inset: 0;
   z-index: 0;
   overflow: hidden;
-  background: #0b1f4a;
+  background: #121820;
 }
 
 .slide {
@@ -40,13 +40,13 @@
   inset: 0;
   z-index: 2;
   background:
-    linear-gradient(105deg, rgba(11, 31, 74, 0.88) 0%, rgba(11, 31, 74, 0.72) 45%, rgba(20, 58, 122, 0.5) 100%),
-    linear-gradient(180deg, rgba(11, 31, 74, 0.35) 0%, rgba(13, 40, 96, 0.8) 100%);
+    linear-gradient(105deg, rgba(10, 14, 18, 0.72) 0%, rgba(10, 14, 18, 0.5) 48%, rgba(10, 14, 18, 0.35) 100%),
+    linear-gradient(180deg, rgba(10, 14, 18, 0.2) 0%, rgba(10, 14, 18, 0.55) 100%);
   pointer-events: none;
 }
 
 .fallback {
   position: absolute;
   inset: 0;
-  background: linear-gradient(125deg, #0b1f4a 0%, #1a4d96 62%, #0d2860 100%);
+  background: linear-gradient(125deg, #121820 0%, #1a222d 62%, #121820 100%);
 }

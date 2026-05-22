@@ -63,6 +63,8 @@
   display: flex;
   align-items: flex-end;
   justify-content: center;
+  padding-bottom: 0;
+  transform: translateY(-4vh);
   background: transparent;
   overflow: visible;
 }
@@ -78,16 +80,19 @@
   user-select: none;
   -webkit-user-drag: none;
   filter: drop-shadow(0 12px 36px rgba(0, 0, 0, 0.35));
-  /* Blend out black matte if PNG has non-transparent black bg */
   mix-blend-mode: lighten;
 }
 
 @media (min-width: 1025px) {
+  .portraitCol {
+    transform: translateY(-5vh);
+  }
+
   .portrait {
-    min-height: min(85vh, 780px);
-    height: calc(100dvh - var(--header-h) - 2rem);
+    min-height: min(92vh, 900px);
+    height: calc(100dvh - var(--header-h) + 1rem);
     width: auto;
-    max-width: min(720px, 100%);
+    max-width: min(820px, 105%);
   }
 }
 
@@ -114,15 +119,16 @@
   }
 
   .portraitCol {
-    height: min(55vh, 520px);
-    min-height: 380px;
+    height: min(58vh, 560px);
+    min-height: 400px;
     align-items: flex-end;
+    transform: translateY(-2vh);
   }
 
   .portrait {
     height: 100%;
     width: auto;
-    max-width: min(520px, 94vw);
+    max-width: min(580px, 96vw);
     mix-blend-mode: lighten;
   }
 }
