@@ -1,0 +1,49 @@
+.wrap {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.slide {
+  position: absolute;
+  inset: -10%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  will-change: transform, opacity;
+  opacity: 0;
+  z-index: 0;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(105deg, rgba(11, 31, 74, 0.92) 0%, rgba(11, 31, 74, 0.75) 42%, rgba(20, 58, 122, 0.55) 100%),
+    linear-gradient(180deg, rgba(11, 31, 74, 0.5) 0%, rgba(13, 40, 96, 0.85) 100%);
+  z-index: 1;
+}
+
+.lightStreak {
+  position: absolute;
+  top: -10%;
+  left: -5%;
+  width: 50%;
+  height: 120%;
+  z-index: 2;
+  background: linear-gradient(
+    118deg,
+    transparent 35%,
+    rgba(255, 255, 255, 0.08) 50%,
+    transparent 65%
+  );
+  transform: skewX(-10deg);
+  pointer-events: none;
+}
+
+.fallback {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(125deg, #0b1f4a 0%, #1a4d96 62%, #0d2860 100%);
+}

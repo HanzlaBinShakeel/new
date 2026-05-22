@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { logo } from '../assets';
 import { nav } from '../data/content';
@@ -7,6 +8,8 @@ import styles from './Header.module.css';
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const { pathname } = useLocation();
+  const isHome = pathname === '/' || pathname === '';
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 48);
@@ -19,7 +22,11 @@ export default function Header() {
     document.body.style.overflow = menuOpen ? 'hidden' : '';
   }, [menuOpen]);
 
-  const onHero = !scrolled;
+  useEffect(() => {
+    setMenuOpen(false);
+  }, [pathname]);
+
+  const onHero = isHome && !scrolled;
 
   return (
     <motion.header
@@ -28,20 +35,23 @@ export default function Header() {
       animate={{ y: 0 }}
       transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
     >
-      <motion.div className={`container ${styles.inner}`}>
-        <a href="#home" className={styles.logo}>
+      <div className={`container ${styles.inner}`}>
+        <Link to="/" className={styles.logo}>
           <img src={logo} alt="Rateb Y. Rabie, KCHS" width={577} height={433} />
-        </a>
+        </Link>
 
         <nav className={styles.nav} aria-label="Main navigation">
           {nav.map((item) => (
-            <a
-              key={item.href}
-              href={item.href}
-              className={`${styles.navLink} ${item.href === '#home' ? styles.active : ''}`}
+            <NavLink
+              key={item.path}
+              to={item.path}
+              end={item.path === '/'}
+              className={({ isActive }) =>
+                `${styles.navLink} ${isActive ? styles.active : ''}`
+              }
             >
               {item.label}
-            </a>
+            </NavLink>
           ))}
         </nav>
 
@@ -55,9 +65,9 @@ export default function Header() {
               <path d="M1 1l4 4 4-4" stroke="currentColor" strokeWidth="1.5" fill="none" />
             </svg>
           </button>
-          <a href="#contact" className={styles.contactBtn}>
+          <Link to="/contact" className={styles.contactBtn}>
             Contact Us
-          </a>
+          </Link>
         </div>
 
         <button
@@ -70,7 +80,7 @@ export default function Header() {
           <span />
           <span />
         </button>
-      </motion.div>
+      </div>
 
       <AnimatePresence>
         {menuOpen && (
@@ -82,20 +92,19 @@ export default function Header() {
             transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
           >
             {nav.map((item, i) => (
-              <motion.a
-                key={item.href}
-                href={item.href}
+              <NavLink
+                key={item.path}
+                to={item.path}
+                end={item.path === '/'}
+                className={({ isActive }) => (isActive ? styles.mobileActive : '')}
                 onClick={() => setMenuOpen(false)}
-                initial={{ opacity: 0, x: 30 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: i * 0.05 }}
               >
                 {item.label}
-              </motion.a>
+              </NavLink>
             ))}
-            <a href="#contact" className={styles.contactBtn} onClick={() => setMenuOpen(false)}>
+            <Link to="/contact" className={styles.contactBtn} onClick={() => setMenuOpen(false)}>
               Contact Us
-            </a>
+            </Link>
           </motion.div>
         )}
       </AnimatePresence>

@@ -11,11 +11,11 @@ export const site = {
 };
 
 export const nav = [
-  { label: 'Home', href: '#home' },
-  { label: 'About', href: '#about' },
-  { label: 'Leadership & Initiatives', href: '#organizations' },
-  { label: 'Publications', href: '#articles' },
-  { label: 'Connect With Me', href: '#contact' },
+  { label: 'Home', path: '/' },
+  { label: 'About', path: '/about' },
+  { label: 'Leadership & Initiatives', path: '/leadership' },
+  { label: 'Publications', path: '/publications' },
+  { label: 'Connect With Me', path: '/contact' },
 ];
 
 export const hero = {

@@ -10,53 +10,6 @@
   padding-top: var(--header-h);
 }
 
-.bg {
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(ellipse 80% 60% at 15% 40%, rgba(120, 170, 255, 0.35) 0%, transparent 55%),
-    radial-gradient(ellipse 50% 70% at 88% 45%, rgba(80, 130, 220, 0.28) 0%, transparent 50%),
-    linear-gradient(125deg, #0b1f4a 0%, #143a7a 38%, #1a4d96 62%, #0d2860 100%);
-  z-index: 0;
-}
-
-.lightStreak {
-  position: absolute;
-  top: -10%;
-  left: -5%;
-  width: 55%;
-  height: 120%;
-  background: linear-gradient(
-    118deg,
-    transparent 30%,
-    rgba(255, 255, 255, 0.14) 48%,
-    rgba(255, 255, 255, 0.22) 52%,
-    transparent 70%
-  );
-  transform: skewX(-12deg);
-  pointer-events: none;
-}
-
-.lightStreak2 {
-  position: absolute;
-  top: 50%;
-  right: 8%;
-  transform: translateY(-50%);
-  width: 48%;
-  height: 85%;
-  background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.12) 0%, transparent 65%);
-  pointer-events: none;
-}
-
-.bokeh {
-  position: absolute;
-  inset: 0;
-  background-image:
-    radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.08) 0 2px, transparent 3px),
-    radial-gradient(circle at 75% 40%, rgba(255, 255, 255, 0.06) 0 3px, transparent 4px);
-  pointer-events: none;
-}
-
 /* Content fills entire hero below navbar */
 .inner {
   position: relative;

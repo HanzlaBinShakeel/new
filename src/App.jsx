@@ -1,35 +1,23 @@
-import Header from './components/Header';
-import Hero from './components/Hero';
-import ImageGallery from './components/ImageGallery';
-import About from './components/About';
-import Pillars from './components/Pillars';
-import Organizations from './components/Organizations';
-import Career from './components/Career';
-import Stats from './components/Stats';
-import CV from './components/CV';
-import Articles from './components/Articles';
-import Donate from './components/Donate';
-import Contact from './components/Contact';
-import Footer from './components/Footer';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Layout from './layout/Layout';
+import HomePage from './pages/HomePage';
+import AboutPage from './pages/AboutPage';
+import LeadershipPage from './pages/LeadershipPage';
+import PublicationsPage from './pages/PublicationsPage';
+import ContactPage from './pages/ContactPage';
 
 export default function App() {
   return (
-    <>
-      <Header />
-      <main>
-        <Hero />
-        <ImageGallery />
-        <About />
-        <Pillars />
-        <Organizations />
-        <Stats />
-        <Career />
-        <CV />
-        <Articles />
-        <Donate />
-        <Contact />
-      </main>
-      <Footer />
-    </>
+    <BrowserRouter basename={import.meta.env.BASE_URL.replace(/\/$/, '') || undefined}>
+      <Routes>
+        <Route element={<Layout />}>
+          <Route index element={<HomePage />} />
+          <Route path="about" element={<AboutPage />} />
+          <Route path="leadership" element={<LeadershipPage />} />
+          <Route path="publications" element={<PublicationsPage />} />
+          <Route path="contact" element={<ContactPage />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }

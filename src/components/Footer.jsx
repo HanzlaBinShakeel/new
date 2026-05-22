@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { logo } from '../assets';
 import { site, nav, socials } from '../data/content';
 import styles from './Footer.module.css';
@@ -8,7 +9,9 @@ export default function Footer() {
       <div className="container">
         <div className={styles.grid}>
           <div className={styles.brand}>
-            <img src={logo} alt={site.name} width={577} height={433} />
+            <Link to="/">
+              <img src={logo} alt={site.name} width={577} height={433} />
+            </Link>
             <h3>Experts in crafting solutions that resonate</h3>
             <p>{site.tagline}</p>
           </div>
@@ -16,9 +19,9 @@ export default function Footer() {
           <div>
             <h4>Menu</h4>
             <ul>
-              {nav.slice(0, 5).map((item) => (
-                <li key={item.href}>
-                  <a href={item.href}>{item.label}</a>
+              {nav.map((item) => (
+                <li key={item.path}>
+                  <Link to={item.path}>{item.label}</Link>
                 </li>
               ))}
             </ul>

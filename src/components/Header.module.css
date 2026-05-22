@@ -208,6 +208,11 @@
   color: #ffffff;
 }
 
+.mobileMenu a.mobileActive,
+.mobileMenu a.active {
+  color: var(--gold);
+}
+
 @media (max-width: 1100px) {
   .nav,
   .lang {
