@@ -256,23 +256,6 @@ export const articles = [
   },
 ];
 
-export const events = [
-  {
-    title: 'Lobbying for environmental legislation',
-    location: 'New York',
-    date: 'November 18, 2024 – December 29, 2026',
-    price: 'Free',
-    image: 'https://rateb.rabie.us/wp-content/uploads/2020/11/post-image4-copyright-840x560.jpg',
-  },
-  {
-    title: 'Human rights advocacy campaign',
-    location: 'New York',
-    date: 'November 5, 2023 – September 18, 2028',
-    price: '$105',
-    image: 'https://rateb.rabie.us/wp-content/uploads/2023/11/event-image4-copyright-840x560.jpg',
-  },
-];
-
 export const skills = [
   'Organizational Leadership',
   'Social Entrepreneurship',
