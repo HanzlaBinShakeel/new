@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Rateb Y. Rabie, KCHS</title>
+    <script>
+      (function () {
+        var base = '/new/';
+        var path = window.location.pathname.replace(base, '') + window.location.search + window.location.hash;
+        if (path && path !== 'index.html') {
+          sessionStorage.setItem('spa-redirect', path);
+        }
+        window.location.replace(base);
+      })();
+    </script>
+  </head>
+  <body></body>
+</html>
