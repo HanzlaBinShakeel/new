@@ -25,17 +25,6 @@
   object-fit: cover;
 }
 
-.imgSecondary {
-  position: absolute;
-  bottom: -2rem;
-  right: -2rem;
-  width: 45%;
-  border-radius: var(--radius);
-  overflow: hidden;
-  border: 4px solid var(--bg-deep);
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5);
-}
-
 .badge {
   position: absolute;
   top: 2rem;
@@ -108,8 +97,4 @@
     gap: 3rem;
   }
 
-  .imgSecondary {
-    right: 1rem;
-    bottom: -1rem;
-  }
 }

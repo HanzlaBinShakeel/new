@@ -17,15 +17,6 @@ export default function About() {
               >
                 <img src="https://rateb.rabie.us/wp-content/uploads/2024/12/home4-image1-copyright.jpg" alt="Rateb Y. Rabie" />
               </motion.div>
-              <motion.div
-                className={styles.imgSecondary}
-                initial={{ opacity: 0, x: 30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.3 }}
-              >
-                <img src="https://rateb.rabie.us/wp-content/uploads/2024/12/home4-image2-copyright.jpg" alt="" />
-              </motion.div>
               <div className={styles.badge}>
                 <span>Support our mission</span>
                 <strong>Blueprint for Peace</strong>
