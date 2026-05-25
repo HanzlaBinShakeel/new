@@ -1,0 +1,15 @@
+.list {
+  display: grid;
+  gap: 1rem;
+  max-width: 800px;
+}
+
+.list li {
+  padding: 1.25rem 1.5rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-size: 1.05rem;
+  color: var(--text);
+  border-left: 3px solid var(--campaign-accent);
+}

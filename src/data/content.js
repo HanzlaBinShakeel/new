@@ -12,10 +12,39 @@ export const site = {
 
 export const nav = [
   { label: 'Home', path: '/' },
-  { label: 'About', path: '/about' },
-  { label: 'Leadership & Initiatives', path: '/leadership' },
-  { label: 'Publications', path: '/publications' },
-  { label: 'Connect With Me', path: '/contact' },
+  {
+    label: 'About',
+    path: '/about',
+    children: [
+      { label: 'Curriculum Vitae', path: '/about/cv' },
+      { label: 'Biography (BIO)', path: '/about/biography' },
+      { label: 'Message', path: '/about/message' },
+      { label: 'History', path: '/about/history' },
+      { label: 'Family', path: '/about/family' },
+    ],
+  },
+  {
+    label: 'Reflections and articles',
+    path: '/reflections',
+    children: [
+      { label: 'Work related', path: '/reflections/work' },
+      { label: 'Personal views', path: '/reflections/personal' },
+    ],
+  },
+  {
+    label: 'Publications',
+    path: '/publications',
+    children: [
+      { label: 'Books', path: '/publications/books' },
+      { label: 'Newsletters', path: '/publications/newsletters' },
+      { label: 'All Articles', path: '/publications' },
+    ],
+  },
+  { label: 'Photo Albums', path: '/photo-albums' },
+  { label: 'Awards and recognition', path: '/awards' },
+  { label: 'Countries visited', path: '/countries' },
+  { label: 'General', path: '/general' },
+  { label: 'Contact Us', path: '/contact' },
 ];
 
 export const hero = {
@@ -30,8 +59,49 @@ export const biography = {
 Born in Amman, Jordan to Palestinian parents, he is founder and President/CEO of the Holy Land Christian Ecumenical Foundation (HCEF), founder and President/CEO of Know Thy Heritage (KTH), and co-founder and former chairman of the Jerusalem Peace Institute (JPI). He is Chairman of the U.S. Muslim Christian Coalition, co-founder and past national president of the Birzeit Society, and a Knight Commander of the Equestrian Order of the Holy Sepulcher — an honor from the Vatican.
 
 He is recipient of the Faith and Tolerance Award from the Arab American Anti-Discrimination Committee and is committed to peace and justice in Palestine and to strengthening the identity of Palestinians in the Diaspora.`,
-  image: 'https://rateb.rabie.us/wp-content/uploads/2024/12/home4-image3-copyright.jpg',
-  imageAlt: 'https://rateb.rabie.us/wp-content/uploads/2024/05/portfolio-image6-copyright.jpg',
+};
+
+export const pageContent = {
+  message: {
+    title: 'Message',
+    body: `Welcome to my official website. Through decades of service, I have worked to advance peace, justice, and dignity for the Palestinian people and to strengthen bonds between communities of faith across the world.
+
+This site shares reflections, publications, and the work of organizations I am privileged to lead. Thank you for visiting, and for your solidarity with a just and lasting peace in the Holy Land.`,
+  },
+  history: {
+    title: 'History',
+    body: `Born in Amman, Jordan to Palestinian parents, Rateb Y. Rabie has built a career spanning the United States, Latin America, Australia, and the Middle East — in both for-profit enterprise and nonprofit leadership.
+
+From founding HCEF in 1998 to launching Know Thy Heritage and co-founding the Jerusalem Peace Institute, his work connects diaspora communities to Palestine and advocates for humanitarian development, education, and peace.`,
+  },
+  family: {
+    title: 'Family',
+    body: `Family and heritage are at the heart of this mission. As a Palestinian committed to preserving identity and culture for future generations, Sir Rateb Y. Rabie draws strength from faith, community, and the enduring ties between Palestine and its diaspora.`,
+  },
+  books: {
+    title: 'Books',
+    body: `Publications and written works by Rateb Y. Rabie, KCHS — including reflections on faith, politics, and justice in Palestine. Additional book listings will be updated here.`,
+  },
+  newsletters: {
+    title: 'Newsletters',
+    body: `Newsletters and periodic updates from the Holy Land Christian Ecumenical Foundation and related initiatives. Subscribe on the Contact page to receive updates.`,
+  },
+  photoAlbums: {
+    title: 'Photo Albums',
+    body: `Photographs from events, pilgrimages, and programs in the Holy Land and around the world — including historic visits and community gatherings.`,
+  },
+  awards: {
+    title: 'Awards and Recognition',
+    body: null,
+  },
+  countries: {
+    title: 'Countries Visited',
+    body: `Sir Rateb Y. Rabie has traveled extensively across the United States, Latin America, Australia, and the Middle East — building partnerships and advocating for peace and humanitarian programs worldwide.`,
+  },
+  general: {
+    title: 'General',
+    body: `General information, resources, and updates from Rateb Y. Rabie, KCHS and affiliated organizations.`,
+  },
 };
 
 export const aboutSection = {
@@ -146,6 +216,7 @@ export const articles = [
     title: 'Ramadan and Lent: Prayer, Reflection, and Hope for Palestine',
     date: 'February 22, 2026',
     category: 'Articles',
+    tag: 'work',
     image: 'https://rateb.rabie.us/wp-content/uploads/2026/02/Ramadan-and-lent-370x370.png',
     url: 'https://rateb.rabie.us/ramadan-and-lent-prayer-reflection-and-hope-for-palestine/',
   },
@@ -153,6 +224,7 @@ export const articles = [
     title: "Happy Valentine's Day from Palestine to the World ❤️",
     date: 'February 22, 2026',
     category: 'Articles',
+    tag: 'personal',
     image: 'https://rateb.rabie.us/wp-content/uploads/2026/02/valentine2-370x253.jpg',
     url: 'https://rateb.rabie.us/happy-valentines-day-from-palestine-to-the-world/',
   },
@@ -160,6 +232,7 @@ export const articles = [
     title: 'Palestine and the Promise of Freedom: A Fourth of July Message',
     date: 'July 2, 2025',
     category: 'Articles',
+    tag: 'work',
     image: 'https://rateb.rabie.us/wp-content/uploads/2025/07/233421123-370x370.jpg',
     url: 'https://rateb.rabie.us/palestine-and-the-promise-of-freedom-a-fourth-of-july-message/',
   },
@@ -167,6 +240,7 @@ export const articles = [
     title: 'Congratulations to His Holiness Pope Leo XIV from the Palestinian Christians',
     date: 'May 11, 2025',
     category: 'Articles',
+    tag: 'work',
     image: 'https://rateb.rabie.us/wp-content/uploads/2025/05/Pope-Leo-VIV-congratulation-3-370x155.jpg',
     url: 'https://rateb.rabie.us/congratulations-to-his-holiness-pope-leo-xiv-from-the-palestinian-christians/',
   },
@@ -174,6 +248,7 @@ export const articles = [
     title: 'The Passing of Pope Francis: A Legacy of Compassion and Moral Courage',
     date: 'April 22, 2025',
     category: 'Articles',
+    tag: 'work',
     image: 'https://rateb.rabie.us/wp-content/uploads/2025/04/345678-370x528.jpg',
     url: 'https://rateb.rabie.us/the-passing-of-pope-francis-a-legacy-of-compassion-and-moral-courage/',
   },
@@ -181,6 +256,7 @@ export const articles = [
     title: 'Easter Reflection – He is Risen — and So Will Palestine',
     date: 'April 18, 2025',
     category: 'Articles',
+    tag: 'personal',
     image: 'https://rateb.rabie.us/wp-content/uploads/2025/04/He-is-Risen-and-So-Will-Palestine-1-370x269.jpg',
     url: 'https://rateb.rabie.us/easter-reflection-he-is-risen-and-so-will-palestine/',
   },
@@ -188,6 +264,7 @@ export const articles = [
     title: 'Faith, Politics, and Deception: The Misuse of Christianity for Power',
     date: 'March 15, 2025',
     category: 'Articles',
+    tag: 'work',
     image: 'https://rateb.rabie.us/wp-content/uploads/2025/03/forehead-pic-e1742057971627-370x158.jpg',
     url: 'https://rateb.rabie.us/faith-politics-and-deception-the-misuse-of-christianity-for-power/',
   },
@@ -195,6 +272,7 @@ export const articles = [
     title: "Trump: A Self-Proclaimed 'Man of Peace'?",
     date: 'March 7, 2025',
     category: 'Articles',
+    tag: 'work',
     image: 'https://rateb.rabie.us/wp-content/uploads/2025/03/image-370x153.jpg',
     url: 'https://rateb.rabie.us/trump-a-self-proclaimed-man-of-peace/',
   },
@@ -202,6 +280,7 @@ export const articles = [
     title: 'Why Christians Should Be Thankful to the Palestinian People',
     date: 'November 28, 2024',
     category: 'Articles',
+    tag: 'personal',
     image: 'https://rateb.rabie.us/wp-content/uploads/2025/01/Why-Christians-Should-1-370x312.jpg',
     url: 'https://rateb.rabie.us/why-christians-should-be-thankful-to-the-palestinian-people/',
   },
@@ -209,6 +288,7 @@ export const articles = [
     title: 'A Message of Peace to the People of Israel and Their Supporters',
     date: 'November 22, 2024',
     category: 'Articles',
+    tag: 'work',
     image: 'https://rateb.rabie.us/wp-content/uploads/2024/11/A-Message-of-Peace2-370x325.jpg',
     url: 'https://rateb.rabie.us/a-message-of-peace-to-the-people-of-israel-and-their-supporters/',
   },
@@ -216,6 +296,7 @@ export const articles = [
     title: 'Why Does Israel Prohibit DNA Testing?',
     date: 'November 18, 2024',
     category: 'Articles',
+    tag: 'work',
     image: 'https://rateb.rabie.us/wp-content/uploads/2025/01/why-does-israel-prohibit-dna-testing-1-370x308.jpg',
     url: 'https://rateb.rabie.us/why-does-israel-prohibit-dna-testing/',
   },
@@ -223,6 +304,7 @@ export const articles = [
     title: 'Who are the real Jew haters here?',
     date: 'November 9, 2024',
     category: 'Articles',
+    tag: 'work',
     image: 'https://rateb.rabie.us/wp-content/uploads/2024/11/Who-are-the-real-Jew-haters-here3-370x243.jpg',
     url: 'https://rateb.rabie.us/who-are-the-real-jew-haters-here/',
   },
@@ -230,6 +312,7 @@ export const articles = [
     title: 'How could I be accused of being anti-Semitic when I myself Semitic?',
     date: 'October 16, 2024',
     category: 'Articles',
+    tag: 'personal',
     image: 'https://rateb.rabie.us/wp-content/uploads/2025/01/How-could-I-be-accused-of-being-1-370x246.jpg',
     url: 'https://rateb.rabie.us/how-could-i-be-accused-of-being-anti-semitic-when-i-myself-semitic/',
   },
@@ -237,6 +320,7 @@ export const articles = [
     title: 'Reflections on Gaza: Media Narratives, U.S. Policy, and the Fight for Justice',
     date: 'September 11, 2024',
     category: 'Articles',
+    tag: 'work',
     image: 'https://rateb.rabie.us/wp-content/uploads/2024/09/Reflections-on-Gaza3-370x205.jpg',
     url: 'https://rateb.rabie.us/reflections-on-gaza-media-narratives-u-s-policy-and-the-fight-for-justice/',
   },
@@ -244,6 +328,7 @@ export const articles = [
     title: 'Parallels of Resistance: The American Patriots and Palestinian Freedom Fighters',
     date: 'September 7, 2024',
     category: 'Articles',
+    tag: 'work',
     image: 'https://rateb.rabie.us/wp-content/uploads/2025/01/Parallels-of-Resistance-1-370x196.jpg',
     url: 'https://rateb.rabie.us/parallels-of-resistance-the-american-patriots-and-palestinian-freedom-fighters/',
   },
@@ -251,6 +336,7 @@ export const articles = [
     title: 'Jesus and the Gazans: Crucified Unjustly',
     date: 'July 11, 2024',
     category: 'Articles',
+    tag: 'personal',
     image: 'https://rateb.rabie.us/wp-content/uploads/2025/01/1720723813118-1-370x244.jpg',
     url: 'https://rateb.rabie.us/jesus-and-the-gazans-crucified-unjustly/',
   },

@@ -3,7 +3,7 @@
   inset: 0;
   z-index: 0;
   overflow: hidden;
-  background: #121820;
+  background: linear-gradient(125deg, #051a42 0%, #0b2868 45%, #051a42 100%);
 }
 
 .slide {
@@ -19,9 +19,8 @@
   will-change: opacity, transform;
 }
 
-/* Smooth crossfade — no blink; zoom-out only (never zoom in past 100%) */
 .slide.active {
-  opacity: 1;
+  opacity: 0.35;
   z-index: 1;
   animation: heroZoomOut 6s ease-out forwards;
 }
@@ -35,18 +34,30 @@
   }
 }
 
+.bokeh {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 45% 55% at 12% 35%, rgba(120, 190, 255, 0.55) 0%, transparent 55%),
+    radial-gradient(ellipse 30% 40% at 8% 70%, rgba(255, 255, 255, 0.25) 0%, transparent 50%),
+    radial-gradient(ellipse 25% 35% at 22% 20%, rgba(180, 220, 255, 0.4) 0%, transparent 45%),
+    radial-gradient(ellipse 60% 80% at 85% 50%, rgba(5, 20, 60, 0.5) 0%, transparent 60%);
+}
+
 .overlay {
   position: absolute;
   inset: 0;
   z-index: 2;
   background:
-    linear-gradient(105deg, rgba(10, 14, 18, 0.72) 0%, rgba(10, 14, 18, 0.5) 48%, rgba(10, 14, 18, 0.35) 100%),
-    linear-gradient(180deg, rgba(10, 14, 18, 0.2) 0%, rgba(10, 14, 18, 0.55) 100%);
+    linear-gradient(105deg, rgba(5, 26, 66, 0.88) 0%, rgba(8, 40, 100, 0.72) 42%, rgba(5, 26, 66, 0.55) 72%, rgba(5, 26, 66, 0.4) 100%),
+    linear-gradient(180deg, rgba(5, 20, 55, 0.15) 0%, rgba(5, 20, 55, 0.65) 100%);
   pointer-events: none;
 }
 
 .fallback {
   position: absolute;
   inset: 0;
-  background: linear-gradient(125deg, #121820 0%, #1a222d 62%, #121820 100%);
+  background: linear-gradient(125deg, #051a42 0%, #0b2868 62%, #051a42 100%);
 }

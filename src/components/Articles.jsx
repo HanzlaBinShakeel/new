@@ -6,20 +6,22 @@ import styles from './Articles.module.css';
 
 const INITIAL_COUNT = 8;
 
-export default function Articles() {
+export default function Articles({ items = articles, hideHeader = false }) {
   const [showAll, setShowAll] = useState(false);
-  const visible = showAll ? articles : articles.slice(0, INITIAL_COUNT);
+  const visible = showAll ? items : items.slice(0, INITIAL_COUNT);
 
   return (
     <AnimatedSection id="articles" className={styles.section}>
       <motion.div className="container">
-        <Reveal className={styles.header}>
-          <span className="section-label">From the Blog</span>
-          <h2 className="section-title">My Articles</h2>
-          <p className="section-desc">
-            Reflections on faith, peace, justice, and Palestine — shared with the world.
-          </p>
-        </Reveal>
+        {!hideHeader && (
+          <Reveal className={styles.header}>
+            <span className="section-label">From the Blog</span>
+            <h2 className="section-title">My Articles</h2>
+            <p className="section-desc">
+              Reflections on faith, peace, justice, and Palestine — shared with the world.
+            </p>
+          </Reveal>
+        )}
 
         <div className={styles.grid}>
           {visible.map((article, i) => (
@@ -46,10 +48,10 @@ export default function Articles() {
           ))}
         </div>
 
-        {articles.length > INITIAL_COUNT && (
+        {items.length > INITIAL_COUNT && (
           <motion.div className={styles.more} layout>
             <button className="btn btn-outline" onClick={() => setShowAll(!showAll)}>
-              {showAll ? 'Show Less' : `View All ${articles.length} Articles`}
+              {showAll ? 'Show Less' : `View All ${items.length} Articles`}
             </button>
           </motion.div>
         )}

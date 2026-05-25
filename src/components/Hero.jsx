@@ -1,4 +1,6 @@
+import { useState, useCallback } from 'react';
 import { motion } from 'framer-motion';
+import { galleryImages } from '../data/gallery';
 import { heroPortrait } from '../assets';
 import { hero } from '../data/content';
 import HeroBackground from './HeroBackground';
@@ -8,9 +10,20 @@ const PORTRAIT_WIDTH = 520;
 const PORTRAIT_HEIGHT = 480;
 
 export default function Hero() {
+  const [slideIndex, setSlideIndex] = useState(0);
+  const total = galleryImages.length || 1;
+
+  const prev = useCallback(() => {
+    setSlideIndex((i) => (i - 1 + total) % total);
+  }, [total]);
+
+  const next = useCallback(() => {
+    setSlideIndex((i) => (i + 1) % total);
+  }, [total]);
+
   return (
     <section id="home" className={styles.hero} aria-label="Hero">
-      <HeroBackground />
+      <HeroBackground index={slideIndex} onIndexChange={setSlideIndex} />
 
       <motion.div className={styles.inner}>
         <motion.div
@@ -41,6 +54,17 @@ export default function Hero() {
           />
         </motion.div>
       </motion.div>
+
+      {total > 1 && (
+        <div className={styles.controls} aria-label="Hero slideshow controls">
+          <button type="button" onClick={prev} aria-label="Previous slide">
+            ‹
+          </button>
+          <button type="button" onClick={next} aria-label="Next slide">
+            ›
+          </button>
+        </div>
+      )}
     </section>
   );
 }

@@ -1,0 +1,96 @@
+.wrap {
+  position: relative;
+}
+
+.link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.9);
+  transition: color 0.25s;
+  position: relative;
+  white-space: nowrap;
+  padding: 0.25rem 0;
+}
+
+.link.scrolled {
+  color: var(--cream-muted);
+}
+
+.link::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--campaign-accent);
+  transition: width 0.3s var(--ease-out-expo);
+}
+
+.link.scrolled::after {
+  background: var(--campaign-accent);
+}
+
+.link:hover,
+.link.active {
+  color: #fff;
+}
+
+.link.scrolled:hover,
+.link.scrolled.active {
+  color: var(--campaign-accent-light);
+}
+
+.link:hover::after,
+.link.active::after {
+  width: 100%;
+}
+
+.hasChild svg {
+  opacity: 0.85;
+  transition: transform 0.2s;
+}
+
+.wrap.open .hasChild svg {
+  transform: rotate(180deg);
+}
+
+.menu {
+  position: absolute;
+  top: calc(100% + 0.65rem);
+  left: 0;
+  min-width: 220px;
+  padding: 0.5rem 0;
+  background: #fff;
+  border-radius: 6px;
+  box-shadow: 0 16px 48px rgba(0, 20, 60, 0.2);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(8px);
+  transition: opacity 0.25s, transform 0.25s, visibility 0.25s;
+  z-index: 100;
+}
+
+.wrap.open .menu,
+.wrap:hover .menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.menu a {
+  display: block;
+  padding: 0.55rem 1.1rem;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: #1a2a4a;
+  transition: background 0.2s, color 0.2s;
+}
+
+.menu a:hover {
+  background: var(--campaign-blue-soft);
+  color: var(--campaign-blue);
+}

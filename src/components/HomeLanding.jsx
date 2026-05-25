@@ -2,12 +2,12 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import {
   biography,
-  stats,
   organizations,
   pillars,
   articles,
   site,
   faqs,
+  aboutSection,
 } from '../data/content';
 import Stats from './Stats';
 import styles from './HomeLanding.module.css';
@@ -20,6 +20,24 @@ export default function HomeLanding() {
   return (
     <>
       <Stats />
+
+      <section className={styles.aboutCampaign}>
+        <div className="container">
+          <motion.div
+            className={styles.aboutCampaignInner}
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <span className="section-label">{aboutSection.label}</span>
+            <h2 className="section-title">{aboutSection.title}</h2>
+            <p className={styles.text}>{aboutSection.description}</p>
+            <Link to="/about/biography" className="btn btn-primary">
+              {aboutSection.cta}
+            </Link>
+          </motion.div>
+        </div>
+      </section>
 
       <section className={styles.section}>
         <div className="container">

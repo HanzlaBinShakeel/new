@@ -22,6 +22,11 @@ export default function Footer() {
               {nav.map((item) => (
                 <li key={item.path}>
                   <Link to={item.path}>{item.label}</Link>
+                  {item.children?.map((child) => (
+                    <Link key={child.path} to={child.path} className={styles.subLink}>
+                      {child.label}
+                    </Link>
+                  ))}
                 </li>
               ))}
             </ul>

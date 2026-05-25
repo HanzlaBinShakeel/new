@@ -1,7 +1,8 @@
 .footer {
   padding: 4rem 0 2rem;
-  background: var(--bg-card);
-  border-top: 1px solid var(--border);
+  background: var(--campaign-blue-dark);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.85);
 }
 
 .grid {
@@ -26,16 +27,20 @@
   margin-bottom: 0.5rem;
 }
 
+.brand h3,
+.brand p {
+  color: rgba(255, 255, 255, 0.8);
+}
+
 .brand p {
   font-size: 0.9rem;
-  color: var(--cream-muted);
 }
 
 .grid h4 {
   font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.15em;
-  color: var(--gold);
+  color: var(--campaign-accent-light);
   margin-bottom: 1rem;
 }
 
@@ -45,15 +50,27 @@
   gap: 0.5rem;
 }
 
+.grid li {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
 .grid a,
 .grid span {
   font-size: 0.9rem;
-  color: var(--cream-muted);
+  color: rgba(255, 255, 255, 0.7);
   transition: color 0.25s;
 }
 
+.subLink {
+  font-size: 0.8rem !important;
+  padding-left: 0.5rem;
+  opacity: 0.85;
+}
+
 .grid a:hover {
-  color: var(--gold);
+  color: #fff;
 }
 
 .langs {
@@ -69,7 +86,7 @@
   align-items: center;
   padding-top: 2rem;
   font-size: 0.85rem;
-  color: var(--cream-muted);
+  color: rgba(255, 255, 255, 0.55);
   flex-wrap: wrap;
   gap: 1rem;
 }

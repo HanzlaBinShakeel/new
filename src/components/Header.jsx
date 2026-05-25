@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
-import { Link, NavLink, useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { logo } from '../assets';
-import { nav } from '../data/content';
+import { nav, site } from '../data/content';
+import NavDropdown from './NavDropdown';
 import styles from './Header.module.css';
 
 export default function Header() {
@@ -29,85 +30,111 @@ export default function Header() {
   const onHero = isHome && !scrolled;
 
   return (
-    <motion.header
-      className={`${styles.header} ${scrolled ? styles.scrolled : ''} ${onHero ? styles.onHero : ''}`}
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-    >
-      <div className={`container ${styles.inner}`}>
-        <Link to="/" className={styles.logo}>
-          <img src={logo} alt="Rateb Y. Rabie, KCHS" width={577} height={433} />
-        </Link>
-
-        <nav className={styles.nav} aria-label="Main navigation">
-          {nav.map((item) => (
-            <NavLink
-              key={item.path}
-              to={item.path}
-              end={item.path === '/'}
-              className={({ isActive }) =>
-                `${styles.navLink} ${isActive ? styles.active : ''}`
-              }
-            >
-              {item.label}
-            </NavLink>
-          ))}
-        </nav>
-
-        <div className={styles.actions}>
-          <button type="button" className={styles.lang} aria-label="Language: English">
-            <span className={styles.flag} aria-hidden>
-              🇬🇧
-            </span>
-            English
-            <svg width="10" height="6" viewBox="0 0 10 6" fill="currentColor" aria-hidden>
-              <path d="M1 1l4 4 4-4" stroke="currentColor" strokeWidth="1.5" fill="none" />
-            </svg>
-          </button>
-          <Link to="/contact" className={styles.contactBtn}>
-            Contact Us
-          </Link>
+    <>
+      <div
+        className={`${styles.topBar} ${onHero ? styles.topBarHero : ''} ${scrolled ? styles.topBarHidden : ''}`}
+      >
+        <div className={`container ${styles.topInner}`}>
+          <a href={`tel:${site.phone.replace(/[^\d+]/g, '')}`} className={styles.phone}>
+            {site.phone}
+          </a>
+          <a
+            href={site.donateUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.donateTop}
+          >
+            Donate Now
+          </a>
         </div>
-
-        <button
-          className={`${styles.burger} ${menuOpen ? styles.open : ''}`}
-          onClick={() => setMenuOpen(!menuOpen)}
-          aria-label="Toggle menu"
-          aria-expanded={menuOpen}
-        >
-          <span />
-          <span />
-          <span />
-        </button>
       </div>
 
-      <AnimatePresence>
-        {menuOpen && (
-          <motion.div
-            className={styles.mobileMenu}
-            initial={{ opacity: 0, x: '100%' }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: '100%' }}
-            transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-          >
-            {nav.map((item, i) => (
-              <NavLink
-                key={item.path}
-                to={item.path}
-                end={item.path === '/'}
-                className={({ isActive }) => (isActive ? styles.mobileActive : '')}
-                onClick={() => setMenuOpen(false)}
-              >
-                {item.label}
-              </NavLink>
+      <motion.header
+        className={`${styles.header} ${scrolled ? styles.scrolled : ''} ${onHero ? styles.onHero : ''}`}
+        initial={{ y: -100 }}
+        animate={{ y: 0 }}
+        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+      >
+        <div className={`container ${styles.inner}`}>
+          <Link to="/" className={styles.logo}>
+            <img src={logo} alt="Rateb Y. Rabie, KCHS" width={577} height={433} />
+          </Link>
+
+          <nav className={styles.nav} aria-label="Main navigation">
+            {nav.map((item) => (
+              <NavDropdown key={item.path} item={item} onHero={onHero} scrolled={scrolled} />
             ))}
-            <Link to="/contact" className={styles.contactBtn} onClick={() => setMenuOpen(false)}>
+          </nav>
+
+          <div className={styles.actions}>
+            <button type="button" className={styles.lang} aria-label="Language: English">
+              <span className={styles.flag} aria-hidden>
+                🇬🇧
+              </span>
+              English
+              <svg width="10" height="6" viewBox="0 0 10 6" fill="currentColor" aria-hidden>
+                <path d="M1 1l4 4 4-4" stroke="currentColor" strokeWidth="1.5" fill="none" />
+              </svg>
+            </button>
+            <Link to="/contact" className={styles.contactBtn}>
               Contact Us
             </Link>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </motion.header>
+          </div>
+
+          <button
+            className={`${styles.burger} ${menuOpen ? styles.open : ''}`}
+            onClick={() => setMenuOpen(!menuOpen)}
+            aria-label="Toggle menu"
+            aria-expanded={menuOpen}
+          >
+            <span />
+            <span />
+            <span />
+          </button>
+        </div>
+
+        <AnimatePresence>
+          {menuOpen && (
+            <motion.div
+              className={styles.mobileMenu}
+              initial={{ opacity: 0, x: '100%' }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: '100%' }}
+              transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+            >
+              {nav.map((item) => (
+                <div key={item.path} className={styles.mobileGroup}>
+                  <Link to={item.path} onClick={() => setMenuOpen(false)}>
+                    {item.label}
+                  </Link>
+                  {item.children?.map((child) => (
+                    <Link
+                      key={child.path}
+                      to={child.path}
+                      className={styles.mobileChild}
+                      onClick={() => setMenuOpen(false)}
+                    >
+                      {child.label}
+                    </Link>
+                  ))}
+                </div>
+              ))}
+              <a
+                href={site.donateUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.donateMobile}
+                onClick={() => setMenuOpen(false)}
+              >
+                Donate Now
+              </a>
+              <Link to="/contact" className={styles.contactBtn} onClick={() => setMenuOpen(false)}>
+                Contact Us
+              </Link>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </motion.header>
+    </>
   );
 }

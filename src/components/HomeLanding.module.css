@@ -1,3 +1,19 @@
+.aboutCampaign {
+  padding: 4rem 0;
+  background: var(--bg-card);
+  border-top: 1px solid var(--border);
+}
+
+.aboutCampaignInner {
+  max-width: 720px;
+  text-align: center;
+  margin-inline: auto;
+}
+
+.aboutCampaignInner .btn {
+  margin-top: 0.5rem;
+}
+
 .section {
   padding: 5rem 0;
   border-top: 1px solid var(--border);
@@ -8,7 +24,7 @@
 }
 
 .articles {
-  background: var(--bg-deep);
+  background: var(--bg-elevated);
 }
 
 .split {
@@ -19,14 +35,14 @@
 }
 
 .text {
-  color: var(--cream-muted);
+  color: var(--text-muted);
   font-size: 1.05rem;
   line-height: 1.75;
   margin: 1.25rem 0 1.75rem;
 }
 
 .text a {
-  color: var(--gold);
+  color: var(--campaign-accent);
   text-decoration: underline;
 }
 
@@ -46,7 +62,7 @@
 .pillarCard span {
   font-family: var(--font-display);
   font-size: 1.5rem;
-  color: var(--gold);
+  color: var(--campaign-accent);
   opacity: 0.6;
 }
 
@@ -58,14 +74,14 @@
 
 .pillarCard p {
   font-size: 0.9rem;
-  color: var(--cream-muted);
+  color: var(--text-muted);
   line-height: 1.55;
 }
 
 .textLink {
   font-size: 0.9rem;
   font-weight: 600;
-  color: var(--gold);
+  color: var(--campaign-accent);
   margin-top: 0.5rem;
 }
 
@@ -91,14 +107,14 @@
 }
 
 .orgCard:hover {
-  border-color: rgba(201, 168, 76, 0.35);
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.3);
+  border-color: rgba(30, 91, 184, 0.35);
+  box-shadow: 0 16px 40px rgba(11, 40, 104, 0.12);
 }
 
 .orgAbbr {
   display: inline-block;
-  background: var(--gold);
-  color: var(--bg-deep);
+  background: var(--campaign-accent);
+  color: #fff;
   font-size: 0.7rem;
   font-weight: 700;
   padding: 0.3rem 0.65rem;
@@ -114,7 +130,7 @@
 
 .orgCard p {
   font-size: 0.88rem;
-  color: var(--cream-muted);
+  color: var(--text-muted);
   line-height: 1.55;
 }
 
@@ -134,12 +150,12 @@
 .faqCard h3 {
   font-size: 1rem;
   margin-bottom: 0.75rem;
-  color: var(--cream);
+  color: var(--text);
 }
 
 .faqCard p {
   font-size: 0.9rem;
-  color: var(--cream-muted);
+  color: var(--text-muted);
   line-height: 1.6;
 }
 
@@ -159,7 +175,8 @@
 }
 
 .articleCard:hover {
-  border-color: rgba(201, 168, 76, 0.35);
+  border-color: rgba(30, 91, 184, 0.35);
+  box-shadow: 0 8px 24px rgba(11, 40, 104, 0.1);
 }
 
 .articleCard img {
@@ -174,7 +191,7 @@
 
 .articleCard time {
   font-size: 0.75rem;
-  color: var(--cream-muted);
+  color: var(--text-muted);
 }
 
 .articleCard h3 {
@@ -191,7 +208,7 @@
 
 .cta {
   padding: 5rem 0;
-  background: linear-gradient(135deg, var(--gold-dim), transparent);
+  background: linear-gradient(135deg, var(--campaign-blue-soft), var(--bg-page));
   border-top: 1px solid var(--border);
 }
 
@@ -208,7 +225,7 @@
 }
 
 .ctaInner p {
-  color: var(--cream-muted);
+  color: var(--text-muted);
   margin-bottom: 2rem;
 }
 

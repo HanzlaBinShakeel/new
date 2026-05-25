@@ -18,6 +18,14 @@
   z-index: 1;
 }
 
+.banner .section-label {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.banner .section-label::before {
+  background: rgba(255, 255, 255, 0.85);
+}
+
 .title {
   font-family: var(--font-display);
   font-size: clamp(2rem, 4vw, 3.25rem);
