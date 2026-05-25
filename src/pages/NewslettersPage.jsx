@@ -1,7 +1,13 @@
 import ContentPage from './ContentPage';
-import { pageContent } from '../data/content';
+import { useLanguage } from '../i18n/LanguageContext';
 
 export default function NewslettersPage() {
-  const { title, body } = pageContent.newsletters;
-  return <ContentPage label="Publications" title={title} body={body} />;
+  const { t } = useLanguage();
+  return (
+    <ContentPage
+      label={t('nav.publications')}
+      title={t('pages.newslettersTitle')}
+      body={t('pages.newslettersBody')}
+    />
+  );
 }

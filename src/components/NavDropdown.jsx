@@ -1,11 +1,14 @@
 import { useState, useRef, useEffect } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
+import { useLanguage } from '../i18n/LanguageContext';
 import styles from './NavDropdown.module.css';
 
 export default function NavDropdown({ item, onHero, scrolled }) {
+  const { t } = useLanguage();
   const [open, setOpen] = useState(false);
   const ref = useRef(null);
   const { pathname } = useLocation();
+  const label = t(item.labelKey);
   const hasChildren = item.children?.length > 0;
   const isActive =
     pathname === item.path ||
@@ -32,7 +35,7 @@ export default function NavDropdown({ item, onHero, scrolled }) {
           `${styles.link} ${active || isActive ? styles.active : ''} ${onHero ? styles.onHero : ''} ${scrolled ? styles.scrolled : ''}`
         }
       >
-        {item.label}
+        {label}
       </NavLink>
     );
   }
@@ -49,7 +52,7 @@ export default function NavDropdown({ item, onHero, scrolled }) {
         className={`${styles.link} ${styles.hasChild} ${isActive ? styles.active : ''} ${onHero ? styles.onHero : ''} ${scrolled ? styles.scrolled : ''}`}
         onClick={() => setOpen(false)}
       >
-        {item.label}
+        {label}
         <svg width="10" height="6" viewBox="0 0 10 6" aria-hidden>
           <path d="M1 1l4 4 4-4" stroke="currentColor" strokeWidth="1.5" fill="none" />
         </svg>
@@ -58,7 +61,7 @@ export default function NavDropdown({ item, onHero, scrolled }) {
         {item.children.map((child) => (
           <li key={child.path}>
             <Link to={child.path} role="menuitem" onClick={() => setOpen(false)}>
-              {child.label}
+              {t(child.labelKey)}
             </Link>
           </li>
         ))}

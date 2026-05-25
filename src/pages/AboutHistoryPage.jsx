@@ -1,7 +1,7 @@
 import ContentPage from './ContentPage';
-import { pageContent } from '../data/content';
+import { useLanguage } from '../i18n/LanguageContext';
 
 export default function AboutHistoryPage() {
-  const { title, body } = pageContent.history;
-  return <ContentPage label="About" title={title} body={body} />;
+  const { t } = useLanguage();
+  return <ContentPage label={t('about.label')} title={t('pages.historyTitle')} body={t('pages.historyBody')} />;
 }

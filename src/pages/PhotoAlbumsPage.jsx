@@ -1,12 +1,17 @@
 import ContentPage from './ContentPage';
-import { pageContent } from '../data/content';
 import ImageGallery from '../components/ImageGallery';
+import { useLanguage } from '../i18n/LanguageContext';
 
 export default function PhotoAlbumsPage() {
-  const { title, body } = pageContent.photoAlbums;
+  const { t } = useLanguage();
+
   return (
     <>
-      <ContentPage label="Gallery" title={title} body={body} />
+      <ContentPage
+        label={t('pages.galleryLabel')}
+        title={t('pages.photoAlbumsTitle')}
+        body={t('pages.photoAlbumsBody')}
+      />
       <ImageGallery />
     </>
   );

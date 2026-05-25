@@ -1,9 +1,13 @@
 import { Link } from 'react-router-dom';
 import { logo } from '../assets';
 import { site, nav, socials } from '../data/content';
+import { useLanguage } from '../i18n/LanguageContext';
+import LanguageSwitcher from './LanguageSwitcher';
 import styles from './Footer.module.css';
 
 export default function Footer() {
+  const { t } = useLanguage();
+
   return (
     <footer className={styles.footer}>
       <div className="container">
@@ -12,19 +16,19 @@ export default function Footer() {
             <Link to="/">
               <img src={logo} alt={site.name} width={577} height={433} />
             </Link>
-            <h3>Experts in crafting solutions that resonate</h3>
-            <p>{site.tagline}</p>
+            <h3>{t('footer.experts')}</h3>
+            <p>{t('footer.tagline')}</p>
           </div>
 
           <div>
-            <h4>Menu</h4>
+            <h4>{t('footer.menu')}</h4>
             <ul>
               {nav.map((item) => (
                 <li key={item.path}>
-                  <Link to={item.path}>{item.label}</Link>
+                  <Link to={item.path}>{t(item.labelKey)}</Link>
                   {item.children?.map((child) => (
                     <Link key={child.path} to={child.path} className={styles.subLink}>
-                      {child.label}
+                      {t(child.labelKey)}
                     </Link>
                   ))}
                 </li>
@@ -33,17 +37,15 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4>Say Hello</h4>
+            <h4>{t('footer.sayHello')}</h4>
             <a href={`mailto:${site.email}`}>{site.email}</a>
             <div className={styles.langs}>
-              {site.languages.map((lang) => (
-                <span key={lang}>{lang}</span>
-              ))}
+              <LanguageSwitcher mobile />
             </div>
           </div>
 
           <div>
-            <h4>Socials</h4>
+            <h4>{t('footer.socials')}</h4>
             <ul>
               {socials.map((s) => (
                 <li key={s.name}>
@@ -57,9 +59,11 @@ export default function Footer() {
         </div>
 
         <div className={styles.bottom}>
-          <p>© {new Date().getFullYear()}. All rights reserved for Rateb Rabie, KCHS.</p>
+          <p>
+            © {new Date().getFullYear()}. {t('footer.rights')}
+          </p>
           <a href="https://rateb.rabie.us/privacy-policy/" target="_blank" rel="noopener noreferrer">
-            Privacy Policy
+            {t('common.privacyPolicy')}
           </a>
         </div>
       </div>

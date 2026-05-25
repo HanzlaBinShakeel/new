@@ -1,7 +1,7 @@
 import ContentPage from './ContentPage';
-import { pageContent } from '../data/content';
+import { useLanguage } from '../i18n/LanguageContext';
 
 export default function CountriesPage() {
-  const { title, body } = pageContent.countries;
-  return <ContentPage label="Travel" title={title} body={body} />;
+  const { t } = useLanguage();
+  return <ContentPage label={t('nav.countries')} title={t('pages.countriesTitle')} body={t('pages.countriesBody')} />;
 }

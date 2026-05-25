@@ -1,0 +1,104 @@
+.wrap {
+  position: relative;
+}
+
+.trigger {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.55rem;
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.06);
+  transition: background 0.25s, border-color 0.25s;
+}
+
+.scrolled .trigger {
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.trigger:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.flag {
+  font-size: 0.85rem;
+  line-height: 1;
+}
+
+.trigger svg {
+  opacity: 0.85;
+  transition: transform 0.2s;
+}
+
+.wrap.open .trigger svg {
+  transform: rotate(180deg);
+}
+
+.menu {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  right: 0;
+  min-width: 150px;
+  padding: 0.35rem 0;
+  background: #fff;
+  border-radius: 6px;
+  box-shadow: 0 16px 48px rgba(0, 20, 60, 0.2);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(6px);
+  transition: opacity 0.25s, transform 0.25s, visibility 0.25s;
+  z-index: 1100;
+}
+
+.wrap.open .menu,
+.wrap:hover .menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.menu button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0.55rem 1rem;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: #1a2a4a;
+  text-align: left;
+  transition: background 0.2s;
+}
+
+.menu button:hover,
+.menu button.active {
+  background: var(--campaign-blue-soft);
+  color: var(--campaign-blue);
+}
+
+.mobileLangs {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin: 1rem 0;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.mobileLangs button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.85);
+  padding: 0.35rem 0;
+}
+
+.mobileLangs button.mobileActive {
+  color: var(--campaign-accent-light);
+  font-weight: 600;
+}

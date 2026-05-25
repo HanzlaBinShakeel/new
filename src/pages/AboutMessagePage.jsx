@@ -1,7 +1,7 @@
 import ContentPage from './ContentPage';
-import { pageContent } from '../data/content';
+import { useLanguage } from '../i18n/LanguageContext';
 
 export default function AboutMessagePage() {
-  const { title, body } = pageContent.message;
-  return <ContentPage label="About" title={title} body={body} />;
+  const { t } = useLanguage();
+  return <ContentPage label={t('about.label')} title={t('pages.messageTitle')} body={t('pages.messageBody')} />;
 }

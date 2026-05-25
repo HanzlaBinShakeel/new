@@ -1,14 +1,17 @@
 import PageBanner from '../components/PageBanner';
 import Contact from '../components/Contact';
 import Donate from '../components/Donate';
+import { useLanguage } from '../i18n/LanguageContext';
 
 export default function ContactPage() {
+  const { t } = useLanguage();
+
   return (
     <>
       <PageBanner
-        label="Connect With Me"
-        title="Get in Touch"
-        description="Questions, partnerships, donations, and newsletter — we welcome your message."
+        label={t('nav.contact')}
+        title={t('contact.pageTitle')}
+        description={t('contact.pageDesc')}
       />
       <Contact />
       <Donate />

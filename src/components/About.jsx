@@ -1,24 +1,26 @@
 import { motion } from 'framer-motion';
 import AnimatedSection, { Reveal } from './AnimatedSection';
-import { biography } from '../data/content';
+import { useLanguage } from '../i18n/LanguageContext';
 import styles from './About.module.css';
 
 export default function About() {
+  const { t } = useLanguage();
+  const paragraphs = t('about.biographyText').split('\n\n');
+
   return (
     <AnimatedSection id="about" className={styles.bio}>
       <div className="container">
         <div className={styles.bioGrid}>
           <Reveal>
-            <span className="section-label">Biography</span>
-            <h2 className="section-title">{biography.title}</h2>
+            <span className="section-label">{t('about.label')}</span>
+            <h2 className="section-title">{t('about.biographyTitle')}</h2>
           </Reveal>
           <Reveal delay={2}>
-            <div
-              className={styles.bioText}
-              dangerouslySetInnerHTML={{
-                __html: biography.text.split('\n\n').map((p) => `<p>${p}</p>`).join(''),
-              }}
-            />
+            <div className={styles.bioText}>
+              {paragraphs.map((p) => (
+                <p key={p.slice(0, 40)}>{p}</p>
+              ))}
+            </div>
             <div className={styles.links}>
               <a href="https://hcef.org/" target="_blank" rel="noopener noreferrer">
                 HCEF

@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from '../hooks/useInView';
 import { stats } from '../data/content';
+import { useLanguage } from '../i18n/LanguageContext';
 import styles from './Stats.module.css';
 
 function Counter({ value, suffix }) {
@@ -31,6 +32,7 @@ function Counter({ value, suffix }) {
 }
 
 export default function Stats() {
+  const { t } = useLanguage();
   const [ref, inView] = useInView();
 
   return (
@@ -44,14 +46,14 @@ export default function Stats() {
         >
           {stats.map((stat, i) => (
             <motion.div
-              key={stat.label}
+              key={stat.labelKey}
               className={styles.item}
               initial={{ opacity: 0, scale: 0.9 }}
               animate={inView ? { opacity: 1, scale: 1 } : {}}
               transition={{ delay: i * 0.1, duration: 0.5 }}
             >
               <Counter value={stat.value} suffix={stat.suffix} />
-              <span className={styles.label}>{stat.label}</span>
+              <span className={styles.label}>{t(stat.labelKey)}</span>
             </motion.div>
           ))}
         </motion.div>

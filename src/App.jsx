@@ -17,6 +17,7 @@ import CountriesPage from './pages/CountriesPage';
 import GeneralPage from './pages/GeneralPage';
 import LeadershipPage from './pages/LeadershipPage';
 import ContactPage from './pages/ContactPage';
+import ArticlePage from './pages/ArticlePage';
 
 export default function App() {
   return (
@@ -32,6 +33,7 @@ export default function App() {
           <Route path="about/family" element={<AboutFamilyPage />} />
           <Route path="reflections" element={<ReflectionsPage />} />
           <Route path="reflections/:type" element={<ReflectionsPage />} />
+          <Route path="articles/:slug" element={<ArticlePage />} />
           <Route path="publications" element={<PublicationsPage />} />
           <Route path="publications/books" element={<BooksPage />} />
           <Route path="publications/newsletters" element={<NewslettersPage />} />

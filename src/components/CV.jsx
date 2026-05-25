@@ -1,8 +1,10 @@
 import AnimatedSection, { Reveal } from './AnimatedSection';
-import { awards } from '../data/content';
+import { useLanguage } from '../i18n/LanguageContext';
 import styles from './CV.module.css';
 
 export default function CV() {
+  const { t } = useLanguage();
+  const awards = t('awards');
   return (
     <AnimatedSection id="cv" className={styles.section}>
       <div className="container">
@@ -59,9 +61,10 @@ export default function CV() {
           <div id="awards" className={styles.awards}>
             <h3>Honors & Awards</h3>
             <ul>
-              {awards.map((award) => (
-                <li key={award}>{award}</li>
-              ))}
+              {Array.isArray(awards) &&
+                awards.map((award) => (
+                  <li key={award}>{award}</li>
+                ))}
             </ul>
           </div>
         </Reveal>

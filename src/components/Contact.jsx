@@ -1,19 +1,22 @@
 import { motion } from 'framer-motion';
 import AnimatedSection, { Reveal } from './AnimatedSection';
 import { site, socials } from '../data/content';
+import { useLanguage } from '../i18n/LanguageContext';
 import styles from './Contact.module.css';
 
 export default function Contact() {
+  const { t } = useLanguage();
+
   return (
     <AnimatedSection id="contact" className={styles.section}>
       <motion.div className="container">
         <motion.div className={styles.grid}>
           <Reveal>
-            <span className="section-label">Contacts</span>
+            <span className="section-label">{t('contact.label')}</span>
             <h2 className="section-title">
-              Have questions?
+              {t('contact.title')}
               <br />
-              Get in touch!
+              {t('contact.titleLine2')}
             </h2>
             <div className={styles.info}>
               <a href={`mailto:${site.email}`}>{site.email}</a>
@@ -36,35 +39,35 @@ export default function Contact() {
               className={styles.form}
               onSubmit={(e) => {
                 e.preventDefault();
-                alert('Thank you for your message. We will be in touch soon.');
+                alert(t('contact.thankYou'));
               }}
             >
-              <input type="text" placeholder="Your Name" required />
-              <input type="email" placeholder="Your Email" required />
-              <textarea placeholder="Your Message" rows={5} required />
+              <input type="text" placeholder={t('contact.namePlaceholder')} required />
+              <input type="email" placeholder={t('contact.emailPlaceholder')} required />
+              <textarea placeholder={t('contact.messagePlaceholder')} rows={5} required />
               <label className={styles.checkbox}>
                 <input type="checkbox" required />
-                I agree with the site&apos;s privacy policy.
+                {t('contact.agreePrivacy')}
               </label>
               <button type="submit" className="btn btn-primary">
-                Send Message
+                {t('contact.sendMessage')}
               </button>
             </form>
           </Reveal>
         </motion.div>
 
         <Reveal className={styles.newsletter}>
-          <h3>Sign up for our newsletter</h3>
-          <p>Receive updates from {site.name}. You can unsubscribe anytime.</p>
+          <h3>{t('contact.newsletterTitle')}</h3>
+          <p>{t('contact.newsletterDesc')}</p>
           <form
             onSubmit={(e) => {
               e.preventDefault();
-              alert('Thank you for subscribing!');
+              alert(t('contact.subscribeThanks'));
             }}
           >
-            <input type="email" placeholder="Email (required)" required />
+            <input type="email" placeholder={t('contact.emailRequired')} required />
             <button type="submit" className="btn btn-outline">
-              Subscribe
+              {t('common.subscribe')}
             </button>
           </form>
         </Reveal>

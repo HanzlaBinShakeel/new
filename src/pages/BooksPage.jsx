@@ -1,7 +1,13 @@
 import ContentPage from './ContentPage';
-import { pageContent } from '../data/content';
+import { useLanguage } from '../i18n/LanguageContext';
 
 export default function BooksPage() {
-  const { title, body } = pageContent.books;
-  return <ContentPage label="Publications" title={title} body={body} />;
+  const { t } = useLanguage();
+  return (
+    <ContentPage
+      label={t('nav.publications')}
+      title={t('pages.booksTitle')}
+      body={t('pages.booksBody')}
+    />
+  );
 }

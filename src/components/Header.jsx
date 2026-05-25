@@ -3,10 +3,13 @@ import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { logo } from '../assets';
 import { nav, site } from '../data/content';
+import { useLanguage } from '../i18n/LanguageContext';
 import NavDropdown from './NavDropdown';
+import LanguageSwitcher from './LanguageSwitcher';
 import styles from './Header.module.css';
 
 export default function Header() {
+  const { t } = useLanguage();
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const { pathname } = useLocation();
@@ -44,7 +47,7 @@ export default function Header() {
             rel="noopener noreferrer"
             className={styles.donateTop}
           >
-            Donate Now
+            {t('common.donateNow')}
           </a>
         </div>
       </div>
@@ -67,17 +70,9 @@ export default function Header() {
           </nav>
 
           <div className={styles.actions}>
-            <button type="button" className={styles.lang} aria-label="Language: English">
-              <span className={styles.flag} aria-hidden>
-                🇬🇧
-              </span>
-              English
-              <svg width="10" height="6" viewBox="0 0 10 6" fill="currentColor" aria-hidden>
-                <path d="M1 1l4 4 4-4" stroke="currentColor" strokeWidth="1.5" fill="none" />
-              </svg>
-            </button>
+            <LanguageSwitcher onHero={onHero} scrolled={scrolled} />
             <Link to="/contact" className={styles.contactBtn}>
-              Contact Us
+              {t('common.contactUs')}
             </Link>
           </div>
 
@@ -105,7 +100,7 @@ export default function Header() {
               {nav.map((item) => (
                 <div key={item.path} className={styles.mobileGroup}>
                   <Link to={item.path} onClick={() => setMenuOpen(false)}>
-                    {item.label}
+                    {t(item.labelKey)}
                   </Link>
                   {item.children?.map((child) => (
                     <Link
@@ -114,11 +109,12 @@ export default function Header() {
                       className={styles.mobileChild}
                       onClick={() => setMenuOpen(false)}
                     >
-                      {child.label}
+                      {t(child.labelKey)}
                     </Link>
                   ))}
                 </div>
               ))}
+              <LanguageSwitcher mobile />
               <a
                 href={site.donateUrl}
                 target="_blank"
@@ -126,10 +122,10 @@ export default function Header() {
                 className={styles.donateMobile}
                 onClick={() => setMenuOpen(false)}
               >
-                Donate Now
+                {t('common.donateNow')}
               </a>
               <Link to="/contact" className={styles.contactBtn} onClick={() => setMenuOpen(false)}>
-                Contact Us
+                {t('common.contactUs')}
               </Link>
             </motion.div>
           )}

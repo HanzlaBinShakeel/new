@@ -2,7 +2,7 @@ import { useState, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import { galleryImages } from '../data/gallery';
 import { heroPortrait } from '../assets';
-import { hero } from '../data/content';
+import { useLanguage } from '../i18n/LanguageContext';
 import HeroBackground from './HeroBackground';
 import styles from './Hero.module.css';
 
@@ -10,6 +10,7 @@ const PORTRAIT_WIDTH = 520;
 const PORTRAIT_HEIGHT = 480;
 
 export default function Hero() {
+  const { t } = useLanguage();
   const [slideIndex, setSlideIndex] = useState(0);
   const total = galleryImages.length || 1;
 
@@ -32,8 +33,8 @@ export default function Hero() {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.9, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
         >
-          <h1 className={styles.title}>{hero.title}</h1>
-          <p className={styles.subtitle}>{hero.subtitle}</p>
+          <h1 className={styles.title}>{t('hero.title')}</h1>
+          <p className={styles.subtitle}>{t('hero.subtitle')}</p>
         </motion.div>
 
         <motion.div
