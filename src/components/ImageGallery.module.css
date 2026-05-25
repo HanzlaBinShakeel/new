@@ -1,8 +1,7 @@
 .section {
   padding: 5rem 0 6rem;
-  background: linear-gradient(180deg, var(--bg-deep) 0%, var(--bg-card) 40%, var(--bg-deep) 100%);
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
+  background: transparent;
+  border: none;
   overflow: hidden;
 }
 
@@ -13,7 +12,7 @@
 }
 
 .desc {
-  color: var(--cream-muted);
+  color: rgba(255, 255, 255, 0.82);
   font-size: 1.05rem;
   line-height: 1.7;
   margin-top: 1rem;

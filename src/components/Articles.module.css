@@ -1,6 +1,6 @@
 .section {
   padding: 8rem 0;
-  background: var(--bg-card);
+  background: transparent;
 }
 
 .header {
@@ -16,10 +16,10 @@
 
 .card {
   display: block;
-  background: var(--bg-elevated);
+  background: rgba(255, 255, 255, 0.06);
   border-radius: var(--radius);
   overflow: hidden;
-  border: 1px solid var(--border);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   transition: border-color 0.3s, box-shadow 0.3s;
 }
 
@@ -65,7 +65,7 @@
 
 .body time {
   font-size: 0.75rem;
-  color: var(--cream-muted);
+  color: rgba(255, 255, 255, 0.65);
 }
 
 .body h3 {
@@ -73,6 +73,7 @@
   font-size: 1.1rem;
   line-height: 1.35;
   margin: 0.5rem 0 0.75rem;
+  color: #ffffff;
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
@@ -82,7 +83,7 @@
 .read {
   font-size: 0.8rem;
   font-weight: 600;
-  color: var(--gold);
+  color: var(--campaign-accent-light);
 }
 
 .more {

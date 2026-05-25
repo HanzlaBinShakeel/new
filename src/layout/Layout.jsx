@@ -3,9 +3,11 @@ import { useEffect } from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import SpaRedirect from '../components/SpaRedirect';
+import styles from './Layout.module.css';
 
 export default function Layout() {
   const { pathname } = useLocation();
+  const isHome = pathname === '/' || pathname === '';
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -15,7 +17,7 @@ export default function Layout() {
     <>
       <SpaRedirect />
       <Header />
-      <main>
+      <main className={isHome ? undefined : styles.mainInner}>
         <Outlet />
       </main>
       <Footer />

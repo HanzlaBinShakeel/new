@@ -1,6 +1,6 @@
 .section {
   padding: 8rem 0;
-  background: var(--bg-card);
+  background: transparent;
 }
 
 .header {
@@ -23,8 +23,8 @@
 
 .pillar {
   padding: 1.75rem;
-  background: var(--bg-elevated);
-  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: var(--radius);
   transition: border-color 0.3s;
 }
@@ -46,16 +46,17 @@
   font-family: var(--font-display);
   font-size: 1.25rem;
   margin-bottom: 0.75rem;
+  color: #ffffff;
 }
 
 .pillar p {
   font-size: 0.9rem;
-  color: var(--cream-muted);
+  color: rgba(255, 255, 255, 0.82);
   line-height: 1.6;
 }
 
 .faqItem {
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 .faqItem button {
@@ -83,7 +84,7 @@
 
 .answer p {
   padding-bottom: 1.25rem;
-  color: var(--cream-muted);
+  color: rgba(255, 255, 255, 0.82);
   font-size: 0.95rem;
   line-height: 1.7;
 }

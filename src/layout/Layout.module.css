@@ -1,0 +1,32 @@
+.mainInner {
+  background: linear-gradient(180deg, var(--campaign-blue-dark) 0%, #061228 100%);
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.mainInner :global(.section-title) {
+  color: #ffffff;
+}
+
+.mainInner :global(.section-desc) {
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.mainInner :global(.section-label) {
+  color: var(--campaign-accent-light);
+}
+
+.mainInner :global(.section-label)::before {
+  background: var(--campaign-accent-light);
+}
+
+.mainInner :global(.btn-outline) {
+  border-color: rgba(255, 255, 255, 0.4);
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.mainInner :global(.btn-outline:hover) {
+  border-color: var(--campaign-accent-light);
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.12);
+}
