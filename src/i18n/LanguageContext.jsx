@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useMemo, useState } from 'react';
+import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import { DEFAULT_LANG, LANGUAGES, STORAGE_KEY } from './languages';
 import en from './translations/en';
 import es from './translations/es';
@@ -28,7 +28,7 @@ export function LanguageProvider({ children }) {
     document.body.classList.toggle('rtl', current.dir === 'rtl');
   }, [lang, current.dir]);
 
-  const t = (key, vars) => {
+  const t = useCallback((key, vars) => {
     let value = getNested(bundles[lang], key) ?? getNested(bundles.en, key) ?? key;
     if (typeof value === 'string' && vars) {
       Object.entries(vars).forEach(([k, v]) => {
@@ -36,13 +36,16 @@ export function LanguageProvider({ children }) {
       });
     }
     return value;
-  };
+  }, [lang]);
 
-  const setLang = (code) => {
+  const setLang = useCallback((code) => {
     if (LANGUAGES.some((l) => l.code === code)) setLangState(code);
-  };
+  }, []);
 
-  const value = useMemo(() => ({ lang, setLang, t, current, languages: LANGUAGES }), [lang, current]);
+  const value = useMemo(
+    () => ({ lang, setLang, t, current, languages: LANGUAGES }),
+    [lang, setLang, t, current]
+  );
 
   return <LanguageContext.Provider value={value}>{children}</LanguageContext.Provider>;
 }

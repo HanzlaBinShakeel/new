@@ -29,7 +29,8 @@ export default function HeroSlider({ index, onIndexChange }) {
 
   if (total === 0) return null;
 
-  const current = slides[active];
+  const safeIndex = Math.min(active, total - 1);
+  const current = slides[safeIndex] ?? slides[0];
 
   return (
     <div className={styles.wrap}>

@@ -19,9 +19,15 @@ import LeadershipPage from './pages/LeadershipPage';
 import ContactPage from './pages/ContactPage';
 import ArticlePage from './pages/ArticlePage';
 
+const basename = (() => {
+  const base = import.meta.env.BASE_URL || '/new/';
+  const trimmed = base.replace(/\/$/, '');
+  return trimmed || '/new';
+})();
+
 export default function App() {
   return (
-    <BrowserRouter basename={import.meta.env.BASE_URL.replace(/\/$/, '') || undefined}>
+    <BrowserRouter basename={basename}>
       <Routes>
         <Route element={<Layout />}>
           <Route index element={<HomePage />} />
