@@ -1,6 +1,8 @@
 node_modules
 dist
 .DS_Store
+*.docx
+*.xlsx
 *.local
 .env
 .env.*
