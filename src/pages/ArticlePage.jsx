@@ -2,7 +2,8 @@ import { Link, useParams } from 'react-router-dom';
 import { getArticleBySlug } from '../data/articles';
 import { useLanguage } from '../i18n/LanguageContext';
 import PageBanner from '../components/PageBanner';
-import AnimatedSection from '../components/AnimatedSection';
+import AnimatedSection, { Reveal } from '../components/AnimatedSection';
+import { scaleIn } from '../components/Motion';
 import styles from './ArticlePage.module.css';
 
 export default function ArticlePage() {
@@ -16,9 +17,11 @@ export default function ArticlePage() {
         <PageBanner title={t('common.articleNotFound')} />
         <AnimatedSection className={styles.section}>
           <div className="container">
-            <Link to="/publications" className="btn btn-primary">
-              {t('common.backToArticles')}
-            </Link>
+            <Reveal delay={0}>
+              <Link to="/publications" className="btn btn-primary">
+                {t('common.backToArticles')}
+              </Link>
+            </Reveal>
           </div>
         </AnimatedSection>
       </>
@@ -31,15 +34,21 @@ export default function ArticlePage() {
       <AnimatedSection className={styles.section}>
         <div className="container">
           {article.image && (
-            <img src={article.image} alt={article.title} className={styles.heroImg} />
+            <Reveal delay={0} variant={scaleIn}>
+              <img src={article.image} alt={article.title} className={styles.heroImg} />
+            </Reveal>
           )}
-          <div
-            className={styles.prose}
-            dangerouslySetInnerHTML={{ __html: article.content }}
-          />
-          <Link to="/publications" className={styles.back}>
-            {t('common.backToArticles')}
-          </Link>
+          <Reveal delay={1}>
+            <div
+              className={styles.prose}
+              dangerouslySetInnerHTML={{ __html: article.content }}
+            />
+          </Reveal>
+          <Reveal delay={2}>
+            <Link to="/publications" className={styles.back}>
+              {t('common.backToArticles')}
+            </Link>
+          </Reveal>
         </div>
       </AnimatedSection>
     </>

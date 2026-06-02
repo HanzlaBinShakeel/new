@@ -1,28 +1,12 @@
-import { motion } from 'framer-motion';
-import { useInView } from '../hooks/useInView';
-import { fadeUp, stagger } from '../utils/motion';
+import { Section, Reveal } from './Motion';
 
+/** @deprecated Prefer Section + Reveal from ./Motion — kept for existing imports */
 export default function AnimatedSection({ children, className = '', id }) {
-  const [ref, inView] = useInView();
-
   return (
-    <motion.section
-      id={id}
-      ref={ref}
-      className={className}
-      initial="hidden"
-      animate={inView ? 'visible' : 'hidden'}
-      variants={stagger}
-    >
+    <Section id={id} className={className}>
       {children}
-    </motion.section>
+    </Section>
   );
 }
 
-export function Reveal({ children, delay = 0, className = '' }) {
-  return (
-    <motion.div className={className} variants={fadeUp} custom={delay}>
-      {children}
-    </motion.div>
-  );
-}
+export { Reveal };

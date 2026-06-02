@@ -1,47 +1,47 @@
-import { motion } from 'framer-motion';
 import AnimatedSection, { Reveal } from './AnimatedSection';
+import { HoverLift } from './Motion';
 import { organizations } from '../data/content';
+import { useLanguage } from '../i18n/LanguageContext';
 import styles from './Organizations.module.css';
 
 export default function Organizations() {
+  const { t } = useLanguage();
+
   return (
     <AnimatedSection id="organizations" className={styles.section}>
-      <motion.div className="container">
+      <div className="container">
         <Reveal className={styles.header}>
-          <span className="section-label">Way to success</span>
-          <h2 className="section-title">Organizations & Impact</h2>
-          <p className="section-desc">
-            Building bridges between the West and Palestine through faith, heritage, and humanitarian action.
-          </p>
+          <span className="section-label">{t('home.leadershipLabel')}</span>
+          <h2 className="section-title">{t('home.leadershipTitle')}</h2>
+          <p className="section-desc">{t('home.leadershipDesc')}</p>
         </Reveal>
 
         <div className={styles.cards}>
           {organizations.map((org, i) => (
             <Reveal key={org.abbr} delay={i}>
-              <motion.a
+              <HoverLift
+                as="a"
                 href={org.url}
                 target="_blank"
                 rel="noopener noreferrer"
                 className={styles.card}
-                whileHover={{ y: -8 }}
-                transition={{ duration: 0.35 }}
               >
                 <div className={styles.imgWrap}>
                   <img src={org.image} alt={org.name} />
                   <div className={styles.imgOverlay} />
                   <span className={styles.abbr}>{org.abbr}</span>
                 </div>
-                <motion.div className={styles.body}>
+                <div className={styles.body}>
                   <h3>{org.name}</h3>
                   <span className={styles.role}>{org.role}</span>
                   <p>{org.description}</p>
                   <span className={styles.link}>Visit website →</span>
-                </motion.div>
-              </motion.a>
+                </div>
+              </HoverLift>
             </Reveal>
           ))}
         </div>
-      </motion.div>
+      </div>
     </AnimatedSection>
   );
 }

@@ -1,20 +1,21 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { useInView } from '../hooks/useInView';
+import { Reveal, Stagger, StaggerItem } from './Motion';
 import { site } from '../data/content';
+import { useLanguage } from '../i18n/LanguageContext';
 import styles from './Donate.module.css';
 
 const amounts = [50, 100, 200];
 
 export default function Donate() {
-  const [ref, inView] = useInView();
+  const { t } = useLanguage();
   const [selected, setSelected] = useState(50);
   const [custom, setCustom] = useState('');
 
   const total = custom ? parseFloat(custom) || 0 : selected;
 
   return (
-    <section className={styles.donate} ref={ref}>
+    <section className={styles.donate}>
       <div
         className={styles.bg}
         style={{
@@ -23,15 +24,10 @@ export default function Donate() {
       />
       <div className={styles.overlay} />
 
-      <motion.div
-        className={`container ${styles.content}`}
-        initial={{ opacity: 0, y: 40 }}
-        animate={inView ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 0.7 }}
-      >
+      <Reveal className={`container ${styles.content}`} standalone>
         <span className="section-label">Contribute For Us</span>
-        <h2 className="section-title">Make a donation for your nation&apos;s future</h2>
-        <p className={styles.desc}>All our members help reach success.</p>
+        <h2 className="section-title">{t('home.donateTitle')}</h2>
+        <p className={styles.desc}>{t('home.donateDesc')}</p>
 
         <form
           className={styles.form}
@@ -40,28 +36,24 @@ export default function Donate() {
             window.open(site.donateUrl, '_blank');
           }}
         >
-          <div className={styles.amounts}>
+          <Stagger className={styles.amounts}>
             {amounts.map((amt) => (
-              <button
-                key={amt}
-                type="button"
-                className={selected === amt && !custom ? styles.active : ''}
-                onClick={() => {
-                  setSelected(amt);
-                  setCustom('');
-                }}
-              >
-                ${amt}.00
-              </button>
+              <StaggerItem key={amt}>
+                <motion.button
+                  type="button"
+                  className={selected === amt && !custom ? styles.active : ''}
+                  onClick={() => {
+                    setSelected(amt);
+                    setCustom('');
+                  }}
+                  whileHover={{ scale: 1.04 }}
+                  whileTap={{ scale: 0.96 }}
+                >
+                  ${amt}.00
+                </motion.button>
+              </StaggerItem>
             ))}
-            <input
-              type="number"
-              placeholder="Custom amount"
-              value={custom}
-              onChange={(e) => setCustom(e.target.value)}
-              min="1"
-            />
-          </div>
+          </Stagger>
 
           <div className={styles.fields}>
             <input type="text" placeholder="First Name *" required />
@@ -75,12 +67,17 @@ export default function Donate() {
               <span>Donation Total:</span>
               <strong>${total.toFixed(2)}</strong>
             </div>
-            <button type="submit" className="btn btn-primary">
-              Donate Now
-            </button>
+            <motion.button
+              type="submit"
+              className="btn btn-primary"
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.97 }}
+            >
+              {t('common.donateNow')}
+            </motion.button>
           </div>
         </form>
-      </motion.div>
+      </Reveal>
     </section>
   );
 }

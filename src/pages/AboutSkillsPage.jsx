@@ -1,5 +1,6 @@
 import PageBanner from '../components/PageBanner';
-import AnimatedSection from '../components/AnimatedSection';
+import AnimatedSection, { Reveal } from '../components/AnimatedSection';
+import { Stagger, StaggerItem } from '../components/Motion';
 import { skills } from '../data/content';
 import { useLanguage } from '../i18n/LanguageContext';
 import styles from './ContentPage.module.css';
@@ -17,12 +18,16 @@ export default function AboutSkillsPage() {
       />
       <AnimatedSection className={styles.section}>
         <div className="container">
-          <p className={styles.prose}>{t('aboutSub.skills.body')}</p>
-          <ul className={skillStyles.grid}>
+          <Reveal delay={0}>
+            <p className={styles.prose}>{t('aboutSub.skills.body')}</p>
+          </Reveal>
+          <Stagger className={skillStyles.grid}>
             {skills.map((skill) => (
-              <li key={skill}>{skill}</li>
+              <StaggerItem key={skill}>
+                <span className={skillStyles.chip}>{skill}</span>
+              </StaggerItem>
             ))}
-          </ul>
+          </Stagger>
         </div>
       </AnimatedSection>
     </>

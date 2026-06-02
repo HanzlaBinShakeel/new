@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import AnimatedSection, { Reveal } from './AnimatedSection';
+import { HoverLift } from './Motion';
 import { useLanguage } from '../i18n/LanguageContext';
 import styles from './Pillars.module.css';
 
@@ -25,15 +26,11 @@ export default function Pillars() {
             {Array.isArray(pillars) &&
               pillars.map((p, i) => (
                 <Reveal key={p.title} delay={i}>
-                  <motion.article
-                    className={styles.pillar}
-                    whileHover={{ y: -6 }}
-                    transition={{ duration: 0.3 }}
-                  >
+                  <HoverLift as="article" className={styles.pillar}>
                     <span className={styles.num}>0{i + 1}</span>
                     <h3>{p.title}</h3>
                     <p>{p.desc}</p>
-                  </motion.article>
+                  </HoverLift>
                 </Reveal>
               ))}
           </div>

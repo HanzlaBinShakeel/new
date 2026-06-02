@@ -1,5 +1,6 @@
 import PageBanner from '../components/PageBanner';
 import AnimatedSection from '../components/AnimatedSection';
+import { Stagger, StaggerItem } from '../components/Motion';
 import { useLanguage } from '../i18n/LanguageContext';
 import styles from './ContentPage.module.css';
 import awardStyles from './AwardsPage.module.css';
@@ -17,12 +18,14 @@ export default function AwardsPage() {
       />
       <AnimatedSection className={styles.section}>
         <div className="container">
-          <ul className={awardStyles.list}>
+          <Stagger as="ul" className={awardStyles.list}>
             {Array.isArray(awards) &&
               awards.map((item) => (
-                <li key={item}>{item}</li>
+                <StaggerItem key={item} as="li">
+                  {item}
+                </StaggerItem>
               ))}
-          </ul>
+          </Stagger>
         </div>
       </AnimatedSection>
     </>

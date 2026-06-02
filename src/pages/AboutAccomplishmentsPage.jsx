@@ -1,5 +1,6 @@
 import PageBanner from '../components/PageBanner';
-import AnimatedSection from '../components/AnimatedSection';
+import AnimatedSection, { Reveal } from '../components/AnimatedSection';
+import { Stagger, StaggerItem } from '../components/Motion';
 import { careerHighlights } from '../data/content';
 import { useLanguage } from '../i18n/LanguageContext';
 import styles from './ContentPage.module.css';
@@ -17,12 +18,16 @@ export default function AboutAccomplishmentsPage() {
       />
       <AnimatedSection className={styles.section}>
         <div className="container">
-          <p className={styles.prose}>{t('aboutSub.accomplishments.body')}</p>
-          <ul className={awardStyles.list}>
+          <Reveal delay={0}>
+            <p className={styles.prose}>{t('aboutSub.accomplishments.body')}</p>
+          </Reveal>
+          <Stagger as="ul" className={awardStyles.list}>
             {careerHighlights.map((item) => (
-              <li key={item}>{item}</li>
+              <StaggerItem key={item} as="li">
+                {item}
+              </StaggerItem>
             ))}
-          </ul>
+          </Stagger>
         </div>
       </AnimatedSection>
     </>

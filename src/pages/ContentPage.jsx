@@ -1,21 +1,26 @@
 import PageBanner from '../components/PageBanner';
-import AnimatedSection from '../components/AnimatedSection';
+import AnimatedSection, { Reveal } from '../components/AnimatedSection';
+import { Stagger, StaggerItem } from '../components/Motion';
 import styles from './ContentPage.module.css';
 
 export default function ContentPage({ label, title, description, body, children }) {
+  const paragraphs = body ? body.split('\n\n') : [];
+
   return (
     <>
       <PageBanner label={label} title={title} description={description} />
       <AnimatedSection className={styles.section}>
         <div className="container">
-          {body && (
-            <div className={styles.prose}>
-              {body.split('\n\n').map((para) => (
-                <p key={para.slice(0, 40)}>{para}</p>
+          {paragraphs.length > 0 && (
+            <Stagger className={styles.prose}>
+              {paragraphs.map((para) => (
+                <StaggerItem key={para.slice(0, 40)}>
+                  <p>{para}</p>
+                </StaggerItem>
               ))}
-            </div>
+            </Stagger>
           )}
-          {children}
+          {children && <Reveal delay={1}>{children}</Reveal>}
         </div>
       </AnimatedSection>
     </>
