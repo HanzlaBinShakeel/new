@@ -1,29 +1,26 @@
 import { galleryImages } from './gallery';
 
-/**
- * Hero slider titles — edit the `title` for each image.
- * Order matches gallery-01.jpg … gallery-16.jpg (sorted by filename).
- */
+/** Titles from "My Pictures with titles.docx" — order matches gallery-01 … gallery-14 */
 const SLIDE_TITLES = [
-  'Holy Land & Heritage',
-  'Community Leadership',
-  'Faith & Peace',
-  'Palestinian Diaspora',
-  'Humanitarian Work',
-  'Interfaith Dialogue',
-  'Know Thy Heritage',
-  'HCEF Programs',
-  'Bethlehem & the Holy Land',
-  'Global Advocacy',
-  'Youth Leadership',
-  'Ecumenical Foundation',
-  'Peace & Justice',
-  'Cultural Identity',
-  'International Engagement',
-  'Transformational Leadership',
+  'Reception with Her Majesty Queen Rania Al Abdullah of Jordan',
+  'The Most Reverend Cardinal Donald W. Wuerl, Archbishop, Archdiocese of Washington (Former)',
+  'Conversation with His Highness Prince Hassan Bin Talal of Jordan',
+  'Official meeting with President Yasser Arafat of Palestine (Former)',
+  'Presentation ceremony by President Yasser Arafat of Palestine (former)',
+  'Presentation ceremony by President Yasser Arafat of Palestine (former)',
+  'Reception with His Majesty King Hussein of Jordan (Former)',
+  'Reception with His Majesty King Abdullah II of Jordan',
+  'Banquet ceremony with distinguished guest Mr. Mehdi Hasan Broadcaster/Journalist',
+  'Reception with His Majesty King Abdullah II of Jordan',
+  'Award presentation to the former Deputy Prime Minister of Jordan, Dr. Marwan Muasher (Former)',
+  'Honoring Mr. Mehdi Hasan Broadcaster/Journalist',
+  'Reception with His Highness Prince Hassan Bin Talal of Jordan',
+  'Meeting with His Holiness Saint Pope John Paul II in Jerusalem',
 ];
 
-export const heroSlides = galleryImages.map((img, index) => ({
-  ...img,
-  title: SLIDE_TITLES[index] ?? `Photo ${index + 1}`,
-}));
+export const heroSlides = galleryImages
+  .slice(0, SLIDE_TITLES.length)
+  .map((img, index) => ({
+    ...img,
+    title: SLIDE_TITLES[index],
+  }));
