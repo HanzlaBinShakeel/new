@@ -1,11 +1,12 @@
-import { motion } from 'framer-motion';
 import AnimatedSection, { Reveal } from './AnimatedSection';
+import { useAboutContent } from '../hooks/useAboutContent';
 import { useLanguage } from '../i18n/LanguageContext';
 import styles from './About.module.css';
 
 export default function About() {
   const { t } = useLanguage();
-  const paragraphs = t('about.biographyText').split('\n\n');
+  const { bio } = useAboutContent();
+  const paragraphs = bio.body.split('\n\n');
 
   return (
     <AnimatedSection id="about" className={styles.bio}>

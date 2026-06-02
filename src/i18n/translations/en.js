@@ -124,7 +124,7 @@ Over more than 25 years he has managed nonprofit organizations with strategic pl
     biographyTitle: 'Sir Rateb Y. Rabie, KCHS',
     biographyText: `Sir Rateb Y. Rabie, KCHS, is an accomplished Social Entrepreneur dedicated to peace and justice for Palestinians, and to creating a new type of transformational leadership that addresses critical social needs and advances innovation, equality, and societal wellbeing.
 
-Born in Amman, Jordan to Palestinian parents, he is founder and President/CEO of the Holy Land Christian Ecumenical Foundation (HCEF), founder and President/CEO of Know Thy Heritage (KTH), and co-founder and former chairman of the Jerusalem Peace Institute (JPI). He is Chairman of the U.S. Muslim Christian Coalition, co-founder and past national president of the Birzeit Society, and a Knight Commander of the Equestrian Order of the Holy Sepulcher — an honor from the Vatican.
+Sir Rabie is founder and President/CEO of the Holy Land Christian Ecumenical Foundation (HCEF), founder and President/CEO of Know Thy Heritage (KTH), and co-founder and former chairman of the Jerusalem Peace Institute (JPI). Born in Amman, Jordan to Palestinian parents, he is Chairman of the U.S. Muslim Christian Coalition, co-founder and past national president of the Birzeit Society, and a Knight Commander of the Equestrian Order of the Holy Sepulcher — an honor from the Vatican.
 
 He is recipient of the Faith and Tolerance Award from the Arab American Anti-Discrimination Committee and is committed to peace and justice in Palestine and to strengthening the identity of Palestinians in the Diaspora.`,
   },
@@ -197,12 +197,13 @@ He is recipient of the Faith and Tolerance Award from the Arab American Anti-Dis
     },
   ],
   awards: [
-    'Knight Commander of the Equestrian Order of the Holy Sepulcher (Vatican honor)',
+    'Co-Founder and past national president of the Birzeit Society',
+    'Co-founder of the Institute for Health, Development, and Research in Palestine',
+    'Knight Commander of the Equestrian Order of the Holy Sepulcher — an honor from the Vatican',
     '4th Degree Knight of Columbus',
-    '2007 ADC Faith and Tolerance Award recipient',
-    'Chairman, U.S. Christian Muslim Coalition',
-    'Co-Founder and past national president, Birzeit Society',
-    'Co-founder, Institute for Health, Development, and Research in Palestine',
+    'Founder and co-chair of the Holy Land Outreach Committee of the Knights of Columbus, Maryland State Council',
+    'Chairman of the U.S. Christian Muslim Coalition (CMC) for combating anti-Muslim and Islamophobic biases, and the Protection of Christians and Religious Minorities in the Arab World',
+    '2007 Arab American Anti-Discrimination Committee (ADC) Faith and Tolerance Award recipient — given to individuals working with faith-based organizations that encourage cooperation and peacemaking in the Middle East',
   ],
   article: {
     category: 'Articles',

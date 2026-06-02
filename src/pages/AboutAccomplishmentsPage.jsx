@@ -1,13 +1,15 @@
 import PageBanner from '../components/PageBanner';
 import AnimatedSection, { Reveal } from '../components/AnimatedSection';
 import { Stagger, StaggerItem } from '../components/Motion';
-import { careerHighlights } from '../data/content';
+import { useAboutContent } from '../hooks/useAboutContent';
 import { useLanguage } from '../i18n/LanguageContext';
 import styles from './ContentPage.module.css';
 import awardStyles from './AwardsPage.module.css';
 
 export default function AboutAccomplishmentsPage() {
   const { t } = useLanguage();
+  const { notableAccomplishments, accomplishmentsIntro } = useAboutContent();
+  const list = Array.isArray(notableAccomplishments) ? notableAccomplishments : [];
 
   return (
     <>
@@ -19,10 +21,10 @@ export default function AboutAccomplishmentsPage() {
       <AnimatedSection className={styles.section}>
         <div className="container">
           <Reveal delay={0}>
-            <p className={styles.prose}>{t('aboutSub.accomplishments.body')}</p>
+            <p className={styles.prose}>{accomplishmentsIntro}</p>
           </Reveal>
           <Stagger as="ul" className={awardStyles.list}>
-            {careerHighlights.map((item) => (
+            {list.map((item) => (
               <StaggerItem key={item} as="li">
                 {item}
               </StaggerItem>

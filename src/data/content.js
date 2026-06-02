@@ -42,28 +42,7 @@ export const organizations = [
   },
 ];
 
-export const careerHighlights = [
-  'Over 25 years managing nonprofit organizations with strategic planning and international partnership development.',
-  'Created HCEF from the ground up into a well-respected, highly productive foundation nationally and internationally.',
-  'Built KTH into a global movement with 450+ alumni from 25 countries and 5 continents.',
-  'Recognized world leader in large-scale humanitarian program design, networking, and fundraising.',
-  'Experience across for-profit and nonprofit sectors in the USA, Latin America, Australia, and the Middle East.',
-];
-
-export const skills = [
-  'Organizational Leadership',
-  'Social Entrepreneurship',
-  'Grassroots Campaign Design',
-  'Grant Writing & Fundraising',
-  'Public Speaking',
-  'International Experience',
-  'Community Engagement',
-  'Media & Press Relations',
-  'Philanthropic Initiatives',
-  'Turnaround Management',
-  'Board Development',
-  'Conference Planning',
-];
+export { notableAccomplishments as careerHighlights, coreSkills as skills } from './aboutContent.js';
 
 export const socials = [
   { name: 'WhatsApp', href: 'https://wa.me/13019222779' },
