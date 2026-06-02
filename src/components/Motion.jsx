@@ -5,6 +5,7 @@ import {
   fadeUp,
   fadeIn,
   scaleIn,
+  blurUp,
   staggerContainer,
   staggerItem,
   staggerDelay,
