@@ -26,7 +26,7 @@ export default function Hero() {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.9, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
         >
-          <HeroSlider index={slideIndex} onIndexChange={setIndex} />
+          <HeroSlider index={slideIndex} onIndexChange={setSlideIndex} />
           <div className={styles.copy}>
             <h1 className={styles.title}>{t('hero.title')}</h1>
             <p className={styles.subtitle}>{t('hero.subtitle')}</p>
