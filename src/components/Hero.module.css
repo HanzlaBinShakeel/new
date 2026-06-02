@@ -10,13 +10,41 @@
   padding-top: var(--header-h);
 }
 
+.bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: linear-gradient(125deg, #051a42 0%, #0b2868 45%, #051a42 100%);
+}
+
+.bokeh {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 45% 55% at 12% 35%, rgba(120, 190, 255, 0.55) 0%, transparent 55%),
+    radial-gradient(ellipse 30% 40% at 8% 70%, rgba(255, 255, 255, 0.25) 0%, transparent 50%),
+    radial-gradient(ellipse 25% 35% at 22% 20%, rgba(180, 220, 255, 0.4) 0%, transparent 45%),
+    radial-gradient(ellipse 60% 80% at 85% 50%, rgba(5, 20, 60, 0.5) 0%, transparent 60%);
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    rgba(5, 26, 66, 0.75) 0%,
+    rgba(8, 40, 100, 0.5) 45%,
+    rgba(5, 26, 66, 0.35) 100%
+  );
+}
+
 .inner {
   position: relative;
   z-index: 1;
   display: grid;
-  grid-template-columns: 1fr 1.05fr;
+  grid-template-columns: 1fr 1.1fr;
   align-items: center;
-  gap: clamp(0.5rem, 2vw, 2rem);
+  gap: clamp(1rem, 2.5vw, 2.5rem);
   width: min(1440px, 96vw);
   height: 100%;
   min-height: calc(100vh - var(--header-h));
@@ -26,29 +54,36 @@
   box-sizing: border-box;
 }
 
-.copy {
+.leftCol {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-self: center;
+  gap: clamp(1.25rem, 2.5vh, 2rem);
+  width: 100%;
+  max-width: 620px;
+}
+
+.copy {
+  display: flex;
+  flex-direction: column;
   align-items: flex-start;
   text-align: left;
-  max-width: 620px;
 }
 
 .title {
   font-family: var(--font-display);
-  font-size: clamp(2.25rem, 4.8vw, 4.75rem);
+  font-size: clamp(1.85rem, 3.8vw, 3.75rem);
   font-weight: 700;
-  line-height: 1.08;
+  line-height: 1.1;
   color: #ffffff;
   letter-spacing: -0.01em;
   text-wrap: balance;
 }
 
 .subtitle {
-  margin-top: 1.25rem;
-  font-size: clamp(1.05rem, 2vw, 1.55rem);
+  margin-top: 0.85rem;
+  font-size: clamp(1rem, 1.8vw, 1.45rem);
   font-weight: 400;
   color: rgba(255, 255, 255, 0.92);
   line-height: 1.45;
@@ -68,48 +103,22 @@
 .portrait {
   display: block;
   width: auto;
-  height: min(78vh, 720px);
-  max-height: calc(100dvh - var(--header-h) - 2rem);
-  max-width: min(100%, 820px);
+  height: min(86vh, 860px);
+  max-height: calc(100dvh - var(--header-h) - 1rem);
+  max-width: min(100%, 920px);
   object-fit: contain;
   object-position: center center;
   user-select: none;
   -webkit-user-drag: none;
-  filter: drop-shadow(0 16px 48px rgba(0, 0, 0, 0.4));
+  filter: drop-shadow(0 20px 56px rgba(0, 0, 0, 0.45));
   mix-blend-mode: lighten;
-}
-
-.controls {
-  position: absolute;
-  right: clamp(1rem, 3vw, 2.5rem);
-  bottom: clamp(1.5rem, 4vh, 2.5rem);
-  z-index: 3;
-  display: flex;
-  gap: 0.35rem;
-}
-
-.controls button {
-  width: 36px;
-  height: 36px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.25rem;
-  line-height: 1;
-  color: #fff;
-  background: rgba(5, 30, 80, 0.85);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 4px;
-  transition: background 0.2s;
-}
-
-.controls button:hover {
-  background: var(--campaign-accent);
+  transform: translateX(-2%);
 }
 
 @media (min-width: 1025px) {
   .portrait {
-    height: min(82vh, 780px);
+    height: min(88vh, 900px);
+    transform: translateX(0);
   }
 }
 
@@ -124,31 +133,35 @@
     grid-template-columns: 1fr;
     height: auto;
     min-height: calc(100dvh - 100px);
-    align-items: center;
+    padding-bottom: 2rem;
+  }
+
+  .leftCol {
+    max-width: 100%;
+    order: 1;
   }
 
   .copy {
-    max-width: 100%;
-    padding: 1.5rem 0 0.5rem;
     align-items: flex-start;
-    align-self: center;
     text-align: left;
   }
 
   .portraitCol {
-    height: min(55vh, 520px);
-    min-height: 380px;
+    order: 2;
+    height: min(58vh, 560px);
+    min-height: 400px;
   }
 
   .portrait {
     height: 100%;
-    max-width: min(520px, 94vw);
+    max-width: min(560px, 96vw);
+    transform: none;
   }
 }
 
 @media (max-width: 560px) {
   .portraitCol {
-    min-height: 300px;
-    height: 46vh;
+    min-height: 320px;
+    height: 48vh;
   }
 }
