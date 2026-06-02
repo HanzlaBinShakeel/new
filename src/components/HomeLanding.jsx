@@ -9,7 +9,6 @@ import styles from './HomeLanding.module.css';
 export default function HomeLanding() {
   const { t } = useLanguage();
   const latestArticles = articles.slice(0, 4);
-  const pillars = t('pillars');
   const faqs = t('faqs');
 
   return (
@@ -31,45 +30,6 @@ export default function HomeLanding() {
               {t('common.aboutMe')}
             </Link>
           </motion.div>
-        </div>
-      </section>
-
-      <section className={styles.section}>
-        <div className="container">
-          <div className={styles.split}>
-            <motion.div
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-            >
-              <span className="section-label">{t('about.label')}</span>
-              <h2 className="section-title">{t('about.biographyTitle')}</h2>
-              <p className={styles.text}>{t('home.bioExcerpt')}</p>
-              <Link to="/about" className="btn btn-primary">
-                {t('common.readFullBiography')}
-              </Link>
-            </motion.div>
-            <motion.div
-              className={styles.pillarsMini}
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.15 }}
-            >
-              {Array.isArray(pillars) &&
-                pillars.slice(0, 2).map((p, i) => (
-                  <div key={p.title} className={styles.pillarCard}>
-                    <span>0{i + 1}</span>
-                    <h3>{p.title}</h3>
-                    <p>{p.desc}</p>
-                  </div>
-                ))}
-              <Link to="/leadership" className={styles.textLink}>
-                {t('common.viewInitiatives')}
-              </Link>
-            </motion.div>
-          </div>
         </div>
       </section>
 
