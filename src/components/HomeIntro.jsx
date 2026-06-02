@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { nav } from '../data/content';
+import { useLanguage } from '../i18n/LanguageContext';
 import styles from './HomeIntro.module.css';
 
 const teasers = [
@@ -31,6 +32,7 @@ const teasers = [
 ];
 
 export default function HomeIntro() {
+  const { t } = useLanguage();
   const pageLinks = nav.filter((item) => item.path !== '/');
 
   return (
@@ -73,7 +75,7 @@ export default function HomeIntro() {
         <div className={styles.quickNav}>
           {pageLinks.map((item) => (
             <Link key={item.path} to={item.path} className={styles.quickLink}>
-              {item.label}
+              {t(item.labelKey)}
             </Link>
           ))}
         </div>

@@ -9,7 +9,7 @@ export default function ContactPage() {
   return (
     <>
       <PageBanner
-        label={t('nav.contact')}
+        label={t('nav.connect')}
         title={t('contact.pageTitle')}
         description={t('contact.pageDesc')}
       />

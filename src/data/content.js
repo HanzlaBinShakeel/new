@@ -50,13 +50,6 @@ export const careerHighlights = [
   'Experience across for-profit and nonprofit sectors in the USA, Latin America, Australia, and the Middle East.',
 ];
 
-export const stats = [
-  { value: 450, suffix: '+', labelKey: 'stats.alumni' },
-  { value: 25, suffix: '', labelKey: 'stats.countries' },
-  { value: 25, suffix: '+', labelKey: 'stats.years' },
-  { value: 20, suffix: '+', labelKey: 'stats.programs' },
-];
-
 export const skills = [
   'Organizational Leadership',
   'Social Entrepreneurship',
@@ -73,8 +66,9 @@ export const skills = [
 ];
 
 export const socials = [
-  { name: 'Facebook', href: '#' },
-  { name: 'Twitter', href: '#' },
+  { name: 'WhatsApp', href: 'https://wa.me/13019222779' },
+  { name: 'Facebook', href: 'https://www.facebook.com/rateb.rabie' },
+  { name: 'Instagram', href: 'https://www.instagram.com/ratebrabie/' },
   { name: 'LinkedIn', href: 'https://www.linkedin.com/in/rateb-rabie-898b663/' },
   { name: 'Wikipedia', href: 'https://en.wikipedia.org/wiki/Rateb_Y._Rabie' },
 ];

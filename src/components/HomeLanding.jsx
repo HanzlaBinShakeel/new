@@ -3,7 +3,6 @@ import { motion } from 'framer-motion';
 import { organizations, site } from '../data/content';
 import { articles } from '../data/articles';
 import { useLanguage } from '../i18n/LanguageContext';
-import Stats from './Stats';
 import styles from './HomeLanding.module.css';
 
 export default function HomeLanding() {
@@ -13,8 +12,6 @@ export default function HomeLanding() {
 
   return (
     <>
-      <Stats />
-
       <section className={styles.aboutCampaign}>
         <div className="container">
           <motion.div
@@ -26,7 +23,7 @@ export default function HomeLanding() {
             <span className="section-label">{t('home.aboutLabel')}</span>
             <h2 className="section-title">{t('home.aboutTitle')}</h2>
             <p className={styles.text}>{t('home.aboutDesc')}</p>
-            <Link to="/about/biography" className="btn btn-primary">
+            <Link to="/about/bio" className="btn btn-primary">
               {t('common.aboutMe')}
             </Link>
           </motion.div>

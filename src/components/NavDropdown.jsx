@@ -1,7 +1,50 @@
 import { useState, useRef, useEffect } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { useLanguage } from '../i18n/LanguageContext';
+import { isNavItemActive, navChildKey } from '../data/nav';
 import styles from './NavDropdown.module.css';
+
+function NavMenuItem({ child, onNavigate }) {
+  const { t } = useLanguage();
+
+  if (child.type === 'group') {
+    return (
+      <li className={styles.groupLabel} role="presentation">
+        {t(child.labelKey)}
+      </li>
+    );
+  }
+
+  const label = t(child.labelKey);
+  const external = child.external || Boolean(child.href);
+
+  if (external) {
+    return (
+      <li>
+        <a
+          href={child.href}
+          role="menuitem"
+          target="_blank"
+          rel="noopener noreferrer"
+          onClick={onNavigate}
+        >
+          {label}
+          <span className={styles.external} aria-hidden>
+            ↗
+          </span>
+        </a>
+      </li>
+    );
+  }
+
+  return (
+    <li>
+      <Link to={child.path} role="menuitem" onClick={onNavigate}>
+        {label}
+      </Link>
+    </li>
+  );
+}
 
 export default function NavDropdown({ item, onHero, scrolled }) {
   const { t } = useLanguage();
@@ -12,7 +55,7 @@ export default function NavDropdown({ item, onHero, scrolled }) {
   const hasChildren = item.children?.length > 0;
   const isActive =
     pathname === item.path ||
-    item.children?.some((c) => pathname === c.path || pathname.startsWith(`${c.path}/`));
+    item.children?.some((c) => isNavItemActive(pathname, c));
 
   useEffect(() => {
     setOpen(false);
@@ -25,6 +68,8 @@ export default function NavDropdown({ item, onHero, scrolled }) {
     document.addEventListener('click', close);
     return () => document.removeEventListener('click', close);
   }, []);
+
+  const closeMenu = () => setOpen(false);
 
   if (!hasChildren) {
     return (
@@ -50,7 +95,7 @@ export default function NavDropdown({ item, onHero, scrolled }) {
       <NavLink
         to={item.path}
         className={`${styles.link} ${styles.hasChild} ${isActive ? styles.active : ''} ${onHero ? styles.onHero : ''} ${scrolled ? styles.scrolled : ''}`}
-        onClick={() => setOpen(false)}
+        onClick={closeMenu}
       >
         {label}
         <svg width="10" height="6" viewBox="0 0 10 6" aria-hidden>
@@ -59,11 +104,7 @@ export default function NavDropdown({ item, onHero, scrolled }) {
       </NavLink>
       <ul className={styles.menu} role="menu">
         {item.children.map((child) => (
-          <li key={child.path}>
-            <Link to={child.path} role="menuitem" onClick={() => setOpen(false)}>
-              {t(child.labelKey)}
-            </Link>
-          </li>
+          <NavMenuItem key={navChildKey(child)} child={child} onNavigate={closeMenu} />
         ))}
       </ul>
     </div>

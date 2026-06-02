@@ -6,7 +6,7 @@ export default function BooksPage() {
   return (
     <ContentPage
       label={t('nav.publications')}
-      title={t('pages.booksTitle')}
+      title={t('nav.booksSpecial')}
       body={t('pages.booksBody')}
     />
   );

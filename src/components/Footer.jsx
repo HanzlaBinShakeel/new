@@ -1,9 +1,34 @@
 import { Link } from 'react-router-dom';
 import { logo } from '../assets';
 import { site, nav, socials } from '../data/content';
+import { navChildKey } from '../data/nav';
 import { useLanguage } from '../i18n/LanguageContext';
 import LanguageSwitcher from './LanguageSwitcher';
 import styles from './Footer.module.css';
+
+function FooterChildLink({ child }) {
+  const { t } = useLanguage();
+  if (child.type === 'group') return null;
+  const label = t(child.labelKey);
+  if (child.external || child.href) {
+    return (
+      <a
+        key={navChildKey(child)}
+        href={child.href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={styles.subLink}
+      >
+        {label}
+      </a>
+    );
+  }
+  return (
+    <Link key={navChildKey(child)} to={child.path} className={styles.subLink}>
+      {label}
+    </Link>
+  );
+}
 
 export default function Footer() {
   const { t } = useLanguage();
@@ -27,9 +52,7 @@ export default function Footer() {
                 <li key={item.path}>
                   <Link to={item.path}>{t(item.labelKey)}</Link>
                   {item.children?.map((child) => (
-                    <Link key={child.path} to={child.path} className={styles.subLink}>
-                      {t(child.labelKey)}
-                    </Link>
+                    <FooterChildLink key={navChildKey(child)} child={child} />
                   ))}
                 </li>
               ))}

@@ -2,23 +2,35 @@ export default {
   nav: {
     home: 'Home',
     about: 'About',
-    cv: 'Curriculum Vitae',
-    biography: 'Biography (BIO)',
-    message: 'Message',
-    history: 'History',
-    family: 'Family',
-    reflections: 'Reflections and articles',
-    workRelated: 'Work related',
-    personalViews: 'Personal views',
+    leadership: 'Leadership & Initiatives',
     publications: 'Publications',
-    books: 'Books',
+    connect: 'Connect with Me',
+    bio: 'Bio',
+    honorsAwards: 'Honors and Awards',
+    notableAccomplishments: 'Notable Accomplishments',
+    coreSkills: 'Core Knowledge and Skills',
+    visionManagement: 'Vision Management and Consulting LLC',
+    longBio: 'Long Bio',
+    imagePrinting: 'Image Printing and Publishing, Inc',
+    alDewan: 'Al Dewan For Occasions',
+    hcef: 'HCEF',
+    kth: 'KTH',
+    jpi: 'JPI',
+    hcefFull: 'Holy Land Christian Ecumenical Foundation (HCEF)',
+    kthFull: 'Know Thy Heritage (KTH)',
+    jpiFull: 'Jerusalem Peace Institute (JPI)',
+    bethlehemMuseum: 'Bethlehem Museum',
+    articles: 'Articles',
+    booksSpecial: 'Books and Special Features',
     newsletters: 'Newsletters',
-    allArticles: 'All Articles',
-    photoAlbums: 'Photo Albums',
-    awards: 'Awards and recognition',
-    countries: 'Countries visited',
-    general: 'General',
-    contact: 'Contact Us',
+    contactCard: 'Contact Card and Social Media',
+    socialMedia: 'Social Media',
+    websites: 'Websites',
+    whatsapp: 'WhatsApp',
+    facebook: 'Facebook',
+    instagram: 'Instagram',
+    linkedin: 'LinkedIn',
+    wikipedia: 'Wikipedia',
   },
   hero: {
     title: 'Transformational Leadership For',
@@ -76,11 +88,46 @@ export default {
     myArticles: 'My Articles',
     articlesDesc: 'Reflections on faith, peace, justice, and Palestine — shared with the world.',
   },
+  aboutSub: {
+    visionManagement: {
+      title: 'Vision Management and Consulting LLC',
+      desc: 'Strategic consulting and organizational leadership.',
+      body: 'Vision Management and Consulting LLC provides strategic planning, organizational development, and leadership consulting for nonprofits and enterprises engaged in peacebuilding, humanitarian work, and community development.',
+    },
+    longBio: {
+      title: 'Long Bio',
+      desc: 'Extended biography of Sir Rateb Y. Rabie, KCHS.',
+      body: `Sir Rateb Y. Rabie, KCHS, is an accomplished Social Entrepreneur dedicated to peace and justice for Palestinians, and to creating transformational leadership that addresses critical social needs and advances innovation, equality, and societal wellbeing.
+
+Born in Amman, Jordan to Palestinian parents, he is founder and President/CEO of the Holy Land Christian Ecumenical Foundation (HCEF), founder and President/CEO of Know Thy Heritage (KTH), and co-founder and former chairman of the Jerusalem Peace Institute (JPI). He is Chairman of the U.S. Muslim Christian Coalition, co-founder and past national president of the Birzeit Society, and a Knight Commander of the Equestrian Order of the Holy Sepulcher.
+
+Over more than 25 years he has managed nonprofit organizations with strategic planning and international partnership development, designing large-scale humanitarian programs and building networks of advocates for a just and lasting peace in the Holy Land.`,
+    },
+    imagePrinting: {
+      title: 'Image Printing and Publishing, Inc',
+      desc: 'Publishing and communications enterprise.',
+      body: 'Image Printing and Publishing, Inc supports communications, publishing, and media initiatives connected to advocacy, heritage, and community outreach in the United States and abroad.',
+    },
+    alDewan: {
+      title: 'Al Dewan For Occasions',
+      desc: 'Events and community gatherings.',
+      body: 'Al Dewan For Occasions hosts and supports cultural events, community gatherings, and occasions that strengthen Palestinian heritage and interfaith understanding.',
+    },
+    skills: {
+      desc: 'Professional expertise across leadership, fundraising, and international engagement.',
+      body: 'Core competencies developed over decades of nonprofit and entrepreneurial leadership:',
+    },
+    accomplishments: {
+      desc: 'Career milestones in peacebuilding, humanitarian action, and diaspora leadership.',
+      body: 'Highlights from a career dedicated to justice, heritage, and transformational leadership:',
+    },
+  },
   about: {
     label: 'About',
     pageTitle: 'Biography, Career & Honors',
     pageDesc:
       'Sir Rateb Y. Rabie, KCHS — social entrepreneur dedicated to peace, justice, and transformational leadership.',
+    bioDesc: 'Short biography and overview.',
     biographyTitle: 'Sir Rateb Y. Rabie, KCHS',
     biographyText: `Sir Rateb Y. Rabie, KCHS, is an accomplished Social Entrepreneur dedicated to peace and justice for Palestinians, and to creating a new type of transformational leadership that addresses critical social needs and advances innovation, equality, and societal wellbeing.
 
@@ -107,9 +154,9 @@ From founding HCEF in 1998 to launching Know Thy Heritage and co-founding the Je
     newslettersBody: `Newsletters and periodic updates from the Holy Land Christian Ecumenical Foundation and related initiatives. Subscribe on the Contact page to receive updates.`,
     photoAlbumsTitle: 'Photo Albums',
     photoAlbumsBody: `Photographs from events, pilgrimages, and programs in the Holy Land and around the world — including historic visits and community gatherings.`,
-    awardsTitle: 'Awards and Recognition',
+    awardsTitle: 'Honors and Awards',
     awardsDesc: 'Honors and distinctions received in service of peace, faith, and community.',
-    awardsLabel: 'Recognition',
+    awardsLabel: 'Honors',
     countriesTitle: 'Countries Visited',
     countriesBody: `Sir Rateb Y. Rabie has traveled extensively across the United States, Latin America, Australia, and the Middle East — building partnerships and advocating for peace and humanitarian programs worldwide.`,
     generalTitle: 'General',
@@ -143,12 +190,6 @@ From founding HCEF in 1998 to launching Know Thy Heritage and co-founding the Je
     sayHello: 'Say Hello',
     socials: 'Socials',
     rights: 'All rights reserved for Rateb Rabie, KCHS.',
-  },
-  stats: {
-    alumni: 'KTH Alumni',
-    countries: 'Countries',
-    years: 'Years of Leadership',
-    programs: 'HCEF Programs',
   },
   faqs: [
     {

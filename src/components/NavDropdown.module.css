@@ -62,7 +62,8 @@
   position: absolute;
   top: calc(100% + 0.65rem);
   left: 0;
-  min-width: 220px;
+  min-width: 280px;
+  max-width: 360px;
   padding: 0.5rem 0;
   background: #fff;
   border-radius: 6px;
@@ -93,4 +94,25 @@
 .menu a:hover {
   background: var(--campaign-blue-soft);
   color: var(--campaign-blue);
+}
+
+.groupLabel {
+  padding: 0.65rem 1.1rem 0.35rem;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #6b7a94;
+  pointer-events: none;
+}
+
+.groupLabel + li a,
+.groupLabel + li + li a {
+  padding-top: 0.45rem;
+}
+
+.external {
+  margin-left: 0.35rem;
+  font-size: 0.75em;
+  opacity: 0.55;
 }

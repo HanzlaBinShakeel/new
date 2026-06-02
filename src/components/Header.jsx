@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { logo } from '../assets';
 import { nav, site } from '../data/content';
+import { navChildKey } from '../data/nav';
 import { useLanguage } from '../i18n/LanguageContext';
 import NavDropdown from './NavDropdown';
 import LanguageSwitcher from './LanguageSwitcher';
@@ -72,7 +73,7 @@ export default function Header() {
           <div className={styles.actions}>
             <LanguageSwitcher onHero={onHero} scrolled={scrolled} />
             <Link to="/contact" className={styles.contactBtn}>
-              {t('common.contactUs')}
+              {t('nav.connect')}
             </Link>
           </div>
 
@@ -102,16 +103,39 @@ export default function Header() {
                   <Link to={item.path} onClick={() => setMenuOpen(false)}>
                     {t(item.labelKey)}
                   </Link>
-                  {item.children?.map((child) => (
-                    <Link
-                      key={child.path}
-                      to={child.path}
-                      className={styles.mobileChild}
-                      onClick={() => setMenuOpen(false)}
-                    >
-                      {t(child.labelKey)}
-                    </Link>
-                  ))}
+                  {item.children?.map((child) => {
+                    if (child.type === 'group') {
+                      return (
+                        <span key={navChildKey(child)} className={styles.mobileGroupLabel}>
+                          {t(child.labelKey)}
+                        </span>
+                      );
+                    }
+                    if (child.external || child.href) {
+                      return (
+                        <a
+                          key={navChildKey(child)}
+                          href={child.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className={styles.mobileChild}
+                          onClick={() => setMenuOpen(false)}
+                        >
+                          {t(child.labelKey)} ↗
+                        </a>
+                      );
+                    }
+                    return (
+                      <Link
+                        key={navChildKey(child)}
+                        to={child.path}
+                        className={styles.mobileChild}
+                        onClick={() => setMenuOpen(false)}
+                      >
+                        {t(child.labelKey)}
+                      </Link>
+                    );
+                  })}
                 </div>
               ))}
               <LanguageSwitcher mobile />
@@ -125,7 +149,7 @@ export default function Header() {
                 {t('common.donateNow')}
               </a>
               <Link to="/contact" className={styles.contactBtn} onClick={() => setMenuOpen(false)}>
-                {t('common.contactUs')}
+                {t('nav.connect')}
               </Link>
             </motion.div>
           )}

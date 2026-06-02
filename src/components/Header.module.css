@@ -222,6 +222,16 @@
   font-family: var(--font-body) !important;
 }
 
+.mobileGroupLabel {
+  display: block;
+  padding: 0.75rem 0 0.25rem 1rem;
+  font-size: 0.72rem !important;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.45) !important;
+}
+
 .donateMobile {
   margin-top: 1.5rem;
   display: inline-flex;
