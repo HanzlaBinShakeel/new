@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "fetch-articles": "node scripts/fetch-articles.mjs"
+    "fetch-articles": "node scripts/fetch-articles.mjs",
+    "sync-hero-slides": "node scripts/sync-hero-slides.mjs"
   },
   "dependencies": {
     "framer-motion": "^11.15.0",

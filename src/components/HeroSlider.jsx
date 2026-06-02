@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback } from 'react';
 import { heroSlides } from '../data/heroSlides';
 import styles from './HeroSlider.module.css';
 
-const INTERVAL_MS = 5500;
+const INTERVAL_MS = 6000;
 
 export default function HeroSlider({ index, onIndexChange }) {
   const slides = heroSlides;
@@ -19,56 +19,76 @@ export default function HeroSlider({ index, onIndexChange }) {
     return () => clearInterval(timer);
   }, [total, setIndex]);
 
-  const prev = useCallback(() => {
-    setIndex((i) => (i - 1 + total) % total);
-  }, [total, setIndex]);
-
-  const next = useCallback(() => {
-    setIndex((i) => (i + 1) % total);
-  }, [total, setIndex]);
+  const goTo = useCallback(
+    (next) => {
+      setIndex((next + total) % total);
+    },
+    [total, setIndex]
+  );
 
   if (total === 0) return null;
 
-  const safeIndex = Math.min(active, total - 1);
-  const current = slides[safeIndex] ?? slides[0];
+  const safeIndex = Math.min(Math.max(active, 0), total - 1);
+  const current = slides[safeIndex];
 
   return (
     <div className={styles.wrap}>
-      <div className={styles.viewport}>
-        {slides.map((slide, i) => (
-          <div
-            key={slide.id}
-            className={`${styles.slide} ${i === active ? styles.active : ''}`}
-            aria-hidden={i !== active}
-          >
-            <img src={slide.src} alt={slide.title} className={styles.image} draggable={false} />
+      <div className={styles.frame}>
+        <div className={styles.viewport}>
+          {slides.map((slide, i) => (
+            <div
+              key={slide.id}
+              className={`${styles.slide} ${i === safeIndex ? styles.active : ''}`}
+              aria-hidden={i !== safeIndex}
+            >
+              <img src={slide.src} alt={slide.alt} className={styles.image} draggable={false} />
+            </div>
+          ))}
+          <div className={styles.shine} aria-hidden />
+        </div>
+
+        <div className={styles.caption}>
+          <div className={styles.captionAccent} aria-hidden />
+          <div className={styles.captionText}>
+            <p className={styles.title}>{current.title}</p>
+            <div className={styles.meta}>
+              <span className={styles.badge}>Gallery</span>
+              <span className={styles.counter}>
+                {String(safeIndex + 1).padStart(2, '0')} / {String(total).padStart(2, '0')}
+              </span>
+            </div>
           </div>
-        ))}
-        <div className={styles.titleBar}>
-          <p className={styles.title}>{current.title}</p>
-          <span className={styles.counter}>
-            {String(active + 1).padStart(2, '0')} / {String(total).padStart(2, '0')}
-          </span>
+        </div>
+
+        <div className={styles.progress} aria-hidden>
+          <div
+            className={styles.progressFill}
+            style={{ width: `${((safeIndex + 1) / total) * 100}%` }}
+          />
         </div>
       </div>
 
       {total > 1 && (
         <div className={styles.controls}>
-          <button type="button" onClick={prev} aria-label="Previous image">
+          <button type="button" className={styles.arrow} onClick={() => goTo(safeIndex - 1)} aria-label="Previous">
             ‹
           </button>
-          <div className={styles.dots}>
+          <div className={styles.thumbs} role="tablist" aria-label="Slide thumbnails">
             {slides.map((s, i) => (
               <button
                 key={s.id}
                 type="button"
-                className={i === active ? styles.dotActive : styles.dot}
+                role="tab"
+                aria-selected={i === safeIndex}
+                aria-label={s.title}
+                className={i === safeIndex ? styles.thumbActive : styles.thumb}
                 onClick={() => setIndex(i)}
-                aria-label={`Go to slide ${i + 1}: ${s.title}`}
-              />
+              >
+                <img src={s.src} alt="" />
+              </button>
             ))}
           </div>
-          <button type="button" onClick={next} aria-label="Next image">
+          <button type="button" className={styles.arrow} onClick={() => goTo(safeIndex + 1)} aria-label="Next">
             ›
           </button>
         </div>
