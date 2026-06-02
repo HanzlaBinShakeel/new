@@ -1,6 +1,5 @@
 import PageBanner from '../components/PageBanner';
 import About from '../components/About';
-import CV from '../components/CV';
 import { useLanguage } from '../i18n/LanguageContext';
 
 export default function AboutPage() {
@@ -14,7 +13,6 @@ export default function AboutPage() {
         description={t('about.pageDesc')}
       />
       <About />
-      <CV />
     </>
   );
 }

@@ -73,13 +73,6 @@ export default {
     bioExcerpt:
       'Sir Rateb Y. Rabie, KCHS, es un emprendedor social dedicado a la paz y la justicia para los palestinos, y a crear un liderazgo transformador que promueva la innovación, la igualdad y el bienestar social.',
   },
-  reflections: {
-    label: 'Reflexiones',
-    allTitle: 'Reflexiones y artículos',
-    workTitle: 'Reflexiones relacionadas con el trabajo',
-    personalTitle: 'Opiniones personales',
-    desc: 'Artículos y reflexiones sobre fe, paz, justicia y Palestina.',
-  },
   publications: {
     label: 'Publicaciones',
     title: 'Artículos y reflexiones',
@@ -130,34 +123,14 @@ export default {
 Nacido en Amán, Jordania, de padres palestinos, es fundador y Presidente/CEO de la Fundación Ecuménica Cristiana de Tierra Santa (HCEF), fundador y Presidente/CEO de Know Thy Heritage (KTH), y cofundador y ex presidente del Instituto de Paz de Jerusalén (JPI). Es Presidente de la Coalición Cristiana Musulmana de EE. UU., cofundador y expresidente nacional de la Sociedad Birzeit, y Caballero Comendador de la Orden Ecuestre del Santo Sepulcro — un honor del Vaticano.
 
 Es receptor del Premio a la Fe y la Tolerancia del Comité Antidiscriminación Árabe Estadounidense y está comprometido con la paz y la justicia en Palestina y con fortalecer la identidad de los palestinos en la diáspora.`,
-    cvTitle: 'Currículum Vitae',
-    cvDesc: 'Experiencia profesional, liderazgo y honores.',
   },
   pages: {
-    messageTitle: 'Mensaje',
-    messageBody: `Bienvenido a mi sitio web oficial. A través de décadas de servicio, he trabajado para promover la paz, la justicia y la dignidad del pueblo palestino y fortalecer los lazos entre comunidades de fe en todo el mundo.
-
-Este sitio comparte reflexiones, publicaciones y el trabajo de las organizaciones que tengo el privilegio de liderar. Gracias por su visita y por su solidaridad con una paz justa y duradera en Tierra Santa.`,
-    historyTitle: 'Historia',
-    historyBody: `Nacido en Amán, Jordania, de padres palestinos, Rateb Y. Rabie ha construido una carrera que abarca Estados Unidos, América Latina, Australia y Oriente Medio — en los sectores empresarial y sin fines de lucro.
-
-Desde la fundación de HCEF en 1998 hasta el lanzamiento de Know Thy Heritage y la cofundación del Instituto de Paz de Jerusalén, su trabajo conecta a las comunidades de la diáspora con Palestina y aboga por el desarrollo humanitario, la educación y la paz.`,
-    familyTitle: 'Familia',
-    familyBody: `La familia y la herencia están en el corazón de esta misión. Como palestino comprometido con preservar la identidad y la cultura para las futuras generaciones, Sir Rateb Y. Rabie encuentra fortaleza en la fe, la comunidad y los lazos duraderos entre Palestina y su diáspora.`,
-    booksTitle: 'Libros',
     booksBody: `Publicaciones y obras escritas de Rateb Y. Rabie, KCHS — incluyendo reflexiones sobre fe, política y justicia en Palestina. Se actualizarán listados adicionales aquí.`,
     newslettersTitle: 'Boletines',
     newslettersBody: `Boletines y actualizaciones periódicas de la Fundación Ecuménica Cristiana de Tierra Santa e iniciativas relacionadas. Suscríbase en la página de Contacto.`,
-    photoAlbumsTitle: 'Álbumes de fotos',
-    photoAlbumsBody: `Fotografías de eventos, peregrinaciones y programas en Tierra Santa y en todo el mundo — incluyendo visitas históricas y reuniones comunitarias.`,
     awardsTitle: 'Honores y premios',
     awardsDesc: 'Honores y distinciones recibidos al servicio de la paz, la fe y la comunidad.',
     awardsLabel: 'Reconocimiento',
-    countriesTitle: 'Países visitados',
-    countriesBody: `Sir Rateb Y. Rabie ha viajado extensamente por Estados Unidos, América Latina, Australia y Oriente Medio — construyendo alianzas y abogando por la paz y programas humanitarios en todo el mundo.`,
-    generalTitle: 'General',
-    generalBody: `Información general, recursos y actualizaciones de Rateb Y. Rabie, KCHS y organizaciones afiliadas.`,
-    galleryLabel: 'Galería',
   },
   contact: {
     label: 'Contacto',

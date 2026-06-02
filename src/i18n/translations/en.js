@@ -73,13 +73,6 @@ export default {
     bioExcerpt:
       'Sir Rateb Y. Rabie, KCHS, is an accomplished Social Entrepreneur dedicated to peace and justice for Palestinians, and to creating transformational leadership that advances innovation, equality, and societal wellbeing.',
   },
-  reflections: {
-    label: 'Reflections',
-    allTitle: 'Reflections and Articles',
-    workTitle: 'Work Related Reflections',
-    personalTitle: 'Personal Views',
-    desc: 'Articles and reflections on faith, peace, justice, and Palestine.',
-  },
   publications: {
     label: 'Publications',
     title: 'Articles & Reflections',
@@ -134,34 +127,14 @@ Over more than 25 years he has managed nonprofit organizations with strategic pl
 Born in Amman, Jordan to Palestinian parents, he is founder and President/CEO of the Holy Land Christian Ecumenical Foundation (HCEF), founder and President/CEO of Know Thy Heritage (KTH), and co-founder and former chairman of the Jerusalem Peace Institute (JPI). He is Chairman of the U.S. Muslim Christian Coalition, co-founder and past national president of the Birzeit Society, and a Knight Commander of the Equestrian Order of the Holy Sepulcher — an honor from the Vatican.
 
 He is recipient of the Faith and Tolerance Award from the Arab American Anti-Discrimination Committee and is committed to peace and justice in Palestine and to strengthening the identity of Palestinians in the Diaspora.`,
-    cvTitle: 'Curriculum Vitae',
-    cvDesc: 'Professional experience, leadership, and honors.',
   },
   pages: {
-    messageTitle: 'Message',
-    messageBody: `Welcome to my official website. Through decades of service, I have worked to advance peace, justice, and dignity for the Palestinian people and to strengthen bonds between communities of faith across the world.
-
-This site shares reflections, publications, and the work of organizations I am privileged to lead. Thank you for visiting, and for your solidarity with a just and lasting peace in the Holy Land.`,
-    historyTitle: 'History',
-    historyBody: `Born in Amman, Jordan to Palestinian parents, Rateb Y. Rabie has built a career spanning the United States, Latin America, Australia, and the Middle East — in both for-profit enterprise and nonprofit leadership.
-
-From founding HCEF in 1998 to launching Know Thy Heritage and co-founding the Jerusalem Peace Institute, his work connects diaspora communities to Palestine and advocates for humanitarian development, education, and peace.`,
-    familyTitle: 'Family',
-    familyBody: `Family and heritage are at the heart of this mission. As a Palestinian committed to preserving identity and culture for future generations, Sir Rateb Y. Rabie draws strength from faith, community, and the enduring ties between Palestine and its diaspora.`,
-    booksTitle: 'Books',
     booksBody: `Publications and written works by Rateb Y. Rabie, KCHS — including reflections on faith, politics, and justice in Palestine. Additional book listings will be updated here.`,
     newslettersTitle: 'Newsletters',
     newslettersBody: `Newsletters and periodic updates from the Holy Land Christian Ecumenical Foundation and related initiatives. Subscribe on the Contact page to receive updates.`,
-    photoAlbumsTitle: 'Photo Albums',
-    photoAlbumsBody: `Photographs from events, pilgrimages, and programs in the Holy Land and around the world — including historic visits and community gatherings.`,
     awardsTitle: 'Honors and Awards',
     awardsDesc: 'Honors and distinctions received in service of peace, faith, and community.',
     awardsLabel: 'Honors',
-    countriesTitle: 'Countries Visited',
-    countriesBody: `Sir Rateb Y. Rabie has traveled extensively across the United States, Latin America, Australia, and the Middle East — building partnerships and advocating for peace and humanitarian programs worldwide.`,
-    generalTitle: 'General',
-    generalBody: `General information, resources, and updates from Rateb Y. Rabie, KCHS and affiliated organizations.`,
-    galleryLabel: 'Gallery',
   },
   contact: {
     label: 'Contacts',
