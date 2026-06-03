@@ -30,3 +30,14 @@
   color: #ffffff;
   background: rgba(255, 255, 255, 0.12);
 }
+
+.mainInner :global(p),
+.mainInner :global(li) {
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.mainInner :global(h2),
+.mainInner :global(h3),
+.mainInner :global(h4) {
+  color: #ffffff;
+}

@@ -51,18 +51,15 @@ export function Reveal({
     custom: staggerDelay(delay),
   };
 
-  if (standalone) {
-    return (
-      <Component {...shared} initial="hidden" whileInView="visible" viewport={VIEWPORT}>
-        {children}
-      </Component>
-    );
-  }
-
-  return <Component {...shared}>{children}</Component>;
+  /* Always self-animate: variant propagation breaks through plain <div> wrappers */
+  return (
+    <Component {...shared} initial="hidden" animate="visible">
+      {children}
+    </Component>
+  );
 }
 
-/** Section wrapper with staggered children */
+/** Section wrapper with staggered children — animates on mount so content is always visible */
 export function Section({ children, className = '', id, as = 'section' }) {
   const reduced = useReducedMotion();
   const Component = motionMap[as] || motion.section;
@@ -83,8 +80,7 @@ export function Section({ children, className = '', id, as = 'section' }) {
       className={className}
       variants={staggerContainer}
       initial="hidden"
-      whileInView="visible"
-      viewport={VIEWPORT}
+      animate="visible"
     >
       {children}
     </Component>
@@ -106,8 +102,7 @@ export function Stagger({ children, className = '', as = 'div' }) {
       className={className}
       variants={staggerContainer}
       initial="hidden"
-      whileInView="visible"
-      viewport={VIEWPORT}
+      animate="visible"
     >
       {children}
     </Component>
@@ -124,7 +119,12 @@ export function StaggerItem({ children, className = '', as = 'div' }) {
   }
 
   return (
-    <Component className={className} variants={staggerItem}>
+    <Component
+      className={className}
+      variants={staggerItem}
+      initial="hidden"
+      animate="visible"
+    >
       {children}
     </Component>
   );

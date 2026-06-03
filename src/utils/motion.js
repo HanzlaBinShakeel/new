@@ -21,7 +21,7 @@ export const STAGGER = {
 };
 
 export const fadeUp = {
-  hidden: { opacity: 0, y: 36 },
+  hidden: { opacity: 1, y: 28 },
   visible: (delay = 0) => ({
     opacity: 1,
     y: 0,
@@ -34,7 +34,7 @@ export const fadeUp = {
 };
 
 export const fadeIn = {
-  hidden: { opacity: 0 },
+  hidden: { opacity: 1 },
   visible: (delay = 0) => ({
     opacity: 1,
     transition: { duration: DURATION.md, delay, ease: EASE_OUT },
@@ -42,7 +42,7 @@ export const fadeIn = {
 };
 
 export const fadeLeft = {
-  hidden: { opacity: 0, x: -40 },
+  hidden: { opacity: 1, x: -32 },
   visible: (delay = 0) => ({
     opacity: 1,
     x: 0,
@@ -51,7 +51,7 @@ export const fadeLeft = {
 };
 
 export const fadeRight = {
-  hidden: { opacity: 0, x: 40 },
+  hidden: { opacity: 1, x: 32 },
   visible: (delay = 0) => ({
     opacity: 1,
     x: 0,
@@ -60,7 +60,7 @@ export const fadeRight = {
 };
 
 export const scaleIn = {
-  hidden: { opacity: 0, scale: 0.94 },
+  hidden: { opacity: 1, scale: 0.96 },
   visible: (delay = 0) => ({
     opacity: 1,
     scale: 1,
@@ -69,7 +69,7 @@ export const scaleIn = {
 };
 
 export const blurUp = {
-  hidden: { opacity: 0, y: 28, filter: 'blur(8px)' },
+  hidden: { opacity: 1, y: 20, filter: 'blur(6px)' },
   visible: (delay = 0) => ({
     opacity: 1,
     y: 0,
@@ -89,7 +89,7 @@ export const staggerContainer = {
 };
 
 export const staggerItem = {
-  hidden: { opacity: 0, y: 24 },
+  hidden: { opacity: 1, y: 20 },
   visible: {
     opacity: 1,
     y: 0,
@@ -98,15 +98,15 @@ export const staggerItem = {
 };
 
 export const pageTransition = {
-  hidden: { opacity: 0, y: 16 },
+  hidden: { opacity: 1, y: 12 },
   visible: {
     opacity: 1,
     y: 0,
     transition: { duration: DURATION.md, ease: EASE_OUT },
   },
   exit: {
-    opacity: 0,
-    y: -12,
+    opacity: 1,
+    y: 0,
     transition: { duration: DURATION.fast, ease: EASE_IN_OUT },
   },
 };
@@ -119,7 +119,7 @@ export const bannerStagger = {
 };
 
 export const bannerItem = {
-  hidden: { opacity: 0, y: 22 },
+  hidden: { opacity: 1, y: 18 },
   visible: {
     opacity: 1,
     y: 0,
