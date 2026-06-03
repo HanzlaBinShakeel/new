@@ -1,18 +1,49 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import AnimatedSection, { Reveal } from './AnimatedSection';
 import { HoverLift } from './Motion';
 import { articles } from '../data/articles';
+import { ARTICLE_CATEGORIES } from '../data/articleCategories';
+import { groupArticlesByCategory, getArticlesForCategory } from '../utils/articles';
 import { useLanguage } from '../i18n/LanguageContext';
 import styles from './Articles.module.css';
 
-const INITIAL_COUNT = 8;
-
-export default function Articles({ items = articles, hideHeader = false }) {
+function ArticleCard({ article, categoryLabel }) {
   const { t } = useLanguage();
-  const [showAll, setShowAll] = useState(false);
-  const visible = showAll ? items : items.slice(0, INITIAL_COUNT);
+
+  return (
+    <HoverLift>
+      <Link to={`/articles/${article.slug}`} className={styles.card}>
+        <div className={styles.imgWrap}>
+          <img src={article.image} alt={article.title} loading="lazy" />
+          <span className={styles.category}>{categoryLabel}</span>
+        </div>
+        <div className={styles.body}>
+          <time>{article.date}</time>
+          <h3>{article.title}</h3>
+          <span className={styles.read}>{t('common.readArticle')}</span>
+        </div>
+      </Link>
+    </HoverLift>
+  );
+}
+
+export default function Articles({
+  items = articles,
+  hideHeader = false,
+  activeCategory = 'all',
+  grouped = true,
+}) {
+  const { t } = useLanguage();
+  const [filter, setFilter] = useState(activeCategory);
+  const filtered = getArticlesForCategory(filter, items);
+  const groups = grouped && filter === 'all' ? groupArticlesByCategory(items) : null;
+
+  const categoryLabel = (id) => {
+    const cat = ARTICLE_CATEGORIES.find((c) => c.id === id);
+    return cat ? t(cat.labelKey) : t('article.category');
+  };
 
   return (
     <AnimatedSection id="articles" className={styles.section}>
@@ -25,42 +56,65 @@ export default function Articles({ items = articles, hideHeader = false }) {
           </Reveal>
         )}
 
-        <motion.div className={styles.grid} layout>
-          <AnimatePresence mode="popLayout">
-            {visible.map((article, i) => (
-              <Reveal key={article.slug} delay={i % 4}>
-                <HoverLift>
-                  <Link to={`/articles/${article.slug}`} className={styles.card}>
-                    <div className={styles.imgWrap}>
-                      <img src={article.image} alt={article.title} loading="lazy" />
-                      <span className={styles.category}>{t('article.category')}</span>
-                    </div>
-                    <div className={styles.body}>
-                      <time>{article.date}</time>
-                      <h3>{article.title}</h3>
-                      <span className={styles.read}>{t('common.readArticle')}</span>
-                    </div>
+        <Reveal className={styles.filters} delay={1}>
+          <button
+            type="button"
+            className={filter === 'all' ? styles.filterActive : styles.filter}
+            onClick={() => setFilter('all')}
+          >
+            {t('articleCategories.all')}
+          </button>
+          {ARTICLE_CATEGORIES.map((cat) => {
+            const count = items.filter((a) => a.articleCategory === cat.id).length;
+            if (!count) return null;
+            return (
+              <button
+                key={cat.id}
+                type="button"
+                className={filter === cat.id ? styles.filterActive : styles.filter}
+                onClick={() => setFilter(cat.id)}
+              >
+                {t(cat.labelKey)} ({count})
+              </button>
+            );
+          })}
+        </Reveal>
+
+        {groups ? (
+          <div className={styles.grouped}>
+            {groups.map((group) => (
+              <section key={group.category.id} id={group.category.id} className={styles.categorySection}>
+                <Reveal className={styles.categoryHead}>
+                  <h3 className={styles.categoryTitle}>{t(group.category.labelKey)}</h3>
+                  <p className={styles.categoryDesc}>{t(group.category.descKey)}</p>
+                  <Link to={`/publications/${group.category.id}`} className={styles.viewCategory}>
+                    {t('articleCategories.viewCategory')} →
                   </Link>
-                </HoverLift>
+                </Reveal>
+                <motion.div className={styles.grid} layout>
+                  {group.articles.map((article, i) => (
+                    <Reveal key={article.slug} delay={i % 4}>
+                      <ArticleCard
+                        article={article}
+                        categoryLabel={categoryLabel(article.articleCategory)}
+                      />
+                    </Reveal>
+                  ))}
+                </motion.div>
+              </section>
+            ))}
+          </div>
+        ) : (
+          <motion.div className={styles.grid} layout>
+            {filtered.map((article, i) => (
+              <Reveal key={article.slug} delay={i % 4}>
+                <ArticleCard
+                  article={article}
+                  categoryLabel={categoryLabel(article.articleCategory)}
+                />
               </Reveal>
             ))}
-          </AnimatePresence>
-        </motion.div>
-
-        {items.length > INITIAL_COUNT && (
-          <Reveal className={styles.more} delay={1}>
-            <motion.button
-              type="button"
-              className="btn btn-outline"
-              onClick={() => setShowAll(!showAll)}
-              whileHover={{ scale: 1.03 }}
-              whileTap={{ scale: 0.97 }}
-            >
-              {showAll
-                ? t('common.showLess')
-                : t('common.viewAllArticles', { count: items.length })}
-            </motion.button>
-          </Reveal>
+          </motion.div>
         )}
       </div>
     </AnimatedSection>

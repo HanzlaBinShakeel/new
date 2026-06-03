@@ -1,5 +1,6 @@
 import { Link, useParams } from 'react-router-dom';
 import { getArticleBySlug } from '../data/articles';
+import { ARTICLE_CATEGORIES } from '../data/articleCategories';
 import { useLanguage } from '../i18n/LanguageContext';
 import PageBanner from '../components/PageBanner';
 import AnimatedSection, { Reveal } from '../components/AnimatedSection';
@@ -10,6 +11,9 @@ export default function ArticlePage() {
   const { slug } = useParams();
   const { t } = useLanguage();
   const article = getArticleBySlug(slug);
+  const cat = article
+    ? ARTICLE_CATEGORIES.find((c) => c.id === article.articleCategory)
+    : null;
 
   if (!article) {
     return (
@@ -30,7 +34,11 @@ export default function ArticlePage() {
 
   return (
     <>
-      <PageBanner label={t('article.category')} title={article.title} description={article.date} />
+      <PageBanner
+        label={cat ? t(cat.labelKey) : t('article.category')}
+        title={article.title}
+        description={article.date}
+      />
       <AnimatedSection className={styles.section}>
         <div className="container">
           {article.image && (

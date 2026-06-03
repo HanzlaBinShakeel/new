@@ -46,6 +46,12 @@ export const nav = [
     path: '/publications',
     children: [
       { labelKey: 'nav.articles', path: '/publications' },
+      { type: 'group', labelKey: 'nav.articleCategories' },
+      { labelKey: 'articleCategories.reflections', path: '/publications/reflections' },
+      { labelKey: 'articleCategories.perspectives', path: '/publications/perspectives' },
+      { labelKey: 'articleCategories.politicalAnalysis', path: '/publications/political-analysis' },
+      { labelKey: 'articleCategories.nationBuilding', path: '/publications/nation-building' },
+      { labelKey: 'articleCategories.leadership', path: '/publications/leadership' },
       { labelKey: 'nav.booksSpecial', path: '/publications/books' },
       { labelKey: 'nav.newsletters', path: '/publications/newsletters' },
     ],

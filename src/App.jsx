@@ -8,6 +8,7 @@ import AboutAccomplishmentsPage from './pages/AboutAccomplishmentsPage';
 import AboutSkillsPage from './pages/AboutSkillsPage';
 import AboutSubPage from './pages/AboutSubPage';
 import PublicationsPage from './pages/PublicationsPage';
+import PublicationsCategoryPage from './pages/PublicationsCategoryPage';
 import BooksPage from './pages/BooksPage';
 import NewslettersPage from './pages/NewslettersPage';
 import LeadershipPage from './pages/LeadershipPage';
@@ -36,6 +37,7 @@ export default function App() {
           <Route path="publications" element={<PublicationsPage />} />
           <Route path="publications/books" element={<BooksPage />} />
           <Route path="publications/newsletters" element={<NewslettersPage />} />
+          <Route path="publications/:categoryId" element={<PublicationsCategoryPage />} />
           <Route path="leadership" element={<LeadershipPage />} />
           <Route path="contact" element={<ContactPage />} />
           {/* Legacy URLs → current menu pages */}

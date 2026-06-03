@@ -1,4 +1,9 @@
-import { writeFileSync } from 'fs';
+import { readFileSync, writeFileSync } from 'fs';
+import { dirname, join } from 'path';
+import { fileURLToPath } from 'url';
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
+const MAP_PATH = join(__dirname, '../src/data/articleCategoryMap.json');
 
 const API = 'https://rateb.rabie.us/wp-json/wp/v2/posts?per_page=100&_embed';
 
@@ -16,12 +21,11 @@ function getFeaturedImage(post) {
   return img?.[1] || '';
 }
 
-function inferTag(title, categories) {
-  const t = title.toLowerCase();
-  const personal =
-    /valentine|easter|christmas|thankful|semitic|gazans|crucified/i.test(t) ||
-    categories?.some((c) => /personal/i.test(c.name || ''));
-  return personal ? 'personal' : 'work';
+let categoryMap = {};
+try {
+  categoryMap = JSON.parse(readFileSync(MAP_PATH, 'utf8'));
+} catch {
+  console.warn('No articleCategoryMap.json — run npm run sync-article-categories after xlsx');
 }
 
 const res = await fetch(API);
@@ -36,21 +40,39 @@ const articles = posts.map((post) => {
     month: 'long',
     day: 'numeric',
   });
-  const cats = post._embedded?.['wp:term']?.[0] || [];
 
   return {
     slug: post.slug,
     title,
     date,
     category: 'Articles',
-    tag: inferTag(title, cats),
+    articleCategory: categoryMap[post.slug] || 'perspectives',
     image: getFeaturedImage(post),
     excerpt: stripHtml(post.excerpt?.rendered || '').replace(/<[^>]+>/g, '').trim(),
     content: stripHtml(post.content?.rendered || ''),
   };
 });
 
-const out = `/* Auto-generated from rateb.rabie.us WordPress API */\nexport const articles = ${JSON.stringify(articles, null, 2)};\n\nexport function getArticleBySlug(slug) {\n  return articles.find((a) => a.slug === slug);\n}\n`;
+const out = `/* Auto-generated from rateb.rabie.us WordPress API */
+import { getCategoryIdForSlug } from './articleCategories.js';
+
+export const articles = ${JSON.stringify(articles, null, 2)};
+
+export function getArticleBySlug(slug) {
+  return articles.find((a) => a.slug === slug);
+}
+
+export function getArticlesByCategory(categoryId) {
+  return articles.filter((a) => a.articleCategory === categoryId);
+}
+
+export function normalizeArticle(article) {
+  if (!article.articleCategory) {
+    return { ...article, articleCategory: getCategoryIdForSlug(article.slug) };
+  }
+  return article;
+}
+`;
 
 writeFileSync(new URL('../src/data/articles.js', import.meta.url), out);
 console.log(`Wrote ${articles.length} articles to src/data/articles.js`);
