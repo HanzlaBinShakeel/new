@@ -11,7 +11,7 @@
   },
   {
     "id": 3,
-    "title": "Conversation with His Highness Prince Hamza Bin Talal of Jordan",
+    "title": "Conversation with His Highness Prince Hassan Bin Talal of Jordan",
     "file": "slide-03.jpg"
   },
   {
@@ -62,7 +62,7 @@
   {
     "id": 13,
     "title": "Reception with His Highness Prince Hassan Bin Talal of Jordan",
-    "file": "slide-13.png"
+    "file": "slide-13.jpg"
   },
   {
     "id": 14,
@@ -70,23 +70,38 @@
     "file": "slide-14.png"
   },
   {
-    "id": 15,
-    "title": "Diplomatic reception and institutional partnership",
-    "file": "slide-17.jpeg"
-  },
-  {
-    "id": 16,
-    "title": "Leadership dialogue with distinguished guests",
-    "file": "slide-18.jpeg"
-  },
-  {
-    "id": 17,
     "title": "Official meeting with President Mahmoud Abbas of Palestine",
-    "file": "slide-19.jpg"
+    "file": "slide-15.jpg",
+    "id": 15
   },
   {
-    "id": 18,
     "title": "Meeting with Dr. Hanan Ashrawi, Chair of the Board of Trustees, Birzeit University",
-    "file": "slide-20.jpg"
+    "file": "slide-16.jpg",
+    "id": 16
+  },
+  {
+    "title": "Diplomatic reception and institutional partnership",
+    "file": "slide-17.jpeg",
+    "id": 17
+  },
+  {
+    "title": "Leadership dialogue with distinguished guests",
+    "file": "slide-18.jpeg",
+    "id": 18
+  },
+  {
+    "title": "Community engagement and humanitarian outreach",
+    "file": "slide-19.png",
+    "id": 19
+  },
+  {
+    "title": "Advocacy for peace, justice, and dignity",
+    "file": "slide-20.png",
+    "id": 20
+  },
+  {
+    "title": "Institutional leadership and public service",
+    "file": "slide-21.jpg",
+    "id": 21
   }
 ]

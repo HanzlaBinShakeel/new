@@ -24,8 +24,8 @@
 .viewport {
   position: relative;
   width: 100%;
-  aspect-ratio: 16 / 10;
-  max-height: min(62vh, 560px);
+  aspect-ratio: 4 / 3;
+  max-height: min(68vh, 620px);
   border-radius: 14px;
   overflow: hidden;
   background: linear-gradient(160deg, #0a2248 0%, #051a42 100%);
