@@ -52,26 +52,28 @@
   box-sizing: border-box;
 }
 
-/* 2/3 gallery + 1/3 portrait — matches live site proportions */
+/* Slider left (2/3), portrait right (1/3) — always LTR even in Arabic */
 .heroGrid {
   display: grid;
   grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
   grid-template-rows: auto auto;
+  grid-template-areas:
+    'gallery portrait'
+    'copy portrait';
   gap: clamp(1rem, 2vw, 1.75rem) clamp(1.25rem, 2.5vw, 2rem);
   align-items: center;
   width: 100%;
+  direction: ltr;
 }
 
 .galleryCol {
-  grid-column: 1;
-  grid-row: 1;
+  grid-area: gallery;
   align-self: center;
   min-width: 0;
 }
 
 .portraitCol {
-  grid-column: 2;
-  grid-row: 1 / span 2;
+  grid-area: portrait;
   display: flex;
   align-items: flex-end;
   justify-content: center;
@@ -82,8 +84,7 @@
 }
 
 .copyCol {
-  grid-column: 1;
-  grid-row: 2;
+  grid-area: copy;
   align-self: start;
   user-select: none;
   -webkit-user-select: none;
@@ -148,23 +149,15 @@
   .heroGrid {
     grid-template-columns: 1fr;
     grid-template-rows: auto auto auto;
-  }
-
-  .galleryCol {
-    grid-column: 1;
-    grid-row: 1;
+    grid-template-areas:
+      'gallery'
+      'portrait'
+      'copy';
   }
 
   .portraitCol {
-    grid-column: 1;
-    grid-row: 2;
     max-height: min(52vh, 480px);
     align-self: center;
-  }
-
-  .copyCol {
-    grid-column: 1;
-    grid-row: 3;
   }
 
   .portrait {

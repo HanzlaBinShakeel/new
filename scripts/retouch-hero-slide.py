@@ -6,7 +6,7 @@ from pathlib import Path
 import numpy as np
 
 ROOT = Path(__file__).resolve().parents[1]
-SLIDE = ROOT / "src/assets/hero-slides/slide-03.jpg"
+SLIDE = ROOT / "src/assets/hero-slides/slide-03.png"
 
 try:
     from PIL import Image, ImageFilter

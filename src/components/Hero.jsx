@@ -7,8 +7,8 @@ import { fadeUp, staggerDelay } from '../utils/motion';
 import HeroSlider from './HeroSlider';
 import styles from './Hero.module.css';
 
-const PORTRAIT_WIDTH = 420;
-const PORTRAIT_HEIGHT = 520;
+const PORTRAIT_WIDTH = 1560;
+const PORTRAIT_HEIGHT = 1440;
 
 export default function Hero() {
   const { t } = useLanguage();
