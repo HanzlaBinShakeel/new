@@ -1,17 +1,16 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { heroPortrait } from '../assets';
-import { useLanguage } from '../i18n/LanguageContext';
 import { useReducedMotion } from '../hooks/useReducedMotion';
 import { fadeUp, staggerDelay } from '../utils/motion';
 import HeroSlider from './HeroSlider';
 import styles from './Hero.module.css';
+import mediaStyles from './heroMedia.module.css';
 
 const PORTRAIT_WIDTH = 1560;
 const PORTRAIT_HEIGHT = 1440;
 
 export default function Hero() {
-  const { t } = useLanguage();
   const [slideIndex, setSlideIndex] = useState(0);
   const reduced = useReducedMotion();
 
@@ -51,25 +50,26 @@ export default function Hero() {
           </motion.div>
 
           <motion.div className={styles.portraitCol} {...itemProps}>
-            <motion.img
-              src={heroPortrait}
-              alt="Sir Rateb Y. Rabie, KCHS speaking at a podium"
-              className={styles.portrait}
-              width={PORTRAIT_WIDTH}
-              height={PORTRAIT_HEIGHT}
-              decoding="sync"
-              fetchPriority="high"
-              draggable={false}
-              animate={reduced ? undefined : { y: [0, -8, 0] }}
-              transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
-            />
-          </motion.div>
-
-          <motion.div className={styles.copyCol} {...itemProps}>
-            <h1 className={styles.title}>
-              <span className={styles.titleLine}>{t('hero.title')}</span>
-              <span className={styles.titleLine}>{t('hero.subtitle')}</span>
-            </h1>
+            <div className={styles.portraitWrap}>
+              <div className={`${mediaStyles.frame} ${styles.portraitFrame}`}>
+                <div className={mediaStyles.viewport}>
+                  <div className={mediaStyles.viewportInner}>
+                    <motion.img
+                      src={heroPortrait}
+                      alt="Sir Rateb Y. Rabie, KCHS speaking at a podium"
+                      width={PORTRAIT_WIDTH}
+                      height={PORTRAIT_HEIGHT}
+                      decoding="sync"
+                      fetchPriority="high"
+                      draggable={false}
+                      animate={reduced ? undefined : { y: [0, -6, 0] }}
+                      transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
+                    />
+                  </div>
+                </div>
+              </div>
+              <div className={styles.portraitSpacer} aria-hidden />
+            </div>
           </motion.div>
         </motion.div>
       </div>

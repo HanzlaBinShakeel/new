@@ -7,28 +7,11 @@
 }
 
 .frame {
-  position: relative;
-  border-radius: 16px;
-  padding: 3px;
-  background: linear-gradient(
-    135deg,
-    rgba(91, 156, 245, 0.55) 0%,
-    rgba(255, 255, 255, 0.2) 45%,
-    rgba(30, 91, 184, 0.45) 100%
-  );
-  box-shadow:
-    0 24px 64px rgba(0, 0, 0, 0.45),
-    0 0 0 1px rgba(255, 255, 255, 0.08) inset;
+  composes: frame from './heroMedia.module.css';
 }
 
 .viewport {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 16 / 10;
-  max-height: min(58vh, 520px);
-  border-radius: 14px;
-  overflow: hidden;
-  background: linear-gradient(160deg, #0a2248 0%, #051a42 100%);
+  composes: viewport from './heroMedia.module.css';
 }
 
 .slideActive {
