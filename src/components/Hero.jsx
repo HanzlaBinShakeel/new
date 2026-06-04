@@ -72,18 +72,20 @@ export default function Hero() {
           {...portraitProps}
           style={galleryHeight ? { height: galleryHeight } : undefined}
         >
-          <motion.img
-            src={heroPortrait}
-            alt="Sir Rateb Y. Rabie, KCHS speaking at a podium"
-            className={styles.portrait}
-            width={PORTRAIT_WIDTH}
-            height={PORTRAIT_HEIGHT}
-            decoding="sync"
-            fetchPriority="high"
-            draggable={false}
-            animate={reduced ? undefined : { y: [0, -8, 0] }}
-            transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
-          />
+          <div className={styles.portraitWrap}>
+            <motion.img
+              src={heroPortrait}
+              alt="Sir Rateb Y. Rabie, KCHS speaking at a podium"
+              className={styles.portrait}
+              width={PORTRAIT_WIDTH}
+              height={PORTRAIT_HEIGHT}
+              decoding="sync"
+              fetchPriority="high"
+              draggable={false}
+              animate={reduced ? undefined : { y: [0, -8, 0] }}
+              transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
+            />
+          </div>
         </motion.div>
       </div>
     </section>
