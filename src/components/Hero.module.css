@@ -67,7 +67,8 @@
 
 .portraitCol {
   --portrait-h: min(calc(100dvh - var(--header-h) - 3rem), 660px);
-  --portrait-scale: 1.28;
+  --portrait-scale-y: 1.28;
+  --portrait-scale-x: 1.1;
   position: relative;
   z-index: 1;
   display: flex;
@@ -94,7 +95,7 @@
   margin-inline-start: auto;
   margin-inline-end: 0;
   translate: clamp(1.25rem, 3.75vw, 4.5rem) 0;
-  transform: scale(var(--portrait-scale));
+  transform: scale(var(--portrait-scale-x), var(--portrait-scale-y));
   transform-origin: top right;
   object-fit: contain;
   object-position: right top;
@@ -111,7 +112,8 @@
 @media (min-width: 1200px) {
   .portraitCol {
     --portrait-h: min(calc(100dvh - var(--header-h) - 2.5rem), 680px);
-    --portrait-scale: 1.32;
+    --portrait-scale-y: 1.32;
+    --portrait-scale-x: 1.14;
   }
 
   .portrait {
@@ -141,7 +143,8 @@
   .portraitCol {
     order: 2;
     --portrait-h: min(52vh, 520px);
-    --portrait-scale: 1.12;
+    --portrait-scale-y: 1.12;
+    --portrait-scale-x: 0.98;
     height: var(--portrait-h);
     margin-inline-end: 0;
   }
