@@ -1,11 +1,12 @@
 import { useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { heroPortrait } from '../assets';
 import { useReducedMotion } from '../hooks/useReducedMotion';
 import { fadeLeft, fadeRight } from '../utils/motion';
 import HeroSlider from './HeroSlider';
 import styles from './Hero.module.css';
 
+/** Full-resolution cutout served from /public (1560×1440, no bundler resize). */
+const PORTRAIT_SRC = `${import.meta.env.BASE_URL}hero-portrait.png`;
 const PORTRAIT_WIDTH = 1560;
 const PORTRAIT_HEIGHT = 1440;
 
@@ -72,20 +73,20 @@ export default function Hero() {
           {...portraitProps}
           style={galleryHeight ? { height: galleryHeight } : undefined}
         >
-          <div className={styles.portraitWrap}>
-            <motion.img
-              src={heroPortrait}
-              alt="Sir Rateb Y. Rabie, KCHS speaking at a podium"
-              className={styles.portrait}
-              width={PORTRAIT_WIDTH}
-              height={PORTRAIT_HEIGHT}
-              decoding="sync"
-              fetchPriority="high"
-              draggable={false}
-              animate={reduced ? undefined : { y: [0, -8, 0] }}
-              transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
-            />
-          </div>
+          <motion.img
+            src={PORTRAIT_SRC}
+            alt="Sir Rateb Y. Rabie, KCHS speaking at a podium"
+            className={styles.portrait}
+            width={PORTRAIT_WIDTH}
+            height={PORTRAIT_HEIGHT}
+            sizes="(min-width: 1200px) 38vw, (min-width: 1025px) 34vw, 92vw"
+            decoding="sync"
+            loading="eager"
+            fetchPriority="high"
+            draggable={false}
+            animate={reduced ? undefined : { y: [0, -8, 0] }}
+            transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
+          />
         </motion.div>
       </div>
     </section>
