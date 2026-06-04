@@ -41,5 +41,7 @@ with zipfile.ZipFile(path) as z:
     print(len(data))
 `;
 
-execSync(`python3 -c ${JSON.stringify(py)}`, { cwd: root, stdio: 'inherit' });
+const pyPath = path.join(root, 'scripts', '_sync-hero-slides.py');
+writeFileSync(pyPath, py.trim());
+execSync(`python3 "${pyPath}"`, { cwd: root, stdio: 'inherit' });
 console.log('Hero slides synced.');

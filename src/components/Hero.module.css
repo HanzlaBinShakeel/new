@@ -42,9 +42,9 @@
   position: relative;
   z-index: 1;
   display: grid;
-  grid-template-columns: 1fr 1.1fr;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
   align-items: center;
-  gap: clamp(1rem, 2.5vw, 2.5rem);
+  gap: clamp(1rem, 2vw, 2rem);
   width: min(1440px, 96vw);
   height: 100%;
   min-height: calc(100vh - var(--header-h));
@@ -54,72 +54,36 @@
   box-sizing: border-box;
 }
 
-.leftCol {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-self: center;
-  gap: clamp(1.25rem, 2.5vh, 2rem);
-  width: 100%;
-  max-width: 620px;
-}
-
-.copy {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  text-align: left;
-}
-
-.title {
-  font-family: var(--font-display);
-  font-size: clamp(1.85rem, 3.8vw, 3.75rem);
-  font-weight: 700;
-  line-height: 1.1;
-  color: #ffffff;
-  letter-spacing: -0.01em;
-  text-wrap: balance;
-}
-
-.subtitle {
-  margin-top: 0.85rem;
-  font-size: clamp(1rem, 1.8vw, 1.45rem);
-  font-weight: 400;
-  color: rgba(255, 255, 255, 0.92);
-  line-height: 1.45;
-}
-
 .portraitCol {
   position: relative;
-  height: 100%;
-  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   align-self: center;
-  overflow: visible;
+  min-width: 0;
+  height: min(78vh, 720px);
 }
 
 .portrait {
   display: block;
-  width: auto;
-  height: min(86vh, 860px);
-  max-height: calc(100dvh - var(--header-h) - 1rem);
-  max-width: min(100%, 920px);
+  width: 100%;
+  max-width: min(100%, 380px);
+  height: auto;
+  max-height: min(78vh, 720px);
   object-fit: contain;
-  object-position: center center;
+  object-position: center bottom;
   user-select: none;
   -webkit-user-drag: none;
-  filter: drop-shadow(0 20px 56px rgba(0, 0, 0, 0.45));
-  mix-blend-mode: lighten;
-  transform: translateX(-2%);
+  filter: drop-shadow(0 16px 40px rgba(0, 0, 0, 0.45));
 }
 
-@media (min-width: 1025px) {
-  .portrait {
-    height: min(88vh, 900px);
-    transform: translateX(0);
-  }
+.sliderCol {
+  display: flex;
+  align-items: center;
+  justify-content: stretch;
+  min-width: 0;
+  width: 100%;
+  align-self: center;
 }
 
 @media (max-width: 1024px) {
@@ -136,32 +100,24 @@
     padding-bottom: 2rem;
   }
 
-  .leftCol {
-    max-width: 100%;
-    order: 1;
-  }
-
-  .copy {
-    align-items: flex-start;
-    text-align: left;
-  }
-
   .portraitCol {
-    order: 2;
-    height: min(58vh, 560px);
-    min-height: 400px;
+    order: 1;
+    height: min(42vh, 420px);
   }
 
   .portrait {
-    height: 100%;
-    max-width: min(560px, 96vw);
-    transform: none;
+    max-width: min(320px, 72vw);
+    max-height: 100%;
+  }
+
+  .sliderCol {
+    order: 2;
+    width: 100%;
   }
 }
 
 @media (max-width: 560px) {
   .portraitCol {
-    min-height: 320px;
-    height: 48vh;
+    height: min(38vh, 360px);
   }
 }
