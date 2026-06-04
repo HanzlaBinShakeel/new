@@ -42,7 +42,7 @@
   position: relative;
   z-index: 1;
   display: grid;
-  grid-template-columns: minmax(0, 1.62fr) minmax(340px, 1.12fr);
+  grid-template-columns: minmax(0, 1.58fr) minmax(360px, 1.18fr);
   align-items: center;
   gap: clamp(1rem, 2.25vw, 2.25rem);
   width: min(1500px, 97vw);
@@ -73,9 +73,9 @@
   position: relative;
   z-index: 1;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  align-self: center;
+  align-items: flex-start;
+  justify-content: flex-end;
+  align-self: start;
   min-width: 0;
   width: 100%;
   overflow: visible;
@@ -86,9 +86,11 @@
   height: 100%;
   width: auto;
   max-width: 100%;
-  max-height: 100%;
+  max-height: none;
   object-fit: contain;
-  object-position: center bottom;
+  object-position: right top;
+  transform: scale(1.14);
+  transform-origin: top right;
   border: none;
   outline: none;
   box-shadow: none;
@@ -97,6 +99,12 @@
   -webkit-user-drag: none;
   filter: drop-shadow(0 16px 40px rgba(0, 0, 0, 0.35));
   mix-blend-mode: lighten;
+}
+
+@media (min-width: 1200px) {
+  .portrait {
+    transform: scale(1.2);
+  }
 }
 
 @media (max-width: 1024px) {
