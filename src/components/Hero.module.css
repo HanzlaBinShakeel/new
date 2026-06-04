@@ -67,8 +67,8 @@
 
 .portraitCol {
   --portrait-h: min(calc(100dvh - var(--header-h) - 3rem), 660px);
-  --portrait-scale-y: 1.28;
-  --portrait-scale-x: 1.1;
+  --portrait-scale-y: 1.2;
+  --portrait-scale-x: 1.04;
   position: relative;
   z-index: 1;
   display: flex;
@@ -112,8 +112,8 @@
 @media (min-width: 1200px) {
   .portraitCol {
     --portrait-h: min(calc(100dvh - var(--header-h) - 2.5rem), 680px);
-    --portrait-scale-y: 1.32;
-    --portrait-scale-x: 1.14;
+    --portrait-scale-y: 1.24;
+    --portrait-scale-x: 1.06;
   }
 
   .portrait {
@@ -143,8 +143,8 @@
   .portraitCol {
     order: 2;
     --portrait-h: min(52vh, 520px);
-    --portrait-scale-y: 1.12;
-    --portrait-scale-x: 0.98;
+    --portrait-scale-y: 1.06;
+    --portrait-scale-x: 0.94;
     height: var(--portrait-h);
     margin-inline-end: 0;
   }
