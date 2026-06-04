@@ -42,6 +42,4 @@ with zipfile.ZipFile(path) as z:
 `;
 
 execSync('python3 scripts/sync-hero-slides.py', { cwd: root, stdio: 'inherit' });
-execSync('python3 scripts/fetch-live-hero-slides.py', { cwd: root, stdio: 'inherit' });
-execSync('python3 scripts/retouch-slide-suit.py', { cwd: root, stdio: 'inherit' });
-console.log('Hero slides synced (docx + live site + retouch).');
+console.log('Hero slides synced from docx (original HD images only).');
