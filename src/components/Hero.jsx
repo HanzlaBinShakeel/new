@@ -44,7 +44,8 @@ export default function Hero() {
       requestAnimationFrame(() => {
         const rendered = img.getBoundingClientRect().height;
         if (rendered > 0 && rendered < galleryHeight - 1) {
-          setPortraitScale(galleryHeight / rendered);
+          const next = galleryHeight / rendered;
+          setPortraitScale(Math.min(next, 1.45));
         } else {
           setPortraitScale(1);
         }
