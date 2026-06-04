@@ -13,7 +13,9 @@ const PORTRAIT_HEIGHT = 1440;
 export default function Hero() {
   const [slideIndex, setSlideIndex] = useState(0);
   const [galleryHeight, setGalleryHeight] = useState(null);
+  const [portraitScale, setPortraitScale] = useState(1);
   const galleryRef = useRef(null);
+  const portraitRef = useRef(null);
   const reduced = useReducedMotion();
 
   useEffect(() => {
@@ -31,6 +33,32 @@ export default function Hero() {
       window.removeEventListener('resize', update);
     };
   }, []);
+
+  /** Scale from top-right so top stays aligned with gallery and bottom fills the column. */
+  useEffect(() => {
+    const img = portraitRef.current;
+    if (!img || !galleryHeight) return;
+
+    const fit = () => {
+      img.style.setProperty('transform', 'scale(1)');
+      requestAnimationFrame(() => {
+        const rendered = img.getBoundingClientRect().height;
+        if (rendered > 0 && rendered < galleryHeight - 1) {
+          setPortraitScale(galleryHeight / rendered);
+        } else {
+          setPortraitScale(1);
+        }
+      });
+    };
+
+    fit();
+    if (!img.complete) img.addEventListener('load', fit);
+    window.addEventListener('resize', fit);
+    return () => {
+      img.removeEventListener('load', fit);
+      window.removeEventListener('resize', fit);
+    };
+  }, [galleryHeight]);
 
   const galleryProps = reduced
     ? {}
@@ -74,6 +102,7 @@ export default function Hero() {
           style={galleryHeight ? { height: galleryHeight } : undefined}
         >
           <motion.img
+            ref={portraitRef}
             src={PORTRAIT_SRC}
             alt="Sir Rateb Y. Rabie, KCHS speaking at a podium"
             className={styles.portrait}
@@ -84,8 +113,10 @@ export default function Hero() {
             loading="eager"
             fetchPriority="high"
             draggable={false}
-            animate={reduced ? undefined : { y: [0, -8, 0] }}
-            transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
+            style={{
+              transform: `scale(${portraitScale})`,
+              transformOrigin: 'top right',
+            }}
           />
         </motion.div>
       </div>
