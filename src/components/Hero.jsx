@@ -70,7 +70,11 @@ export default function Hero() {
         <motion.div
           className={styles.portraitCol}
           {...portraitProps}
-          style={galleryHeight ? { height: galleryHeight } : undefined}
+          style={
+            galleryHeight
+              ? { height: Math.round(galleryHeight * 1.18) }
+              : undefined
+          }
         >
           <motion.img
             src={heroPortrait}

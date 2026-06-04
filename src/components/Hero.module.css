@@ -74,6 +74,7 @@
   min-width: 0;
   width: 100%;
   overflow: visible;
+  align-self: center;
 }
 
 .portrait {
@@ -81,7 +82,7 @@
   width: auto;
   height: 100%;
   max-width: 100%;
-  max-height: 100%;
+  max-height: min(calc(100dvh - var(--header-h) - 0.5rem), 1080px);
   object-fit: contain;
   object-position: center center;
   user-select: none;
