@@ -130,19 +130,16 @@ export const bannerItem = {
 export const slideVariants = {
   enter: (dir) => ({
     opacity: 0,
-    x: dir > 0 ? 48 : -48,
-    scale: 1.02,
+    x: dir > 0 ? 32 : -32,
   }),
   center: {
     opacity: 1,
     x: 0,
-    scale: 1,
     transition: { duration: DURATION.lg, ease: EASE_OUT },
   },
   exit: (dir) => ({
     opacity: 0,
-    x: dir > 0 ? -48 : 48,
-    scale: 0.98,
+    x: dir > 0 ? -32 : 32,
     transition: { duration: DURATION.md, ease: EASE_IN_OUT },
   }),
 };

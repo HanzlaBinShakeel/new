@@ -43,13 +43,7 @@ export default function HeroSlider({ index, onIndexChange }) {
         <div className={styles.viewport}>
           {reduced ? (
             <div className={styles.slideActive}>
-              <img
-                src={current.src}
-                alt={current.alt}
-                className={styles.image}
-                draggable={false}
-                decoding="sync"
-              />
+              <img src={current.src} alt={current.alt} className={styles.image} draggable={false} />
             </div>
           ) : (
             <AnimatePresence mode="wait" custom={direction}>
@@ -62,14 +56,7 @@ export default function HeroSlider({ index, onIndexChange }) {
                 animate="center"
                 exit="exit"
               >
-                <img
-                  src={current.src}
-                  alt={current.alt}
-                  className={styles.image}
-                  draggable={false}
-                  decoding="sync"
-                  fetchPriority="high"
-                />
+                <img src={current.src} alt={current.alt} className={styles.image} draggable={false} />
               </motion.div>
             </AnimatePresence>
           )}
@@ -130,7 +117,6 @@ export default function HeroSlider({ index, onIndexChange }) {
                 onClick={() => goTo(i)}
                 whileHover={{ scale: 1.06 }}
                 whileTap={{ scale: 0.94 }}
-                layout
               >
                 <img src={s.src} alt="" />
               </motion.button>
