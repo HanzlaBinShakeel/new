@@ -42,7 +42,7 @@
   position: relative;
   z-index: 1;
   display: grid;
-  grid-template-columns: minmax(0, 1.58fr) minmax(360px, 1.18fr);
+  grid-template-columns: minmax(0, 1.52fr) minmax(380px, 1.24fr);
   align-items: center;
   gap: clamp(1rem, 2.25vw, 2.25rem);
   width: min(1500px, 97vw);
@@ -83,13 +83,13 @@
 
 .portrait {
   display: block;
-  height: 100%;
+  height: 108%;
   width: auto;
-  max-width: 100%;
+  max-width: none;
   max-height: none;
   object-fit: contain;
   object-position: right top;
-  transform: scale(1.14);
+  transform: scale(1.22);
   transform-origin: top right;
   border: none;
   outline: none;
@@ -103,7 +103,8 @@
 
 @media (min-width: 1200px) {
   .portrait {
-    transform: scale(1.2);
+    height: 112%;
+    transform: scale(1.3);
   }
 }
 
