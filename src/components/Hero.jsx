@@ -1,9 +1,8 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { heroPortrait } from '../assets';
-import { useLanguage } from '../i18n/LanguageContext';
 import { useReducedMotion } from '../hooks/useReducedMotion';
-import { fadeLeft, fadeRight, blurUp } from '../utils/motion';
+import { fadeLeft, fadeRight } from '../utils/motion';
 import HeroSlider from './HeroSlider';
 import styles from './Hero.module.css';
 
@@ -11,7 +10,6 @@ const PORTRAIT_WIDTH = 520;
 const PORTRAIT_HEIGHT = 480;
 
 export default function Hero() {
-  const { t } = useLanguage();
   const [slideIndex, setSlideIndex] = useState(0);
   const reduced = useReducedMotion();
 
@@ -33,15 +31,6 @@ export default function Hero() {
         custom: 0.25,
       };
 
-  const copyProps = reduced
-    ? {}
-    : {
-        variants: blurUp,
-        initial: 'hidden',
-        animate: 'visible',
-        custom: 0.45,
-      };
-
   return (
     <section id="home" className={styles.hero} aria-label="Hero">
       <div className={styles.bg} aria-hidden>
@@ -55,12 +44,6 @@ export default function Hero() {
 
       <div className={styles.inner}>
         <motion.div className={styles.leftCol} {...leftProps}>
-          <motion.div className={styles.copy} {...copyProps}>
-            <h1 className={styles.title}>
-              <span className={styles.titleLine}>{t('hero.titleLine1')}</span>
-              <span className={styles.titleLine}>{t('hero.titleLine2')}</span>
-            </h1>
-          </motion.div>
           <div className={styles.sliderSlot}>
             <HeroSlider index={slideIndex} onIndexChange={setSlideIndex} />
           </div>
