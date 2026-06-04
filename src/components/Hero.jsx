@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useReducedMotion } from '../hooks/useReducedMotion';
 import { fadeLeft, fadeRight } from '../utils/motion';
@@ -12,54 +12,7 @@ const PORTRAIT_HEIGHT = 1440;
 
 export default function Hero() {
   const [slideIndex, setSlideIndex] = useState(0);
-  const [galleryHeight, setGalleryHeight] = useState(null);
-  const [portraitScale, setPortraitScale] = useState(1);
-  const galleryRef = useRef(null);
-  const portraitRef = useRef(null);
   const reduced = useReducedMotion();
-
-  useEffect(() => {
-    const node = galleryRef.current;
-    if (!node) return;
-
-    const update = () => setGalleryHeight(node.offsetHeight);
-    update();
-
-    const ro = new ResizeObserver(update);
-    ro.observe(node);
-    window.addEventListener('resize', update);
-    return () => {
-      ro.disconnect();
-      window.removeEventListener('resize', update);
-    };
-  }, []);
-
-  /** Scale from top-right so top stays aligned with gallery and bottom fills the column. */
-  useEffect(() => {
-    const img = portraitRef.current;
-    if (!img || !galleryHeight) return;
-
-    const fit = () => {
-      img.style.setProperty('transform', 'scale(1)');
-      requestAnimationFrame(() => {
-        const rendered = img.getBoundingClientRect().height;
-        if (rendered > 0 && rendered < galleryHeight - 1) {
-          const next = galleryHeight / rendered;
-          setPortraitScale(Math.min(next, 1.45));
-        } else {
-          setPortraitScale(1);
-        }
-      });
-    };
-
-    fit();
-    if (!img.complete) img.addEventListener('load', fit);
-    window.addEventListener('resize', fit);
-    return () => {
-      img.removeEventListener('load', fit);
-      window.removeEventListener('resize', fit);
-    };
-  }, [galleryHeight]);
 
   const galleryProps = reduced
     ? {}
@@ -92,18 +45,11 @@ export default function Hero() {
 
       <div className={styles.inner}>
         <motion.div className={styles.galleryCol} {...galleryProps}>
-          <div ref={galleryRef} className={styles.galleryMeasure}>
-            <HeroSlider index={slideIndex} onIndexChange={setSlideIndex} />
-          </div>
+          <HeroSlider index={slideIndex} onIndexChange={setSlideIndex} />
         </motion.div>
 
-        <motion.div
-          className={styles.portraitCol}
-          {...portraitProps}
-          style={galleryHeight ? { height: galleryHeight } : undefined}
-        >
-          <motion.img
-            ref={portraitRef}
+        <motion.div className={styles.portraitCol} {...portraitProps}>
+          <img
             src={PORTRAIT_SRC}
             alt="Sir Rateb Y. Rabie, KCHS speaking at a podium"
             className={styles.portrait}
@@ -114,10 +60,6 @@ export default function Hero() {
             loading="eager"
             fetchPriority="high"
             draggable={false}
-            style={{
-              transform: `scale(${portraitScale})`,
-              transformOrigin: 'top right',
-            }}
           />
         </motion.div>
       </div>
