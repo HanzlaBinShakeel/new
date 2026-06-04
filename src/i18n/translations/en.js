@@ -34,8 +34,8 @@ export default {
     wikipedia: 'Wikipedia',
   },
   hero: {
-    title: 'Transformational Leadership For',
-    subtitle: 'Peace, Justice, and Global Impact',
+    title: 'Transformational Leadership',
+    subtitle: 'For Peace, Justice, and Global Impact',
   },
   common: {
     donateNow: 'Donate Now',

@@ -34,8 +34,8 @@ export default {
     wikipedia: 'Wikipedia',
   },
   hero: {
-    title: 'Liderazgo transformador para',
-    subtitle: 'Paz, justicia e impacto global',
+    title: 'Liderazgo transformador',
+    subtitle: 'Para la paz, la justicia y el impacto global',
   },
   common: {
     donateNow: 'Donar ahora',

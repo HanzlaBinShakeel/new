@@ -1,34 +1,36 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { heroPortrait } from '../assets';
+import { useLanguage } from '../i18n/LanguageContext';
 import { useReducedMotion } from '../hooks/useReducedMotion';
-import { fadeLeft, fadeRight } from '../utils/motion';
+import { fadeUp, staggerDelay } from '../utils/motion';
 import HeroSlider from './HeroSlider';
 import styles from './Hero.module.css';
 
 const PORTRAIT_WIDTH = 420;
-const PORTRAIT_HEIGHT = 560;
+const PORTRAIT_HEIGHT = 520;
 
 export default function Hero() {
+  const { t } = useLanguage();
   const [slideIndex, setSlideIndex] = useState(0);
   const reduced = useReducedMotion();
 
-  const portraitProps = reduced
+  const gridProps = reduced
     ? {}
     : {
-        variants: fadeLeft,
         initial: 'hidden',
         animate: 'visible',
-        custom: 0.08,
+        variants: {
+          hidden: {},
+          visible: { transition: { staggerChildren: 0.12, delayChildren: 0.05 } },
+        },
       };
 
-  const sliderProps = reduced
+  const itemProps = reduced
     ? {}
     : {
-        variants: fadeRight,
-        initial: 'hidden',
-        animate: 'visible',
-        custom: 0.2,
+        variants: fadeUp,
+        custom: staggerDelay(0),
       };
 
   return (
@@ -43,23 +45,32 @@ export default function Hero() {
       </div>
 
       <div className={styles.inner}>
-        <motion.div className={styles.portraitCol} {...portraitProps}>
-          <motion.img
-            src={heroPortrait}
-            alt="Sir Rateb Y. Rabie, KCHS speaking at a podium"
-            className={styles.portrait}
-            width={PORTRAIT_WIDTH}
-            height={PORTRAIT_HEIGHT}
-            decoding="sync"
-            fetchPriority="high"
-            draggable={false}
-            animate={reduced ? undefined : { y: [0, -8, 0] }}
-            transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
-          />
-        </motion.div>
+        <motion.div className={styles.heroGrid} {...gridProps}>
+          <motion.div className={styles.galleryCol} {...itemProps}>
+            <HeroSlider index={slideIndex} onIndexChange={setSlideIndex} />
+          </motion.div>
 
-        <motion.div className={styles.sliderCol} {...sliderProps}>
-          <HeroSlider index={slideIndex} onIndexChange={setSlideIndex} />
+          <motion.div className={styles.portraitCol} {...itemProps}>
+            <motion.img
+              src={heroPortrait}
+              alt="Sir Rateb Y. Rabie, KCHS speaking at a podium"
+              className={styles.portrait}
+              width={PORTRAIT_WIDTH}
+              height={PORTRAIT_HEIGHT}
+              decoding="sync"
+              fetchPriority="high"
+              draggable={false}
+              animate={reduced ? undefined : { y: [0, -8, 0] }}
+              transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
+            />
+          </motion.div>
+
+          <motion.div className={styles.copyCol} {...itemProps}>
+            <h1 className={styles.title}>
+              <span className={styles.titleLine}>{t('hero.title')}</span>
+              <span className={styles.titleLine}>{t('hero.subtitle')}</span>
+            </h1>
+          </motion.div>
         </motion.div>
       </div>
     </section>
