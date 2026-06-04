@@ -50,7 +50,7 @@
   min-height: calc(100vh - var(--header-h));
   min-height: calc(100dvh - var(--header-h));
   margin-inline: auto;
-  padding: 0 clamp(1rem, 3vw, 2.5rem);
+  padding-inline: clamp(1rem, 3vw, 2.5rem) clamp(0, 0.75vw, 0.5rem);
   box-sizing: border-box;
   direction: ltr;
 }
@@ -78,6 +78,7 @@
   align-self: start;
   min-width: 0;
   width: 100%;
+  margin-inline-end: clamp(-1.5rem, -3vw, -0.5rem);
   overflow: visible;
 }
 
@@ -87,6 +88,9 @@
   width: auto;
   max-width: none;
   max-height: 100%;
+  margin-inline-start: auto;
+  margin-inline-end: clamp(-2rem, -4vw, -1rem);
+  translate: clamp(0.75rem, 2.25vw, 2.75rem) 0;
   object-fit: contain;
   object-position: right top;
   transform-origin: top right;
