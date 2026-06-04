@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { heroPortrait } from '../assets';
 import { useReducedMotion } from '../hooks/useReducedMotion';
@@ -11,7 +11,25 @@ const PORTRAIT_HEIGHT = 1440;
 
 export default function Hero() {
   const [slideIndex, setSlideIndex] = useState(0);
+  const [galleryHeight, setGalleryHeight] = useState(null);
+  const galleryRef = useRef(null);
   const reduced = useReducedMotion();
+
+  useEffect(() => {
+    const node = galleryRef.current;
+    if (!node) return;
+
+    const update = () => setGalleryHeight(node.offsetHeight);
+    update();
+
+    const ro = new ResizeObserver(update);
+    ro.observe(node);
+    window.addEventListener('resize', update);
+    return () => {
+      ro.disconnect();
+      window.removeEventListener('resize', update);
+    };
+  }, []);
 
   const galleryProps = reduced
     ? {}
@@ -44,24 +62,28 @@ export default function Hero() {
 
       <div className={styles.inner}>
         <motion.div className={styles.galleryCol} {...galleryProps}>
-          <HeroSlider index={slideIndex} onIndexChange={setSlideIndex} />
+          <div ref={galleryRef} className={styles.galleryMeasure}>
+            <HeroSlider index={slideIndex} onIndexChange={setSlideIndex} />
+          </div>
         </motion.div>
 
-        <motion.div className={styles.portraitCol} {...portraitProps}>
-          <div className={styles.portraitScale}>
-            <motion.img
-              src={heroPortrait}
-              alt="Sir Rateb Y. Rabie, KCHS speaking at a podium"
-              className={styles.portrait}
-              width={PORTRAIT_WIDTH}
-              height={PORTRAIT_HEIGHT}
-              decoding="sync"
-              fetchPriority="high"
-              draggable={false}
-              animate={reduced ? undefined : { y: [0, -8, 0] }}
-              transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
-            />
-          </div>
+        <motion.div
+          className={styles.portraitCol}
+          {...portraitProps}
+          style={galleryHeight ? { height: galleryHeight } : undefined}
+        >
+          <motion.img
+            src={heroPortrait}
+            alt="Sir Rateb Y. Rabie, KCHS speaking at a podium"
+            className={styles.portrait}
+            width={PORTRAIT_WIDTH}
+            height={PORTRAIT_HEIGHT}
+            decoding="sync"
+            fetchPriority="high"
+            draggable={false}
+            animate={reduced ? undefined : { y: [0, -8, 0] }}
+            transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
+          />
         </motion.div>
       </div>
     </section>
