@@ -13,7 +13,7 @@ export default function Hero() {
   const [slideIndex, setSlideIndex] = useState(0);
   const reduced = useReducedMotion();
 
-  const portraitProps = reduced
+  const galleryProps = reduced
     ? {}
     : {
         variants: fadeLeft,
@@ -22,7 +22,7 @@ export default function Hero() {
         custom: 0.1,
       };
 
-  const galleryProps = reduced
+  const portraitProps = reduced
     ? {}
     : {
         variants: fadeRight,
@@ -43,6 +43,10 @@ export default function Hero() {
       </div>
 
       <div className={styles.inner}>
+        <motion.div className={styles.galleryCol} {...galleryProps}>
+          <HeroSlider index={slideIndex} onIndexChange={setSlideIndex} />
+        </motion.div>
+
         <motion.div className={styles.portraitCol} {...portraitProps}>
           <motion.img
             src={heroPortrait}
@@ -56,10 +60,6 @@ export default function Hero() {
             animate={reduced ? undefined : { y: [0, -8, 0] }}
             transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
           />
-        </motion.div>
-
-        <motion.div className={styles.galleryCol} {...galleryProps}>
-          <HeroSlider index={slideIndex} onIndexChange={setSlideIndex} />
         </motion.div>
       </div>
     </section>
