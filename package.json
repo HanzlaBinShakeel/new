@@ -9,6 +9,7 @@
     "preview": "vite preview",
     "fetch-articles": "node scripts/fetch-articles.mjs",
     "sync-hero-slides": "node scripts/sync-hero-slides.mjs",
+    "sync-gallery-27": "python3 scripts/sync-gallery-27.py",
     "sync-about-content": "node scripts/sync-about-content.mjs",
     "sync-article-categories": "node scripts/sync-article-categories.mjs"
   },

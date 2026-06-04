@@ -41,5 +41,6 @@ with zipfile.ZipFile(path) as z:
     print(len(data))
 `;
 
-execSync('python3 scripts/sync-hero-slides.py', { cwd: root, stdio: 'inherit' });
-console.log('Hero slides synced from docx (original HD images only).');
+execSync('python3 scripts/sync-gallery-27.py', { cwd: root, stdio: 'inherit' });
+execSync('python3 scripts/retouch-slide-suit.py', { cwd: root, stdio: 'inherit' });
+console.log('Hero gallery synced (27 slides).');
