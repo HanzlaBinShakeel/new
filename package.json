@@ -8,8 +8,7 @@
     "build": "vite build",
     "preview": "vite preview",
     "fetch-articles": "node scripts/fetch-articles.mjs",
-    "sync-hero-slides": "node scripts/sync-hero-slides.mjs && node scripts/fetch-extra-hero-slides.mjs && python3 scripts/retouch-hero-slide.py",
-    "fetch-hero-slides": "node scripts/fetch-extra-hero-slides.mjs",
+    "sync-hero-slides": "node scripts/sync-hero-slides.mjs",
     "sync-about-content": "node scripts/sync-about-content.mjs",
     "sync-article-categories": "node scripts/sync-article-categories.mjs"
   },

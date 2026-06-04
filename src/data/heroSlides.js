@@ -1,6 +1,6 @@
 import manifest from './heroSlides.manifest.json';
 
-const slideModules = import.meta.glob('../assets/hero-slides/slide-*.{png,jpg,jpeg,webp,PNG,JPG,JPEG}', {
+const slideModules = import.meta.glob('../assets/hero-slides/slide-*.{png,jpg,jpeg,PNG,JPG}', {
   eager: true,
   import: 'default',
 });

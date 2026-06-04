@@ -76,7 +76,6 @@ export default function HeroSlider({ index, onIndexChange }) {
             <div className={styles.captionText}>
               <p className={styles.title}>{current.title}</p>
               <div className={styles.meta}>
-                <span className={styles.badge}>Gallery</span>
                 <span className={styles.counter}>
                   {String(safeIndex + 1).padStart(2, '0')} / {String(total).padStart(2, '0')}
                 </span>
