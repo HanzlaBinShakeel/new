@@ -12,52 +12,35 @@ const PORTRAIT_HEIGHT = 1440;
 
 export default function Hero() {
   const [slideIndex, setSlideIndex] = useState(0);
-  const [galleryHeight, setGalleryHeight] = useState(null);
   const [portraitScale, setPortraitScale] = useState({ x: 0.9, y: 1 });
-  const galleryRef = useRef(null);
   const portraitRef = useRef(null);
+  const portraitColRef = useRef(null);
   const reduced = useReducedMotion();
 
-  useEffect(() => {
-    const node = galleryRef.current;
-    if (!node) return;
-
-    const update = () => setGalleryHeight(node.offsetHeight);
-    update();
-
-    const ro = new ResizeObserver(update);
-    ro.observe(node);
-    window.addEventListener('resize', update);
-    return () => {
-      ro.disconnect();
-      window.removeEventListener('resize', update);
-    };
-  }, []);
-
-  /** Fit inside portrait column: bottom aligns with gallery, nothing clipped off-screen. */
+  /** Fit portrait inside its column without clipping; size is independent of gallery height. */
   useEffect(() => {
     const img = portraitRef.current;
-    const col = img?.parentElement;
-    if (!img || !col || !galleryHeight) return;
+    const col = portraitColRef.current;
+    if (!img || !col) return;
 
     const fit = () => {
       img.style.setProperty('transform', 'none');
       requestAnimationFrame(() => {
         const colWidth = col.clientWidth;
+        const colHeight = col.clientHeight;
         const naturalW = img.offsetWidth;
         const naturalH = img.offsetHeight;
-        if (!colWidth || !naturalW || !naturalH) return;
+        if (!colWidth || !colHeight || !naturalW || !naturalH) return;
 
         let scaleY = 1;
-        if (naturalH < galleryHeight - 1) {
-          scaleY = Math.min(galleryHeight / naturalH, 1.1);
-        } else if (naturalH > galleryHeight + 1) {
-          scaleY = galleryHeight / naturalH;
+        if (naturalH < colHeight - 1) {
+          scaleY = Math.min(colHeight / naturalH, 1.1);
+        } else if (naturalH > colHeight + 1) {
+          scaleY = colHeight / naturalH;
         }
 
         let scaleX = 1;
-        const scaledW = naturalW * scaleX;
-        if (scaledW > colWidth - 4) {
+        if (naturalW * scaleX > colWidth - 4) {
           scaleX = (colWidth - 4) / naturalW;
         }
 
@@ -70,12 +53,15 @@ export default function Hero() {
 
     fit();
     if (!img.complete) img.addEventListener('load', fit);
+    const ro = new ResizeObserver(fit);
+    ro.observe(col);
     window.addEventListener('resize', fit);
     return () => {
       img.removeEventListener('load', fit);
+      ro.disconnect();
       window.removeEventListener('resize', fit);
     };
-  }, [galleryHeight]);
+  }, []);
 
   const galleryProps = reduced
     ? {}
@@ -108,16 +94,10 @@ export default function Hero() {
 
       <div className={styles.inner}>
         <motion.div className={styles.galleryCol} {...galleryProps}>
-          <div ref={galleryRef} className={styles.galleryMeasure}>
-            <HeroSlider index={slideIndex} onIndexChange={setSlideIndex} />
-          </div>
+          <HeroSlider index={slideIndex} onIndexChange={setSlideIndex} />
         </motion.div>
 
-        <motion.div
-          className={styles.portraitCol}
-          {...portraitProps}
-          style={galleryHeight ? { height: galleryHeight } : undefined}
-        >
+        <motion.div className={styles.portraitCol} ref={portraitColRef} {...portraitProps}>
           <img
             ref={portraitRef}
             src={PORTRAIT_SRC}
