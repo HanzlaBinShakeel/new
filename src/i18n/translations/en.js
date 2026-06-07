@@ -62,16 +62,17 @@ export default {
     aboutDesc:
       'Success-driven visionary and accomplished Social Entrepreneur with over 25 years of experience managing nonprofit organizations — pursuing peace, empowering communities, and making a lasting difference in the Holy Land and beyond.',
     leadershipLabel: 'Leadership',
-    leadershipTitle: 'Organizations & Impact',
+    leadershipTitle: 'Personal Leadership & Initiatives',
     leadershipDesc:
-      'Building bridges between the West and Palestine through faith, heritage, and humanitarian action.',
+      'Peace, justice, heritage, and interfaith dialogue — the personal mission behind Sir Rateb Y. Rabie’s work.',
     faqLabel: 'Questions & Answers',
     faqTitle: 'Practical guide for the next generation',
     blogLabel: 'From the Blog',
     blogTitle: 'My Articles',
     blogDesc: 'Reflections on faith, peace, justice, and Palestine.',
-    donateTitle: "Make a donation for your nation's future",
-    donateDesc: 'All our members help reach success. Support HCEF and programs in the Holy Land.',
+    ctaTitle: 'Connect with Sir Rateb Y. Rabie',
+    ctaDesc:
+      'Reach out for speaking, collaboration, media, or to share your thoughts on peace and justice in Palestine.',
     connectWithMe: 'Connect With Me',
     bioExcerpt:
       'Sir Rateb Y. Rabie, KCHS, is an accomplished Social Entrepreneur dedicated to peace and justice for Palestinians, and to creating transformational leadership that advances innovation, equality, and societal wellbeing.',
@@ -174,11 +175,11 @@ He is recipient of the Faith and Tolerance Award from the Arab American Anti-Dis
     },
     {
       q: 'Who leads these initiatives?',
-      a: 'Sir Rateb Y. Rabie, KCHS — founder and President/CEO of HCEF and KTH, with over 25 years of nonprofit leadership and wide-reaching international experience.',
+      a: 'Sir Rateb Y. Rabie, KCHS — a social entrepreneur and transformational leader with over 25 years of international experience in peacebuilding, advocacy, and community empowerment.',
     },
     {
       q: 'What are the main goals?',
-      a: 'Strengthening Palestinian identity in the diaspora, fostering interfaith understanding, supporting humanitarian and educational programs in the Holy Land, and building networks of advocates for a just and lasting peace.',
+      a: 'Strengthening Palestinian identity in the diaspora, fostering interfaith understanding, supporting humanitarian and educational programs, and building networks of advocates for a just and lasting peace.',
     },
   ],
   pillars: [
@@ -188,7 +189,7 @@ He is recipient of the Faith and Tolerance Award from the Arab American Anti-Dis
     },
     {
       title: 'Heritage & Diaspora Leadership',
-      desc: 'Connecting Palestinian youth in the diaspora to their shared homeland through Know Thy Heritage — building a global network of advocates for peace.',
+      desc: 'Connecting Palestinian youth in the diaspora to their shared homeland and building a global network of advocates for peace.',
     },
     {
       title: 'Interfaith Dialogue',
@@ -196,7 +197,7 @@ He is recipient of the Faith and Tolerance Award from the Arab American Anti-Dis
     },
     {
       title: 'Humanitarian Programs',
-      desc: 'Designing large-scale humanitarian programs — from the Bethlehem Museum to educational initiatives, job creation, and medical support projects.',
+      desc: 'Designing large-scale humanitarian programs — educational initiatives, job creation, cultural preservation, and medical support projects.',
     },
   ],
   awards: [

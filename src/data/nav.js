@@ -1,4 +1,4 @@
-/** Navigation per Website Menus.docx */
+/** Navigation per Website Menus.docx — personal site (no org microsites in menu) */
 export const nav = [
   { labelKey: 'nav.home', path: '/' },
   {
@@ -19,26 +19,10 @@ export const nav = [
     labelKey: 'nav.leadership',
     path: '/leadership',
     children: [
-      {
-        labelKey: 'nav.hcefFull',
-        href: 'https://hcef.org/',
-        external: true,
-      },
-      {
-        labelKey: 'nav.kthFull',
-        href: 'https://www.kthps.org/',
-        external: true,
-      },
-      {
-        labelKey: 'nav.jpiFull',
-        href: 'https://www.jerusalem-pi.org/',
-        external: true,
-      },
-      {
-        labelKey: 'nav.bethlehemMuseum',
-        href: 'https://bethlehemmuseum.org/',
-        external: true,
-      },
+      { labelKey: 'nav.notableAccomplishments', path: '/about/accomplishments' },
+      { labelKey: 'nav.coreSkills', path: '/about/skills' },
+      { labelKey: 'nav.visionManagement', path: '/about/vision-management' },
+      { labelKey: 'nav.imagePrinting', path: '/about/image-printing' },
     ],
   },
   {
@@ -80,17 +64,6 @@ export const nav = [
       {
         labelKey: 'nav.linkedin',
         href: 'https://www.linkedin.com/in/rateb-rabie-898b663/',
-        external: true,
-      },
-      { type: 'group', labelKey: 'nav.websites' },
-      {
-        labelKey: 'nav.hcef',
-        href: 'https://hcef.org/',
-        external: true,
-      },
-      {
-        labelKey: 'nav.kth',
-        href: 'https://www.kthps.org/',
         external: true,
       },
       {

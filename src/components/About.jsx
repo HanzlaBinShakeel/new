@@ -1,4 +1,5 @@
 import AnimatedSection, { Reveal } from './AnimatedSection';
+import { site } from '../data/content';
 import { useAboutContent } from '../hooks/useAboutContent';
 import { useLanguage } from '../i18n/LanguageContext';
 import styles from './About.module.css';
@@ -23,12 +24,6 @@ export default function About() {
               ))}
             </div>
             <div className={styles.links}>
-              <a href="https://hcef.org/" target="_blank" rel="noopener noreferrer">
-                HCEF
-              </a>
-              <a href="https://www.kthps.org/" target="_blank" rel="noopener noreferrer">
-                KTH
-              </a>
               <a
                 href="https://www.linkedin.com/in/rateb-rabie-898b663/"
                 target="_blank"
@@ -43,6 +38,7 @@ export default function About() {
               >
                 Wikipedia
               </a>
+              <a href={`mailto:${site.email}`}>{site.email}</a>
             </div>
           </Reveal>
         </div>

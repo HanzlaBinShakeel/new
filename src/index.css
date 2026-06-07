@@ -7,6 +7,7 @@
 }
 
 :root {
+  --header-h: 108px;
   --campaign-blue: #0b2868;
   --campaign-blue-dark: #051a42;
   --campaign-blue-soft: #e8f0fc;
@@ -33,9 +34,24 @@
   --radius-lg: 20px;
 }
 
+@media (max-width: 767px) {
+  :root {
+    --header-h: 96px;
+  }
+}
+
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 110px;
+  scroll-padding-top: var(--header-h);
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+img,
+picture,
+video {
+  max-width: 100%;
+  height: auto;
 }
 
 @media (prefers-reduced-motion: reduce) {

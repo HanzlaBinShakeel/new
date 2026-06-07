@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { organizations, site } from '../data/content';
+import { site } from '../data/content';
 import { articles } from '../data/articles';
 import { ARTICLE_CATEGORIES } from '../data/articleCategories';
 import { groupArticlesByCategory, getArticlesForCategory } from '../utils/articles';
@@ -15,6 +15,7 @@ export default function HomeLanding() {
     articleFilter === 'all' ? groupArticlesByCategory(articles) : null;
   const filteredArticles = getArticlesForCategory(articleFilter, articles);
   const faqs = t('faqs');
+  const pillars = t('pillars');
 
   return (
     <>
@@ -31,29 +32,24 @@ export default function HomeLanding() {
         </div>
       </Section>
 
-      <Section className={`${styles.section} ${styles.orgs}`}>
+      <Section className={`${styles.section} ${styles.initiatives}`}>
         <div className="container">
           <Reveal className={styles.sectionHead} delay={0}>
             <span className="section-label">{t('home.leadershipLabel')}</span>
             <h2 className="section-title">{t('home.leadershipTitle')}</h2>
             <p className={styles.text}>{t('home.leadershipDesc')}</p>
           </Reveal>
-          <Stagger className={styles.orgGrid}>
-            {organizations.map((org) => (
-              <StaggerItem key={org.abbr}>
-                <HoverLift
-                  as="a"
-                  href={org.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={styles.orgCard}
-                >
-                  <span className={styles.orgAbbr}>{org.abbr}</span>
-                  <h3>{org.name}</h3>
-                  <p>{org.description}</p>
-                </HoverLift>
-              </StaggerItem>
-            ))}
+          <Stagger className={styles.initiativeGrid}>
+            {Array.isArray(pillars) &&
+              pillars.map((pillar, i) => (
+                <StaggerItem key={pillar.title}>
+                  <HoverLift as="article" className={styles.initiativeCard}>
+                    <span className={styles.initiativeNum}>0{i + 1}</span>
+                    <h3>{pillar.title}</h3>
+                    <p>{pillar.desc}</p>
+                  </HoverLift>
+                </StaggerItem>
+              ))}
           </Stagger>
           <Reveal className={styles.centerLink} delay={2}>
             <Link to="/leadership" className="btn btn-outline">
@@ -189,20 +185,15 @@ export default function HomeLanding() {
       <Section className={styles.cta}>
         <div className="container">
           <Reveal className={styles.ctaInner} delay={0} variant={scaleIn}>
-            <h2>{t('home.donateTitle')}</h2>
-            <p>{t('home.donateDesc')}</p>
+            <h2>{t('home.ctaTitle')}</h2>
+            <p>{t('home.ctaDesc')}</p>
             <div className={styles.ctaBtns}>
-              <a
-                href={site.donateUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn btn-primary"
-              >
-                {t('common.donateNow')}
-              </a>
-              <Link to="/contact" className="btn btn-outline">
+              <Link to="/contact" className="btn btn-primary">
                 {t('home.connectWithMe')}
               </Link>
+              <a href={`mailto:${site.email}`} className="btn btn-outline">
+                {site.email}
+              </a>
             </div>
           </Reveal>
         </div>

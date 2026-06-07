@@ -207,17 +207,18 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 767px) {
   .wrap {
     max-width: 100%;
   }
 
   .viewport {
-    max-height: min(46vh, 420px);
+    max-height: min(42svh, 380px);
+    aspect-ratio: 4 / 3;
   }
 
   .thumbs {
-    max-width: calc(100vw - 8rem);
+    max-width: 100%;
   }
 }
 

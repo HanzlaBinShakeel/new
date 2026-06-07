@@ -62,16 +62,17 @@ export default {
     aboutDesc:
       'Visionario orientado al éxito y emprendedor social con más de 25 años de experiencia en organizaciones sin fines de lucro — persiguiendo la paz, empoderando comunidades y marcando una diferencia duradera en Tierra Santa y más allá.',
     leadershipLabel: 'Liderazgo',
-    leadershipTitle: 'Organizaciones e impacto',
+    leadershipTitle: 'Liderazgo personal e iniciativas',
     leadershipDesc:
-      'Construyendo puentes entre Occidente y Palestina a través de la fe, el patrimonio y la acción humanitaria.',
+      'Paz, justicia, patrimonio y diálogo interreligioso — la misión personal detrás del trabajo de Sir Rateb Y. Rabie.',
     faqLabel: 'Preguntas y respuestas',
     faqTitle: 'Guía práctica para la próxima generación',
     blogLabel: 'Del blog',
     blogTitle: 'Mis artículos',
     blogDesc: 'Reflexiones sobre fe, paz, justicia y Palestina.',
-    donateTitle: 'Haga una donación por el futuro de su nación',
-    donateDesc: 'Todos nuestros miembros ayudan a alcanzar el éxito. Apoye a HCEF y los programas en Tierra Santa.',
+    ctaTitle: 'Conéctese con Sir Rateb Y. Rabie',
+    ctaDesc:
+      'Comuníquese para conferencias, colaboración, medios o para compartir sus ideas sobre paz y justicia en Palestina.',
     connectWithMe: 'Conéctese conmigo',
     bioExcerpt:
       'Sir Rateb Y. Rabie, KCHS, es un emprendedor social dedicado a la paz y la justicia para los palestinos, y a crear un liderazgo transformador que promueva la innovación, la igualdad y el bienestar social.',

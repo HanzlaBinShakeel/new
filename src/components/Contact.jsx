@@ -20,8 +20,6 @@ export default function Contact() {
             </h2>
             <div className={styles.info}>
               <a href={`mailto:${site.email}`}>{site.email}</a>
-              <a href={`mailto:${site.hcefEmail}`}>{site.hcefEmail}</a>
-              <a href={`tel:${site.hcefPhone}`}>Tel: {site.hcefPhone}</a>
               <a href={`tel:${site.cell}`}>Cell: {site.cell}</a>
               <a href={`tel:${site.phone}`}>{site.phone}</a>
             </div>

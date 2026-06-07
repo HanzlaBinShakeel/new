@@ -42,14 +42,9 @@ export default function Header() {
           <a href={`tel:${site.phone.replace(/[^\d+]/g, '')}`} className={styles.phone}>
             {site.phone}
           </a>
-          <a
-            href={site.donateUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.donateTop}
-          >
-            {t('common.donateNow')}
-          </a>
+          <Link to="/contact" className={styles.donateTop}>
+            {t('nav.connect')}
+          </Link>
         </div>
       </div>
 
@@ -139,15 +134,6 @@ export default function Header() {
                 </div>
               ))}
               <LanguageSwitcher mobile />
-              <a
-                href={site.donateUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={styles.donateMobile}
-                onClick={() => setMenuOpen(false)}
-              >
-                {t('common.donateNow')}
-              </a>
               <Link to="/contact" className={styles.contactBtn} onClick={() => setMenuOpen(false)}>
                 {t('nav.connect')}
               </Link>
