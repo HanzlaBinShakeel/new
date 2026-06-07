@@ -13,7 +13,9 @@ const PORTRAIT_HEIGHT = 1440;
 export default function Hero() {
   const [slideIndex, setSlideIndex] = useState(0);
   const [galleryHeight, setGalleryHeight] = useState(null);
+  const [portraitScale, setPortraitScale] = useState({ x: 0.9, y: 1 });
   const galleryRef = useRef(null);
+  const portraitRef = useRef(null);
   const reduced = useReducedMotion();
 
   useEffect(() => {
@@ -31,6 +33,33 @@ export default function Hero() {
       window.removeEventListener('resize', update);
     };
   }, []);
+
+  /** Grow from bottom (top-left fixed) until portrait bottom meets gallery bottom. */
+  useEffect(() => {
+    const img = portraitRef.current;
+    if (!img || !galleryHeight) return;
+
+    const fit = () => {
+      img.style.setProperty('transform', 'scale(1)');
+      requestAnimationFrame(() => {
+        const rendered = img.getBoundingClientRect().height;
+        const scaleX = window.innerWidth >= 1200 ? 0.86 : 0.9;
+        let scaleY = 1;
+        if (rendered > 0 && rendered < galleryHeight - 1) {
+          scaleY = Math.min(galleryHeight / rendered, 1.18);
+        }
+        setPortraitScale({ x: scaleX, y: scaleY });
+      });
+    };
+
+    fit();
+    if (!img.complete) img.addEventListener('load', fit);
+    window.addEventListener('resize', fit);
+    return () => {
+      img.removeEventListener('load', fit);
+      window.removeEventListener('resize', fit);
+    };
+  }, [galleryHeight]);
 
   const galleryProps = reduced
     ? {}
@@ -74,6 +103,7 @@ export default function Hero() {
           style={galleryHeight ? { height: galleryHeight } : undefined}
         >
           <img
+            ref={portraitRef}
             src={PORTRAIT_SRC}
             alt="Sir Rateb Y. Rabie, KCHS speaking at a podium"
             className={styles.portrait}
@@ -84,6 +114,10 @@ export default function Hero() {
             loading="eager"
             fetchPriority="high"
             draggable={false}
+            style={{
+              transform: `scale(${portraitScale.x}, ${portraitScale.y})`,
+              transformOrigin: 'top left',
+            }}
           />
         </motion.div>
       </div>

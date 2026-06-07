@@ -69,8 +69,6 @@
 }
 
 .portraitCol {
-  --portrait-scale-x: 0.9;
-  --portrait-scale-y: 1;
   position: relative;
   z-index: 1;
   display: flex;
@@ -91,9 +89,8 @@
   display: block;
   height: 100%;
   width: auto;
-  max-width: 100%;
+  max-width: none;
   margin-inline: 0;
-  transform: scale(var(--portrait-scale-x), var(--portrait-scale-y));
   transform-origin: top left;
   object-fit: contain;
   object-position: left top;
@@ -105,13 +102,6 @@
   -webkit-user-drag: none;
   filter: drop-shadow(0 16px 40px rgba(0, 0, 0, 0.35));
   mix-blend-mode: lighten;
-}
-
-@media (min-width: 1200px) {
-  .portraitCol {
-    --portrait-scale-x: 0.88;
-    --portrait-scale-y: 0.95;
-  }
 }
 
 /* Keep 2/3 + 1/3 side-by-side on tablet; stack only on narrow screens */
@@ -138,8 +128,6 @@
 
   .portraitCol {
     order: 2;
-    --portrait-scale-x: 0.94;
-    --portrait-scale-y: 0.96;
     justify-content: center;
   }
 
