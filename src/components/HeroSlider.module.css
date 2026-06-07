@@ -43,7 +43,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center center;
+  object-position: center top;
   user-select: none;
   -webkit-user-drag: none;
 }
@@ -193,7 +193,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center center;
+  object-position: center top;
 }
 
 .thumb:hover {

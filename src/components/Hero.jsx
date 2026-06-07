@@ -42,9 +42,11 @@ export default function Hero() {
     const fit = () => {
       img.style.setProperty('transform', 'scaleY(1)');
       requestAnimationFrame(() => {
-        const renderedH = img.offsetHeight;
-        if (renderedH > 0 && renderedH < galleryHeight - 1) {
-          setPortraitScaleY(Math.min(galleryHeight / renderedH, 1.2));
+        const renderedH = img.getBoundingClientRect().height;
+        if (renderedH > 0 && renderedH < galleryHeight - 2) {
+          setPortraitScaleY(galleryHeight / renderedH);
+        } else if (renderedH > galleryHeight + 2) {
+          setPortraitScaleY(galleryHeight / renderedH);
         } else {
           setPortraitScaleY(1);
         }
