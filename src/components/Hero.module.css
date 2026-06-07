@@ -43,13 +43,13 @@
   display: grid;
   grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
   align-items: start;
-  gap: clamp(0.75rem, 1.75vw, 1.75rem);
+  gap: clamp(0.85rem, 2vw, 2rem);
   width: min(1480px, 96vw);
   height: 100%;
   min-height: calc(100vh - var(--header-h));
   min-height: calc(100dvh - var(--header-h));
   margin-inline: auto;
-  padding-inline: clamp(1rem, 2.5vw, 2.25rem) 0;
+  padding-inline: clamp(1rem, 2.5vw, 2.25rem) clamp(0.5rem, 1.5vw, 1.25rem);
   box-sizing: border-box;
   direction: ltr;
 }
@@ -64,20 +64,21 @@
   width: 100%;
 }
 
+.galleryMeasure {
+  width: 100%;
+}
+
 .portraitCol {
-  --portrait-h: min(calc(100dvh - var(--header-h) - 2.5rem), 640px);
-  --portrait-scale-y: 1.18;
-  --portrait-scale-x: 1.02;
+  --portrait-scale-x: 0.9;
+  --portrait-scale-y: 0.96;
   position: relative;
   z-index: 1;
   display: flex;
   align-items: flex-start;
-  justify-content: flex-end;
+  justify-content: flex-start;
   align-self: start;
   min-width: 0;
   width: 100%;
-  height: var(--portrait-h);
-  margin-inline-end: clamp(-1.5rem, -3vw, -0.5rem);
   overflow: visible;
   pointer-events: none;
 }
@@ -88,16 +89,14 @@
 
 .portrait {
   display: block;
-  height: var(--portrait-h);
+  height: 100%;
   width: auto;
-  max-width: none;
-  margin-inline-start: auto;
-  margin-inline-end: 0;
-  translate: clamp(0.75rem, 2vw, 3.5rem) 0;
+  max-width: 100%;
+  margin-inline: 0;
   transform: scale(var(--portrait-scale-x), var(--portrait-scale-y));
-  transform-origin: top right;
+  transform-origin: top left;
   object-fit: contain;
-  object-position: right top;
+  object-position: left top;
   border: none;
   outline: none;
   box-shadow: none;
@@ -110,13 +109,8 @@
 
 @media (min-width: 1200px) {
   .portraitCol {
-    --portrait-h: min(calc(100dvh - var(--header-h) - 2rem), 660px);
-    --portrait-scale-y: 1.2;
-    --portrait-scale-x: 1.04;
-  }
-
-  .portrait {
-    translate: clamp(1rem, 2.5vw, 4rem) 0;
+    --portrait-scale-x: 0.88;
+    --portrait-scale-y: 0.95;
   }
 }
 
@@ -144,24 +138,20 @@
 
   .portraitCol {
     order: 2;
-    --portrait-h: min(48svh, 460px);
-    --portrait-scale-y: 1.04;
-    --portrait-scale-x: 0.96;
-    height: var(--portrait-h);
-    margin-inline-end: 0;
+    --portrait-scale-x: 0.94;
+    --portrait-scale-y: 0.96;
     justify-content: center;
   }
 
   .portrait {
-    translate: 0 0;
-    margin-inline: auto;
     transform-origin: top center;
     object-position: center top;
+    margin-inline: auto;
   }
 }
 
 @media (max-width: 480px) {
   .portraitCol {
-    --portrait-h: min(44svh, 400px);
+    min-height: 320px;
   }
 }
