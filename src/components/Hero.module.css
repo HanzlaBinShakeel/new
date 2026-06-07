@@ -4,7 +4,8 @@
   height: 100vh;
   height: 100dvh;
   min-height: 640px;
-  overflow: hidden;
+  overflow-x: clip;
+  overflow-y: hidden;
   box-sizing: border-box;
   padding-top: var(--header-h);
 }
@@ -49,7 +50,7 @@
   min-height: calc(100vh - var(--header-h));
   min-height: calc(100dvh - var(--header-h));
   margin-inline: auto;
-  padding-inline: clamp(1rem, 2.5vw, 2.25rem) clamp(0.5rem, 1.5vw, 1.25rem);
+  padding-inline: clamp(1rem, 2.5vw, 2.25rem);
   box-sizing: border-box;
   direction: ltr;
 }
@@ -73,10 +74,11 @@
   z-index: 1;
   display: flex;
   align-items: flex-start;
-  justify-content: flex-start;
+  justify-content: center;
   align-self: start;
   min-width: 0;
   width: 100%;
+  padding-inline: 0.25rem;
   overflow: visible;
   pointer-events: none;
 }
@@ -89,11 +91,11 @@
   display: block;
   height: 100%;
   width: auto;
-  max-width: none;
-  margin-inline: 0;
-  transform-origin: top left;
+  max-width: 100%;
+  margin-inline: auto;
+  transform-origin: top center;
   object-fit: contain;
-  object-position: left top;
+  object-position: center top;
   border: none;
   outline: none;
   box-shadow: none;

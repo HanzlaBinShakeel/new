@@ -34,21 +34,37 @@ export default function Hero() {
     };
   }, []);
 
-  /** Grow from bottom (top-left fixed) until portrait bottom meets gallery bottom. */
+  /** Fit inside portrait column: bottom aligns with gallery, nothing clipped off-screen. */
   useEffect(() => {
     const img = portraitRef.current;
-    if (!img || !galleryHeight) return;
+    const col = img?.parentElement;
+    if (!img || !col || !galleryHeight) return;
 
     const fit = () => {
-      img.style.setProperty('transform', 'scale(1)');
+      img.style.setProperty('transform', 'none');
       requestAnimationFrame(() => {
-        const rendered = img.getBoundingClientRect().height;
-        const scaleX = window.innerWidth >= 1200 ? 0.86 : 0.9;
+        const colWidth = col.clientWidth;
+        const naturalW = img.offsetWidth;
+        const naturalH = img.offsetHeight;
+        if (!colWidth || !naturalW || !naturalH) return;
+
         let scaleY = 1;
-        if (rendered > 0 && rendered < galleryHeight - 1) {
-          scaleY = Math.min(galleryHeight / rendered, 1.18);
+        if (naturalH < galleryHeight - 1) {
+          scaleY = Math.min(galleryHeight / naturalH, 1.1);
+        } else if (naturalH > galleryHeight + 1) {
+          scaleY = galleryHeight / naturalH;
         }
-        setPortraitScale({ x: scaleX, y: scaleY });
+
+        let scaleX = 1;
+        const scaledW = naturalW * scaleX;
+        if (scaledW > colWidth - 4) {
+          scaleX = (colWidth - 4) / naturalW;
+        }
+
+        setPortraitScale({
+          x: Math.min(scaleX, 1),
+          y: Math.min(scaleY, 1.1),
+        });
       });
     };
 
@@ -116,7 +132,7 @@ export default function Hero() {
             draggable={false}
             style={{
               transform: `scale(${portraitScale.x}, ${portraitScale.y})`,
-              transformOrigin: 'top left',
+              transformOrigin: 'top center',
             }}
           />
         </motion.div>
