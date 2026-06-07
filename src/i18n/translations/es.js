@@ -121,7 +121,7 @@ export default {
     pageDesc:
       'Sir Rateb Y. Rabie, KCHS — emprendedor social dedicado a la paz, la justicia y el liderazgo transformador.',
     bioDesc: 'Biografía breve y resumen.',
-    biographyTitle: 'Sir Rateb Y. Rabie, KCHS',
+    biographyTitle: 'Sir Rateb Y. Rabie',
     biographyText: `Sir Rateb Y. Rabie, KCHS, es un emprendedor social dedicado a la paz y la justicia para los palestinos, y a crear un nuevo tipo de liderazgo transformador que aborda necesidades sociales críticas y promueve la innovación, la igualdad y el bienestar social.
 
 Nacido en Amán, Jordania, de padres palestinos, es fundador y Presidente/CEO de la Fundación Ecuménica Cristiana de Tierra Santa (HCEF), fundador y Presidente/CEO de Know Thy Heritage (KTH), y cofundador y ex presidente del Instituto de Paz de Jerusalén (JPI). Es Presidente de la Coalición Cristiana Musulmana de EE. UU., cofundador y expresidente nacional de la Sociedad Birzeit, y Caballero Comendador de la Orden Ecuestre del Santo Sepulcro — un honor del Vaticano.

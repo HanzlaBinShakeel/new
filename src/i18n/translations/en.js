@@ -125,7 +125,7 @@ Over more than 25 years he has managed nonprofit organizations with strategic pl
     pageDesc:
       'Sir Rateb Y. Rabie, KCHS — social entrepreneur dedicated to peace, justice, and transformational leadership.',
     bioDesc: 'Short biography and overview.',
-    biographyTitle: 'Sir Rateb Y. Rabie, KCHS',
+    biographyTitle: 'Sir Rateb Y. Rabie',
     biographyText: `Sir Rateb Y. Rabie, KCHS, is an accomplished Social Entrepreneur dedicated to peace and justice for Palestinians, and to creating a new type of transformational leadership that addresses critical social needs and advances innovation, equality, and societal wellbeing.
 
 Sir Rabie is founder and President/CEO of the Holy Land Christian Ecumenical Foundation (HCEF), founder and President/CEO of Know Thy Heritage (KTH), and co-founder and former chairman of the Jerusalem Peace Institute (JPI). Born in Amman, Jordan to Palestinian parents, he is Chairman of the U.S. Muslim Christian Coalition, co-founder and past national president of the Birzeit Society, and a Knight Commander of the Equestrian Order of the Holy Sepulcher — an honor from the Vatican.
